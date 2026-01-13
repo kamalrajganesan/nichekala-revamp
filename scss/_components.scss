@@ -870,9 +870,9 @@ lines
         transform: translateY(-75px);
     }
 
-    50% {
-        transform: translateY(75px);
-    }
+    // 50% {
+    //     transform: translateY(75px);
+    // }
 
     to {
         transform: translateY(-75px);
@@ -2612,5 +2612,54 @@ html.is-animating {
     & .mil-menu-frame {
         opacity: 0;
         transition-delay: .3s;
+    }
+}
+.mil-contact-box {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    padding: 60px 45px;
+    height: 100%;
+    text-align: center;
+    background-color: $light;
+    border: 1px solid $dt-10;
+    transition: $t-md;
+
+    i {
+        font-size: 28px;
+        color: $dt-60;
+        margin-bottom: 25px;
+        display: block;
+        transition: $t-md;
+    }
+
+    h6 {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $dark;
+        margin-bottom: 12px;
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 160%;
+        color: $dt-60;
+        margin: 0;
+    }
+
+    &:hover {
+        transform: translateY(-6px);
+        background-color: $gs-5;
+        border-color: transparent;
+
+        i {
+            color: $dark;
+        }
+
+        h6 {
+            color: $accent;
+        }
     }
 }

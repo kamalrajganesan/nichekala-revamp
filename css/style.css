@@ -4228,3 +4228,51 @@ html.is-animating .mil-menu-frame {
   -webkit-transition-delay: 0.3s;
           transition-delay: 0.3s;
 }
+/* CONTACT INFO BOXES */
+.mil-contact-box {
+    display: block;
+    padding: 60px 45px;
+    border: 1px solid rgba(0,0,0,.08);
+    background: #fff;
+    text-align: center;
+    transition: .4s cubic-bezier(0, 0, 0.3642, 1);
+    height: 100%;
+}
+
+.mil-contact-box i {
+    font-size: 28px;
+    color: rgba(0,0,0,.55);
+    margin-bottom: 25px;
+    display: block;
+    transition: .4s cubic-bezier(0, 0, 0.3642, 1);
+}
+
+.mil-contact-box h6 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #000;
+    margin-bottom: 12px;
+}
+
+.mil-contact-box p {
+    font-size: 14px;
+    line-height: 160%;
+    color: rgba(0,0,0,.55);
+    margin: 0;
+}
+
+.mil-contact-box:hover {
+    transform: translateY(-6px);
+    background: #f2f2f2;
+    border-color: transparent;
+}
+
+.mil-contact-box:hover i {
+    color: rgba(0,0,0,.85);
+}
+
+.mil-contact-box:hover h6 {
+    color: #ff9800;
+}
