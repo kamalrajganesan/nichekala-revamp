@@ -399,7 +399,7 @@ a {
 }
 
 .mil-light-soft {
-  color: rgba(255, 255, 255, 0.4);
+  color: rgb(255 255 255 / 90%);
 }
 
 .mil-dark-soft {
@@ -4275,4 +4275,59 @@ html.is-animating .mil-menu-frame {
 
 .mil-contact-box:hover h6 {
     color: #ff9800;
+}
+.mil-process-list {
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.mil-process-item {
+  padding: 60px 30px;
+  /* border-right: 1px solid rgba(255,255,255,.08); */
+  height: 100%;
+  transition: .35s cubic-bezier(0, 0, 0.3642, 1);
+}
+
+.mil-process-item span {
+  font-size: 32px;
+  font-weight: 600;
+  color: #ff9800;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.mil-process-item h6 {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+.mil-process-item:last-child {
+  border-right: none;
+}
+
+.mil-process-item p {
+  color: rgba(255,255,255,.6);
+  font-size: 14px;
+  line-height: 160%;
+}
+
+.mil-process-item:hover {
+  background: rgba(255,255,255,.02);
+  transform: translateY(-6px);
+}
+
+.mil-process-item::after {
+  content: "";
+  position: absolute;
+  left: 30px;
+  bottom: 30px;
+  width: 0;
+  height: 2px;
+  background: #ff9800;
+  transition: .35s cubic-bezier(0, 0, 0.3642, 1);
+}
+.mil-process-item:hover::after {
+  width: 60px;
 }
