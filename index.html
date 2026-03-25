@@ -37,7 +37,7 @@
       <!-- cursor end -->
 
       <!-- preloader -->
-      <div class="mil-preloader">
+      <div class="mil-preloader d-none">
         <div class="mil-preloader-animation">
           <div class="mil-pos-abs mil-animation-1">
             <p class="mil-h3 mil-muted mil-thin">Where</p>
@@ -77,7 +77,7 @@
               <div class="col-xl-5">
                 <nav class="mil-main-menu" id="swupMenu">
                   <ul>
-                    <li class="mil-has-children">
+                    <li class="mil-has-children mil-active">
                       <a href="index.html">Home</a>
                     </li>
                     <li class="mil-has-children">
@@ -86,7 +86,7 @@
                     <li class="mil-has-children">
                       <a href="blog.html">Blogs</a>
                     </li>
-                    <li class="mil-has-children mil-active">
+                    <li class="mil-has-children">
                       <a href="about.html">About</a>
                     </li>
                     <li class="mil-has-children">
@@ -253,160 +253,142 @@
       <!-- content -->
       <div class="mil-content">
         <div id="swupMain" class="mil-main-transition">
-          <!-- banner -->
-          <section class="mil-banner mil-dark-bg">
-            <div class="mi-invert-fix">
-              <div class="mil-animation-frame">
-                <div
-                  class="mil-animation mil-position-1 mil-scale"
-                  data-value-1="7"
-                  data-value-2="1.6"
-                ></div>
-                <div
-                  class="mil-animation mil-position-2 mil-scale"
-                  data-value-1="4"
-                  data-value-2="1"
-                ></div>
-                <div
-                  class="mil-animation mil-position-3 mil-scale"
-                  data-value-1="1.2"
-                  data-value-2=".1"
-                ></div>
-              </div>
+        <!-- banner -->
+        <section class="mil-banner mil-dark-bg">
+          <div class="mi-invert-fix">
+            <div class="mil-animation-frame">
+              <div class="mil-animation mil-position-1 mil-scale" data-value-1="7" data-value-2="1.6"></div>
+              <div class="mil-animation mil-position-2 mil-scale" data-value-1="4" data-value-2="1"></div>
+              <div class="mil-animation mil-position-3 mil-scale" data-value-1="1.2" data-value-2=".1"></div>
+            </div>
 
-              <div class="mil-gradient"></div>
+            <div class="mil-gradient"></div>
 
-              <div class="container">
-                <div class="mil-banner-content mil-up">
-                  <h1 class="mil-muted mil-mb-60">
-                    Designing <span class="mil-thin">Spaces That</span><br />
-                    Inspire<span class="mil-thin">.</span>
-                  </h1>
-                  <div class="row">
-                    <div class="col-md-7 col-lg-5">
-                      <p class="mil-light-soft mil-mb-60">
-                        A young and dynamic design studio dedicated to crafting
-                        extraordinary spaces that inspire and elevate. We
-                        specialize in architectural design, interior design,
-                        urban planning, and heritage conservation.
-                      </p>
-                    </div>
+            <div class="container">
+              <div class="mil-banner-content mil-up">
+
+                <!-- Heading -->
+                <h1 class="mil-muted mil-mb-60">
+                  Not Bigger Homes.<br />
+                  <span class="mil-thin">Better Living.</span>
+                </h1>
+
+                <!-- Sub Content -->
+                <div class="row">
+                  <div class="col-md-7 col-lg-5">
+                    <p class="mil-light-soft mil-mb-60">
+                      We design Pocket Homes for compact plots — creating spaces that feel open, 
+                      breathable, and meaningful. Because a home is not defined by its size, 
+                      but by how well it lives.
+                    </p>
                   </div>
+                </div>
 
-                  <a
-                    href="contact.html"
-                    class="mil-button mil-arrow-place mil-btn-space"
-                  >
-                    <span>Contact us</span>
-                  </a>
+                <!-- Buttons -->
+                <a href="contact.html" class="mil-button mil-arrow-place mil-btn-space">
+                  <span>Start Your Home</span>
+                </a>
 
-                  <a
-                    href="portfolio-1.html"
-                    class="mil-link mil-muted mil-arrow-place"
-                  >
-                    <span>View works</span>
-                  </a>
+                <a href="portfolio-1.html" class="mil-link mil-muted mil-arrow-place">
+                  <span>View Pocket Homes</span>
+                </a>
 
-                  <div class="mil-circle-text">
-                    <svg
-                      version="1.1"
-                      xmlns="http://www.w3.org/2000/svg"
+                <!-- Scroll Indicator -->
+                <div class="mil-circle-text">
+                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" 
                       xmlns:xlink="http://www.w3.org/1999/xlink"
-                      x="0px"
-                      y="0px"
                       viewBox="0 0 300 300"
-                      enable-background="new 0 0 300 300"
-                      xml:space="preserve"
                       class="mil-ct-svg mil-rotate"
-                      data-value="360"
-                    >
-                      <defs>
-                        <path
-                          id="circlePath"
-                          d="M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 "
-                        />
-                      </defs>
-                      <circle cx="150" cy="100" r="75" fill="none" />
-                      <g>
-                        <use xlink:href="#circlePath" fill="none" />
-                        <text style="letter-spacing: 6.5px">
-                          <!-- circle text -->
-                          <textPath xlink:href="#circlePath">
-                            Scroll down - Scroll down -
-                          </textPath>
-                        </text>
-                      </g>
-                    </svg>
-                    <a
-                      href="#about"
-                      class="mil-button mil-arrow-place mil-icon-button mil-arrow-down"
-                    ></a>
+                      data-value="360">
+                    <defs>
+                      <path id="circlePath"
+                        d="M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 " />
+                    </defs>
+                    <circle cx="150" cy="100" r="75" fill="none" />
+                    <g>
+                      <use xlink:href="#circlePath" fill="none" />
+                      <text style="letter-spacing: 6.5px">
+                        <textPath xlink:href="#circlePath">
+                          Scroll down - Scroll down -
+                        </textPath>
+                      </text>
+                    </g>
+                  </svg>
+
+                  <a href="#about"
+                    class="mil-button mil-arrow-place mil-icon-button mil-arrow-down">
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- banner end -->
+
+         <!-- about -->
+        <section id="about">
+          <div class="container mil-p-120-30">
+            <div class="row justify-content-between align-items-center">
+              
+              <div class="col-lg-6 col-xl-5">
+                <div class="mil-mb-90">
+
+                  <!-- Heading -->
+                  <h2 class="mil-up">
+                      About Our<br />
+                  </h2>
+                  <h3 class="mil-mb-30"><span class="mil-thin">Approach.</span></h3>
+
+                  <!-- Paragraph 1 -->
+                  <p class="mil-up mil-mb-30">
+                    In cities like Chennai, owning a home today is no longer just about building bigger — 
+                    it is about building smarter. With shrinking plots and growing aspirations, 
+                    many homeowners struggle to create spaces that truly feel complete.
+                  </p>
+
+                  <!-- Paragraph 2 -->
+                  <p class="mil-up mil-mb-60">
+                    At Nichekala, we see this not as a limitation, but as an opportunity. 
+                    Through our Pocket Home approach, we design homes that maximise space, 
+                    light, and comfort — turning compact plots into meaningful living experiences 
+                    that feel open, personal, and timeless.
+                  </p>
+
+                  <!-- Quote -->
+                  <div class="mil-about-quote">
+                    <div class="mil-avatar mil-up">
+                      <img src="img/Projects/ARJAVAM/Front elevation.webp" alt="Founder" />
+                    </div>
+                    <h6 class="mil-quote mil-up">
+                      Not about <span class="mil-thin">size</span> —  
+                      but how well a home <span class="mil-thin">lives</span>
+                    </h6>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Image -->
+              <div class="col-lg-5">
+                <div class="mil-about-photo mil-mb-90">
+                  <div class="mil-lines-place"></div>
+                  <div class="mil-up mil-img-frame" style="padding-bottom: 160%">
+                    <img
+                      src="img/team/team.jpg"
+                      alt="Pocket Home Design"
+                      class="mil-scale"
+                      data-value-1="1"
+                      data-value-2="1.2"
+                    />
                   </div>
                 </div>
               </div>
+
             </div>
-          </section>
-          <!-- banner end -->
-
-          <!-- about -->
-          <section id="about">
-            <div class="container mil-p-120-30">
-              <div class="row justify-content-between align-items-center">
-                <div class="col-lg-6 col-xl-5">
-                  <div class="mil-mb-90">
-                    <h2 class="mil-up mil-mb-60">
-                      Discover <br />Our <span class="mil-thin">Studio</span>
-                    </h2>
-                    <p class="mil-up mil-mb-30">
-                      Nichekala is a young and dynamic design studio dedicated
-                      to crafting extraordinary spaces that inspire and elevate.
-                      We are a collective of talented architects and designers,
-                      united by our unwavering passion for transforming ideas
-                      into reality.
-                    </p>
-
-                    <p class="mil-up mil-mb-60">
-                      Led by a diverse team of architects specializing in
-                      architectural, interior, urban, and heritage design, we
-                      bring together unique perspectives and expertise. Our
-                      multidisciplinary approach ensures that every project
-                      receives the comprehensive attention it deserves,
-                      resulting in spaces that are both functional and
-                      inspiring.
-                    </p>
-
-                    <div class="mil-about-quote">
-                      <div class="mil-avatar mil-up">
-                        <img src="img/faces/customers/2.jpg" alt="Founder" />
-                      </div>
-                      <h6 class="mil-quote mil-up">
-                        Where <span class="mil-thin">Creativity</span> Meets
-                        <span class="mil-thin">Construction</span>
-                      </h6>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-5">
-                  <div class="mil-about-photo mil-mb-90">
-                    <div class="mil-lines-place"></div>
-                    <div
-                      class="mil-up mil-img-frame"
-                      style="padding-bottom: 160%"
-                    >
-                      <img
-                        src="img/photo/1.jpg"
-                        alt="img"
-                        class="mil-scale"
-                        data-value-1="1"
-                        data-value-2="1.2"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <!-- about end -->
+          </div>
+        </section>
+        <!-- about end -->
 
           <!-- services -->
           <section class="mil-dark-bg">
@@ -425,94 +407,102 @@
                   style="left: 150px"
                 ></div>
               </div>
+
               <div class="container mil-p-120-0">
+
+                <!-- Top Content -->
                 <div class="mil-mb-120">
                   <div class="row">
                     <div class="col-lg-10">
-                      <span
-                        class="mil-suptitle mil-light-soft mil-suptitle-right mil-up"
-                        >A diverse team of architects specializing in<br />
-                        architectural, interior, urban, and heritage
-                        design.</span
-                      >
+                      <span class="mil-suptitle mil-light-soft mil-suptitle-right mil-up">
+                        Designing homes for compact plots with a focus on space, light, 
+                        and meaningful living experiences.
+                      </span>
                     </div>
                   </div>
 
-                  <div
-                    class="mil-complex-text justify-content-center mil-up mil-mb-15"
-                  >
-                    <span class="mil-text-image"
-                      ><img src="img/photo/2.jpg" alt="team"
-                    /></span>
+                  <div class="mil-complex-text justify-content-center mil-up mil-mb-15">
+                    <span class="mil-text-image">
+                      <img src="img/Projects/COFFEE AND CONVERSATIONS/10.webp" alt="Pocket Home" />
+                    </span>
                     <h2 class="mil-h1 mil-muted mil-center">
-                      Extraordinary <span class="mil-thin">Spaces</span>
+                      Smarter <span class="mil-thin">Homes</span>
                     </h2>
                   </div>
+
                   <div class="mil-complex-text justify-content-center mil-up">
                     <h2 class="mil-h1 mil-muted mil-center">
-                      That <span class="mil-thin">Inspire.</span>
+                      Better <span class="mil-thin">Living.</span>
                     </h2>
+
                     <a
                       href="services.html"
                       class="mil-services-button mil-button mil-arrow-place"
-                      ><span>What we do</span></a
                     >
+                      <span>Our Services</span>
+                    </a>
                   </div>
                 </div>
 
+                <!-- Services Grid -->
                 <div class="row mil-services-grid m-0">
+
+                  <!-- Service 1 -->
                   <div class="col-md-6 col-lg-3 mil-services-grid-item p-0">
                     <a href="service.html" class="mil-service-card-sm mil-up">
                       <h5 class="mil-muted mil-mb-30">
-                        Architectural <br />Design
+                        Pocket Home <br />Design
                       </h5>
                       <p class="mil-light-soft mil-mb-30">
-                        Creating inspiring architectural solutions that blend
-                        form and function seamlessly.
+                        Designing compact homes that feel spacious, functional, and 
+                        comfortable within limited plot sizes.
                       </p>
-                      <div
-                        class="mil-button mil-icon-button-sm mil-arrow-place"
-                      ></div>
+                      <div class="mil-button mil-icon-button-sm mil-arrow-place"></div>
                     </a>
                   </div>
-                  <div class="col-md-6 col-lg-3 mil-services-grid-item p-0">
-                    <a href="service.html" class="mil-service-card-sm mil-up">
-                      <h5 class="mil-muted mil-mb-30">Interior <br />Design</h5>
-                      <p class="mil-light-soft mil-mb-30">
-                        Transforming interiors into extraordinary spaces that
-                        elevate everyday living.
-                      </p>
-                      <div
-                        class="mil-button mil-icon-button-sm mil-arrow-place"
-                      ></div>
-                    </a>
-                  </div>
-                  <div class="col-md-6 col-lg-3 mil-services-grid-item p-0">
-                    <a href="service.html" class="mil-service-card-sm mil-up">
-                      <h5 class="mil-muted mil-mb-30">Urban <br />Planning</h5>
-                      <p class="mil-light-soft mil-mb-30">
-                        Designing sustainable urban environments that enhance
-                        community and connectivity.
-                      </p>
-                      <div
-                        class="mil-button mil-icon-button-sm mil-arrow-place"
-                      ></div>
-                    </a>
-                  </div>
+
+                  <!-- Service 2 -->
                   <div class="col-md-6 col-lg-3 mil-services-grid-item p-0">
                     <a href="service.html" class="mil-service-card-sm mil-up">
                       <h5 class="mil-muted mil-mb-30">
-                        Heritage <br />Conservation
+                        Architectural <br />Planning
                       </h5>
                       <p class="mil-light-soft mil-mb-30">
-                        Preserving architectural heritage while adapting spaces
-                        for contemporary use.
+                        Thoughtfully planned layouts that balance efficiency, aesthetics, 
+                        and climate-responsive design.
                       </p>
-                      <div
-                        class="mil-button mil-icon-button-sm mil-arrow-place"
-                      ></div>
+                      <div class="mil-button mil-icon-button-sm mil-arrow-place"></div>
                     </a>
                   </div>
+
+                  <!-- Service 3 -->
+                  <div class="col-md-6 col-lg-3 mil-services-grid-item p-0">
+                    <a href="service.html" class="mil-service-card-sm mil-up">
+                      <h5 class="mil-muted mil-mb-30">
+                        Interior <br />Experience
+                      </h5>
+                      <p class="mil-light-soft mil-mb-30">
+                        Creating interiors that enhance everyday living through smart 
+                        layouts, materials, and lighting.
+                      </p>
+                      <div class="mil-button mil-icon-button-sm mil-arrow-place"></div>
+                    </a>
+                  </div>
+
+                  <!-- Service 4 -->
+                  <div class="col-md-6 col-lg-3 mil-services-grid-item p-0">
+                    <a href="service.html" class="mil-service-card-sm mil-up">
+                      <h5 class="mil-muted mil-mb-30">
+                        Design <br />Consultation
+                      </h5>
+                      <p class="mil-light-soft mil-mb-30">
+                        Guiding homeowners through planning and decisions to avoid 
+                        mistakes and maximise value.
+                      </p>
+                      <div class="mil-button mil-icon-button-sm mil-arrow-place"></div>
+                    </a>
+                  </div>
+
                 </div>
               </div>
             </div>
@@ -1012,7 +1002,7 @@
             <div class="container mil-p-120-60">
               <div class="row align-items-center mil-mb-30">
                 <div class="col-lg-6 mil-mb-30">
-                  <h3 class="mil-up">Popular Publications:</h3>
+                  <h3 class="mil-up">Popular Blogs:</h3>
                 </div>
                 <div class="col-lg-6 mil-mb-30">
                   <div class="mil-adaptive-right mil-up">
