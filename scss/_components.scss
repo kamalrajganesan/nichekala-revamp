@@ -2663,3 +2663,12 @@ html.is-animating {
         }
     }
 }
+
+/* -------------------------------------------
+
+vendor overrides
+
+------------------------------------------- */
+.fancybox-progress {
+    background: $accent;
+}

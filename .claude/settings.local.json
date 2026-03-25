@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:nichekala.in)"
+      "WebFetch(domain:nichekala.in)",
+      "Bash(sass:*)",
+      "Bash(read f:*)"
     ]
   }
 }
