@@ -27,6 +27,20 @@
       .mil-process-item span{
         color:white;
       }
+        .mil-portfolio-item,.mil-more .mil-cover-frame,
+         .mil-portfolio-item,.mil-more .mil-cover {
+    transform: none !important;        /* prevent scaling */
+    transition: none !important;       /* prevent animation */
+    animation: none !important;        /* prevent keyframe animations */
+}
+
+.mil-portfolio-item, .mil-more:hover .mil-cover-frame,
+.mil-portfolio-item, .mil-more:hover .mil-cover {
+    transform: none !important;        /* stops hover scaling */
+}
+
+
+
     </style>
   </head>
 
@@ -42,7 +56,7 @@
             />
           </svg>
         </span>
-        <div class="mil-more-text">More</div>
+        <!-- <div class="mil-more-text">More</div> -->
         <div class="mil-choose-text">Сhoose</div>
       </div>
       <!-- cursor end -->
@@ -165,12 +179,12 @@
 
                         <ul class="mil-menu-list">
                           <li>
-                            <a href="#." class="mil-light-soft"
+                            <a href="privacy-policy.html" class="mil-light-soft"
                               >Privacy Policy</a
                             >
                           </li>
                           <li>
-                            <a href="#." class="mil-light-soft"
+                            <a href="terms-conditions.html" class="mil-light-soft"
                               >Terms and conditions</a
                             >
                           </li>
@@ -412,8 +426,8 @@
                         <div class="row justify-content-between align-items-end">
                             <div class="col-lg-6">
 
-                                <a href="portfolio-1.html" class="mil-portfolio-item mil-more mil-mb-60">
-                                    <div class="mil-cover-frame mil-hori mil-up">
+                                <div class="mil-portfolio-item mil-more mil-mb-60" style=".mil-portfolio-item mil-more mil-mb-60:hover { transform: none !important; }">
+                                    <div class="mil-cover-frame mil-hori mil-up" style:=".mil-cover-frame mil-hori mil-up:hover { transform: none !important; }">
                                         <div class="mil-cover mil-scale" data-value-1="1.2" data-value-2="1">
                                             <img src="img/about/Journey.jpg" alt="cover">
                                         </div>
@@ -421,7 +435,7 @@
                                     <div class="mil-descr">
                                         <div class="mil-labels mil-up mil-mb-15">
                                             <div class="mil-label mil-upper mil-accent">Branding</div>
-                                            <div class="mil-label mil-upper">may 24 2023</div>
+                                            <!-- <div class="mil-label mil-upper">may 24 2023</div> -->
                                         </div>
                                         <h4 class="mil-up">Journey</h4><br>
                                         <p>We incline towards climate responsive architecture and locally available materials that result in developing spaces that are a collaboration between contemporary and traditional.</p>
@@ -431,7 +445,7 @@
                             </div>
                             <div class="col-lg-5">
 
-                                <a href="project-2.html" class="mil-portfolio-item mil-more mil-parallax mil-mb-60" data-value-1="-30" data-value-2="0">
+                                <a href="#" class="mil-portfolio-item mil-more mil-parallax mil-mb-60" data-value-1="-30" data-value-2="0">
                                     <div class="mil-cover-frame mil-hori mil-up">
                                         <div class="mil-cover">
                                             <img src="img/about/Process.jpg" alt="cover">
@@ -440,7 +454,7 @@
                                     <div class="mil-descr">
                                         <div class="mil-labels mil-up mil-mb-15">
                                             <div class="mil-label mil-upper mil-accent">Design</div>
-                                            <div class="mil-label mil-upper">may 24 2023</div>
+                                            <!-- <div class="mil-label mil-upper">may 24 2023</div> -->
                                         </div>
                                         <h4 class="mil-up">Process</h4><br>
                                         <p>Our design process involves experimenting with the design problem so as to come up with a unique as well as a contextual design solution.</p>
@@ -450,7 +464,7 @@
                             </div>
                             <div class="col-lg-5">
 
-                                <a href="project-3.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                <a href="#" class="mil-portfolio-item mil-more mil-mb-60"> 
                                     <div class="mil-cover-frame mil-hori mil-up">
                                         <div class="mil-cover">
                                             <img src="img/about/Iterations.jpg" alt="cover">
@@ -459,7 +473,7 @@
                                     <div class="mil-descr">
                                         <div class="mil-labels mil-up mil-mb-15">
                                             <div class="mil-label mil-upper mil-accent">Photography</div>
-                                            <div class="mil-label mil-upper">may 24 2023</div>
+                                            <!-- <div class="mil-label mil-upper">may 24 2023</div> -->
                                         </div>
                                         <h4 class="mil-up">Iteration</h4><br>
                                         <p>We understand the required needs and work out various alternatives that help shape spaces that can be experienced.</p>
@@ -469,7 +483,7 @@
                             </div>
                             <div class="col-lg-6">
 
-                                <a href="project-4.html" class="mil-portfolio-item mil-more mil-parallax mil-mb-60" data-value-1="-30" data-value-2="0">
+                                <a href="#" class="mil-portfolio-item mil-more mil-parallax mil-mb-60" data-value-1="-30" data-value-2="0">
                                     <div class="mil-cover-frame mil-hori mil-up">
                                         <div class="mil-cover">
                                             <img src="img/about/Artisans.jpg" alt="cover">
@@ -478,7 +492,7 @@
                                     <div class="mil-descr">
                                         <div class="mil-labels mil-up mil-mb-15">
                                             <div class="mil-label mil-upper mil-accent">Design</div>
-                                            <div class="mil-label mil-upper">may 24 2023</div>
+                                            <!-- <div class="mil-label mil-upper">may 24 2023</div> -->
                                         </div>
                                         <h4 class="mil-up">Artisans</h4><br>
                                         <p>We as a firm collectively believe in the essence of collaboration while solving complex design problems.</p>
@@ -488,7 +502,7 @@
                             </div>
                             <div class="col-lg-6">
 
-                                <a href="project-5.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                 <a href="#" class="mil-portfolio-item mil-more mil-mb-60">
                                     <div class="mil-cover-frame mil-hori mil-up">
                                         <div class="mil-cover">
                                             <img src="img/about/Craftsmanship.jpg" alt="cover">
@@ -497,7 +511,7 @@
                                     <div class="mil-descr">
                                         <div class="mil-labels mil-up mil-mb-15">
                                             <div class="mil-label mil-upper mil-accent">Design</div>
-                                            <div class="mil-label mil-upper">may 24 2023</div>
+                                            <!-- <div class="mil-label mil-upper">may 24 2023</div> -->
                                         </div>
                                         <h4 class="mil-up">Craftsmanship</h4><br>
                                         <p>We are oriented towards the concept of efficiency in design and practical aesthetics.</p>
@@ -507,7 +521,7 @@
                             </div>
                             <div class="col-lg-5">
 
-                                <a href="project-6.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                <a href="#" class="mil-portfolio-item mil-more mil-mb-60">
                                     <div class="mil-cover-frame mil-hori mil-up">
                                         <div class="mil-cover">
                                             <img src="img/about/Drawing2.jpg" alt="cover">
@@ -516,7 +530,7 @@
                                     <div class="mil-descr">
                                         <div class="mil-labels mil-up mil-mb-15">
                                             <div class="mil-label mil-upper mil-accent">Design</div>
-                                            <div class="mil-label mil-upper">may 24 2023</div>
+                                            <!-- <div class="mil-label mil-upper">may 24 2023</div> -->
                                         </div>
                                         <h4 class="mil-up">Drawings</h4><br>
                                         <p>We believe that detailed presentation of design helps in accuracy and is essential to set standards amongst various collaborative bodies on site.</p>
@@ -526,7 +540,7 @@
                             </div>
                             <div class="col-lg-5">
 
-                                <a href="project-6.html" class="mil-portfolio-item mil-more mil-mb-60">
+                                <a href="#" class="mil-portfolio-item mil-more mil-mb-60">
                                     <div class="mil-cover-frame mil-hori mil-up">
                                         <div class="mil-cover">
                                             <img src="img/about/Supervision.jpg" alt="cover">
@@ -535,7 +549,7 @@
                                     <div class="mil-descr">
                                         <div class="mil-labels mil-up mil-mb-15">
                                             <div class="mil-label mil-upper mil-accent">Design</div>
-                                            <div class="mil-label mil-upper">may 24 2023</div>
+                                            <!-- <div class="mil-label mil-upper">may 24 2023</div> -->
                                         </div>
                                         <h4 class="mil-up">Navigate</h4><br>
                                         <p>We overlook and Guide the evolution on site with our “On - site Collaborators”.</p>
@@ -705,24 +719,17 @@
                       </div>
                       <div class="col-md-6 col-lg-5">
                         <ul class="mil-menu-list mil-up mil-mb-60">
-                          <li>
-                            <a href="#." class="mil-light-soft"
-                              >Privacy Policy</a
-                            >
-                          </li>
-                          <li>
-                            <a href="#." class="mil-light-soft"
-                              >Terms and conditions</a
-                            >
-                          </li>
-                          <li>
-                            <a href="#." class="mil-light-soft"
-                              >Cookie Policy</a
-                            >
-                          </li>
-                          <li>
-                            <a href="#." class="mil-light-soft">Careers</a>
-                          </li>
+                         <li>
+                                    <a href="/privacy-policy.html" class="mil-light-soft"
+                                    >Privacy Policy</a
+                                    >
+                                </li>
+                                <li>
+                                    <a href="/terms-conditions.html" class="mil-light-soft"
+                                    >Terms and conditions</a
+                                    >
+                                </li>
+                          
                         </ul>
                       </div>
                     </div>
