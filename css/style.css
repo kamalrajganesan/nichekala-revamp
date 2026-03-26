@@ -1011,7 +1011,7 @@ cursor
 .mil-ball .mil-icon-1 svg {
   fill: rgba(255, 255, 255, 0.9);
 }
-.mil-ball .mil-more-text, .mil-ball .mil-choose-text {
+.mil-ball , .mil-ball .mil-choose-text {
   position: absolute;
   width: 100%;
   text-align: center;
@@ -1026,7 +1026,7 @@ cursor
 .mil-ball.mil-accent .mil-icon-1 svg {
   fill: rgb(0, 0, 0);
 }
-.mil-ball.mil-accent .mil-more-text, .mil-ball.mil-accent .mil-choose-text {
+.mil-ball.mil-accent , .mil-ball.mil-accent .mil-choose-text {
   color: rgb(0, 0, 0);
 }
 @media screen and (max-width: 1200px) {
