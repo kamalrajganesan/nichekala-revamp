@@ -58,8 +58,8 @@ class sndMail
         // Send email to admin
         try {
 
-            $mail->clearAddresses(); // Clear previous recipient
-            $mail->addAddress("mugirajan95@gmail.com"); // Admin's email address
+            $mail->clearAddresses(); 
+            $mail->addAddress("mugirajan95@gmail.com");
             $mail->Subject = "New enquiry - " . $data['name'];
             $mail->Body = "
                 Contact details:
