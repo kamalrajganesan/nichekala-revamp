@@ -243,7 +243,7 @@ $(function () {
 
     function movecursor(e) {
         gsap.to(cursor, {
-            duration: 0.6,
+            duration: 0.1,
             ease: 'sine',
             x: e.clientX,
             y: e.clientY,
@@ -1048,5 +1048,33 @@ $(function () {
         });
 
     });
+
+});
+
+// STEP 1: Select all menu links
+document.querySelectorAll('.mil-main-menu a').forEach(link => {
+
+  link.addEventListener('click', function (e) {
+
+    e.preventDefault(); // stop instant page jump
+
+    let href = this.getAttribute('href'); // get link
+
+    // STEP 2: Show preloader again
+    gsap.set(".mil-preloader", {
+      opacity: 1,
+      visibility: "visible"
+    });
+
+    // STEP 3: Run animation quickly
+    gsap.to(".mil-preloader", {
+      opacity: 1,
+      duration: 0.5,
+      onComplete: () => {
+        window.location.href = href; // go to next page
+      }
+    });
+
+  });
 
 });

@@ -3414,6 +3414,9 @@ vendor overrides
   background: #c8157b;
 }
 
+.mil-ball{
+  display: none !important;
+}
 
 
 
