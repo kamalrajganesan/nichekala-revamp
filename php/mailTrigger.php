@@ -40,11 +40,17 @@ class sndMail
             $mail->Body = "
             Dear {$data['name']},
     
-            Thank you for reaching out to Nichekala. I hope this message finds you well.
-    
-    
-            Thanks & Regards,
+            Thank you for reaching out to Nichekala.
+
+            We’re excited about your interest in our Pocket Home solutions. Our team has received your enquiry and will get back to you shortly with the details.
+
+            At Nichekala, we focus on creating smart, aesthetic, and space-efficient living solutions tailored to your needs.
+
+            If your request is urgent, feel free to contact us directly.
+
+            Warm regards,
             Nichekala Team
+
             ";
     
 

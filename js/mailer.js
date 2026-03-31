@@ -1,4 +1,4 @@
-function showToast(message, type = 'success') {
+  function showToast(message, type = 'success') {
             const toastContainer = document.getElementById('toast-container');
             const toast = document.createElement('div');
             toast.className = `toast ${type}`;
@@ -28,8 +28,8 @@ function showToast(message, type = 'success') {
         let name = $("#name").val().trim();
         let email = $("#email").val().trim();
         let phone = $("#phone").val().trim();
-        let message = $("#message").val().trim();
         let subject = $("#subject").val().trim();
+        let message = $("#message").val().trim();
         let captchaResponse = grecaptcha.getResponse();
 
         let isvalid = true;

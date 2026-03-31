@@ -63,6 +63,7 @@ if (isset($_POST["type"])) {
             $res = $sm->contactEnquiry($_POST);
             break;
 
+
         default:
             $res["success"] = false;
             $res["message"] = "Invalid request";

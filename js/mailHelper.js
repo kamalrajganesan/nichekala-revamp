@@ -9,9 +9,10 @@ $(document).ready(function () {
         let phone = $("#phone").val().trim();
         let subject = $("#subject").val().trim();
         let message = $("#message").val().trim();
+        let captchaResponse = grecaptcha.getResponse();
         let isvalid = true;
 
-        $(".text-danger").remove(); 
+        $(".text-danger").remove(); // clear old errors
 
         // Name validation
         if (name === "") {
@@ -45,16 +46,23 @@ $(document).ready(function () {
             $("#phone").closest(".form-group").removeClass("has-error").addClass("has-success");
         }
 
-      
+        // ✅ reCAPTCHA validation
+        if (captchaResponse.length === 0) {
+            $("#captcha-error").text("Please verify the captcha before submitting.");
+            isvalid = false;
+        } else {
+            $("#captcha-error").text("");
+        }
 
         if (isvalid) {
             let formData = {
             name,
             email,
             phone,
-            subject,
             message,
+            subject,
             type: "contactForm",
+            "g-recaptcha-response": captchaResponse, // ✅ send captcha token to backend
             };
 
             $.ajax({
@@ -83,4 +91,5 @@ $(document).ready(function () {
 
         return false;
         });
+        // contact form end
     });
