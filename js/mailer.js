@@ -1,4 +1,4 @@
- function showToast(message, type = 'success') {
+function showToast(message, type = 'success') {
             const toastContainer = document.getElementById('toast-container');
             const toast = document.createElement('div');
             toast.className = `toast ${type}`;
@@ -20,7 +20,7 @@
             }, 3000); 
         }
 
-$(document).ready(function () {
+    $(document).ready(function () {
         // contact form start
         $("#contactForm").unbind("submit").bind("submit", function (e) {
         e.preventDefault();
@@ -28,8 +28,9 @@ $(document).ready(function () {
         let name = $("#name").val().trim();
         let email = $("#email").val().trim();
         let phone = $("#phone").val().trim();
-        let subject = $("#subject").val().trim();
         let message = $("#message").val().trim();
+        let subject = $("#subject").val().trim();
+        let captchaResponse = grecaptcha.getResponse();
 
         let isvalid = true;
         $(".text-danger").remove(); // clear old errors
@@ -56,6 +57,14 @@ $(document).ready(function () {
             isvalid = false;
         }
 
+        // reCAPTCHA validation
+        if (captchaResponse.length === 0) {
+            $("#captcha-error").text("Please verify the captcha.");
+            isvalid = false;
+        } else {
+            $("#captcha-error").text("");
+        }
+
         if (isvalid) {
             $.ajax({
             url: "./php/mailController.php",
@@ -67,6 +76,7 @@ $(document).ready(function () {
                 subject,
                 message,
                 type: "contactForm",
+                "g-recaptcha-response": captchaResponse
             },
             dataType: "json",
             success: function (response) {
@@ -89,4 +99,4 @@ $(document).ready(function () {
         return false;
         });
         // contact form end
-});
+    });
