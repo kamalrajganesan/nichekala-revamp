@@ -44,76 +44,91 @@ $(function () {
 
     /***************************
 
-    preloader
-    
+    preloader — extracted as reusable function so it runs on
+    initial load AND on every Swup page transition
+
     ***************************/
 
-    var timeline = gsap.timeline();
+    function runPreloader() {
+        // Reset preloader state so animation plays cleanly each time
+        $('.mil-preloader').removeClass("mil-hidden");
+        gsap.set(".mil-preloader", { opacity: 1, visibility: "visible" });
+        gsap.set(".mil-preloader-animation", { opacity: 0 });
+        gsap.set(".mil-animation-1 .mil-h3", { y: "30px", opacity: 0 });
+        gsap.set(".mil-animation-2 .mil-h3", { opacity: 0, y: 0 });
+        gsap.set(".mil-reveal-box", { opacity: 0, width: "0%", x: 0, right: "auto" });
 
-    timeline.to(".mil-preloader-animation", {
-        opacity: 1,
-    });
+        var timeline = gsap.timeline();
 
-    timeline.fromTo(
-        ".mil-animation-1 .mil-h3", {
-            y: "30px",
-            opacity: 0
-        }, {
-            y: "0px",
+        timeline.to(".mil-preloader-animation", {
             opacity: 1,
-            stagger: 0.4
-        },
-    );
+        });
 
-    timeline.to(".mil-animation-1 .mil-h3", {
-        opacity: 0,
-        y: '-30',
-    }, "+=.3");
+        timeline.fromTo(
+            ".mil-animation-1 .mil-h3", {
+                y: "30px",
+                opacity: 0
+            }, {
+                y: "0px",
+                opacity: 1,
+                stagger: 0.4
+            },
+        );
 
-    timeline.fromTo(".mil-reveal-box", 0.1, {
-        opacity: 0,
-    }, {
-        opacity: 1,
-        x: '-30',
-    });
+        timeline.to(".mil-animation-1 .mil-h3", {
+            opacity: 0,
+            y: '-30',
+        }, "+=.3");
 
-    timeline.to(".mil-reveal-box", 0.45, {
-        width: "100%",
-        x: 0,
-    }, "+=.1");
-    timeline.to(".mil-reveal-box", {
-        right: "0"
-    });
-    timeline.to(".mil-reveal-box", 0.3, {
-        width: "0%"
-    });
-    timeline.fromTo(".mil-animation-2 .mil-h3", {
-        opacity: 0,
-    }, {
-        opacity: 1,
-    }, "-=.5");
-    timeline.to(".mil-animation-2 .mil-h3", 0.6, {
-        opacity: 0,
-        y: '-30'
-    }, "+=.5");
-    timeline.to(".mil-preloader", 0.8, {
-        opacity: 0,
-        ease: 'sine',
-    }, "+=.2");
-    timeline.fromTo(".mil-up", 0.8, {
-        opacity: 0,
-        y: 40,
-        scale: .98,
-        ease: 'sine',
+        timeline.fromTo(".mil-reveal-box", 0.1, {
+            opacity: 0,
+        }, {
+            opacity: 1,
+            x: '-30',
+        });
 
-    }, {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        onComplete: function () {
-            $('.mil-preloader').addClass("mil-hidden");
-        },
-    }, "-=1");
+        timeline.to(".mil-reveal-box", 0.45, {
+            width: "100%",
+            x: 0,
+        }, "+=.1");
+        timeline.to(".mil-reveal-box", {
+            right: "0"
+        });
+        timeline.to(".mil-reveal-box", 0.3, {
+            width: "0%"
+        });
+        timeline.fromTo(".mil-animation-2 .mil-h3", {
+            opacity: 0,
+        }, {
+            opacity: 1,
+        }, "-=.5");
+        timeline.to(".mil-animation-2 .mil-h3", 0.6, {
+            opacity: 0,
+            y: '-30'
+        }, "+=.5");
+        timeline.to(".mil-preloader", 0.8, {
+            opacity: 0,
+            ease: 'sine',
+        }, "+=.2");
+        timeline.fromTo(".mil-up", 0.8, {
+            opacity: 0,
+            y: 40,
+            scale: .98,
+            ease: 'sine',
+
+        }, {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            onComplete: function () {
+                $('.mil-preloader').addClass("mil-hidden");
+            },
+        }, "-=1");
+    }
+
+    // Run on initial page load
+    runPreloader();
+
     /***************************
 
     anchor scroll
@@ -646,6 +661,14 @@ $(function () {
             $(".mil-lines").clone().appendTo(".mil-lines-place");
             $(".mil-main-menu ul li.mil-active > a").clone().appendTo(".mil-current-page");
         });
+
+        /***************************
+
+        preloader — re-run on every Swup page transition
+
+        ***************************/
+        runPreloader();
+
         /***************************
 
         accordion
@@ -1048,33 +1071,5 @@ $(function () {
         });
 
     });
-
-});
-
-// STEP 1: Select all menu links
-document.querySelectorAll('.mil-main-menu a').forEach(link => {
-
-  link.addEventListener('click', function (e) {
-
-    e.preventDefault(); // stop instant page jump
-
-    let href = this.getAttribute('href'); // get link
-
-    // STEP 2: Show preloader again
-    gsap.set(".mil-preloader", {
-      opacity: 1,
-      visibility: "visible"
-    });
-
-    // STEP 3: Run animation quickly
-    gsap.to(".mil-preloader", {
-      opacity: 1,
-      duration: 0.5,
-      onComplete: () => {
-        window.location.href = href; // go to next page
-      }
-    });
-
-  });
 
 });
