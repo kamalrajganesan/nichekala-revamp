@@ -75,6 +75,9 @@ body {
   line-height: 150%;
   overscroll-behavior: none;
 }
+.mil-banner .mil-banner-content {
+  padding-bottom: 180px; /* increase from 120px to push content higher = more gap at top */
+}
 @media screen and (max-width: 768px) {
   html,
   body {
