@@ -748,7 +748,9 @@ backgrounds
 .mil-dark-bg .mi-invert-fix .container {
   pointer-events: all;
 }
-
+.mil-dark-bg .mi-invert-fix .container-foot {
+  pointer-events: all;
+}
 .mil-soft-bg {
   background-color: rgb(242, 242, 242);
 }
@@ -785,6 +787,7 @@ spaces
 .mil-mb-60 {
   margin-bottom: 60px;
 }
+
 
 .mil-mb-90 {
   margin-bottom: 90px;
@@ -2631,6 +2634,12 @@ footer
   }
 }
 
+@media screen and (max-width: 600px) {
+  .mil-footer-menu {
+    margin-bottom: 0px;
+  }
+}
+
 .mil-subscribe-form {
   position: relative;
   height: 70px;
@@ -3423,6 +3432,50 @@ vendor overrides
 
 .logo-dot {
   color: #c8157b; 
+}
+.container-foot{
+  width:85%;
+  margin:0 auto;
+}
+
+
+@media(max-width:599px){
+  .foot-align{
+    display: flex;
+    justify-content: start;
+  }
+  .mil-mt-60{
+  margin-top: 20px;
+}
+
+.mil-mt-120{
+  margin-top: 30px;
+}
+.pb-line{
+  border-top:2px solid #c2adad91;
+  padding-top:20px;
+  padding-bottom:20px;
+}
+.container-foot{
+  padding-top: 40px;
+}
+}
+@media(min-width:600px){
+  .foot-align{
+    display: flex;
+    justify-content: center;
+  }
+  .mil-mt-60{
+  margin-top: 60px;
+}
+
+.mil-mt-120{
+  margin-top: 120px;
+}
+.pb-line{
+  border-top:2px solid #c2adad91;
+  padding-top:20px;
+}
 }
 
 
