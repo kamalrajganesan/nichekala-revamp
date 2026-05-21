@@ -2173,11 +2173,25 @@ services
 team
 
 ------------------------------------------- */
+
 .mil-team-card {
   position: relative;
   overflow: hidden;
-  padding-bottom: 130%;
+  background: #fff;
+  /* margin-bottom: 30px; */
 }
+
+/* Image */
+.mil-team-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
+}
+
+/* Bottom border animation */
 .mil-team-card:after {
   content: "";
   position: absolute;
@@ -2188,79 +2202,70 @@ team
   background-color: #c8157b;
   transition: 0.6s cubic-bezier(0, 0, 0.3642, 1);
 }
-.mil-team-card img {
-  position: absolute;
-  top: 0;
-  left: 0;
+
+/* Content below image */
+.mil-team-card .mil-description {
+  position: relative;
+  opacity: 1;
+  background: #fff;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top;
-  transform: scale(1.05);
-  transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
+  padding: 20px;
+  text-align: center;
+  pointer-events: all;
 }
+
+/* Text animation remove */
+.mil-team-card .mil-description .mil-secrc-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Name */
+.mil-team-card .mil-description .mil-secrc-text a {
+  color: #000;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+/* Hover name color */
+.mil-team-card .mil-description .mil-secrc-text a:hover {
+  color: #c8157b;
+}
+
+/* Hover effects */
+.mil-team-card:hover img {
+  transform: scale(1.03);
+}
+
+.mil-team-card:hover:after {
+  width: 100%;
+}
+
+/* Offset card */
 .mil-team-card.mil-offset-card {
   transform: translateY(60px);
 }
+
 @media screen and (max-width: 992px) {
   .mil-team-card.mil-offset-card {
     transform: none;
   }
-}
-.mil-team-card .mil-description {
-  opacity: 0;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.8);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 60px 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  pointer-events: none;
-  transition: 0.6s cubic-bezier(0, 0, 0.3642, 1);
-}
-.mil-team-card .mil-description .mil-secrc-text {
-  opacity: 0;
-  transform: translateY(15px);
-  transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
-  transition-delay: 0s;
-}
-.mil-team-card .mil-description .mil-secrc-text a {
-  color: rgb(255, 255, 255);
-  transition: 0.2s cubic-bezier(0, 0, 0.3642, 1);
-}
-.mil-team-card .mil-description .mil-secrc-text a:hover {
-  color: #c8157b;
-}
-.mil-team-card:hover img {
-  transform: scale(1);
-}
-.mil-team-card:hover:after {
-  width: 100%;
-}
-.mil-team-card:hover .mil-description {
-  opacity: 1;
-  pointer-events: all;
-}
-.mil-team-card:hover .mil-description .mil-secrc-text {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.1s;
+
+  .mil-team-card img {
+    height: auto;
+  }
 }
 
+/* Team list */
 .mil-team-list {
   position: relative;
 }
+
 .mil-team-list .mil-lines-place {
   position: absolute;
   top: -120px;
   left: -22.5%;
 }
-
 /* -------------------------------------------
 
 social icons
