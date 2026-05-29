@@ -42,9 +42,9 @@
       <div class="mil-preloader">
         <div class="mil-preloader-animation">
           <div class="mil-pos-abs mil-animation-1">
-            <p class="mil-h3 mil-muted mil-thin">Pioneering</p>
-            <p class="mil-h3 mil-muted">Creative</p>
-            <p class="mil-h3 mil-muted mil-thin">Excellence</p>
+            <p class="mil-h3 mil-muted mil-thin">The best space </p>
+            <p class="mil-h3 mil-muted">don't show off. </p>
+            <p class="mil-h3 mil-muted mil-thin">They just work</p>
           </div>
           <div class="mil-pos-abs mil-animation-2">
             <div class="mil-reveal-frame">
@@ -364,9 +364,10 @@
                       This Is <span class="mil-thin">Solving</span>
                     </h2>
 
-                    <a href="portfolio.html" class="mil-services-button mil-button mil-arrow-place">
-                      <span>Our Porfolio</span>
-                    </a>
+                   <a href="portfolio.html?filter=pocket-home" class="mil-services-button mil-button mil-arrow-place">
+  <span>Our Portfolio</span>
+</a>
+
                   </div>
                 </div>
 
@@ -467,28 +468,28 @@
                     <div class="row mil-mb-60">
                       <div class="col-sm-6">
                         <div class="mil-team-card mil-up mil-mb-30">
-                          <img src="img/portfolio-images/A141.jpg" alt="Team member" />
+                          <img src="img/portfolio-images/curve.jpeg" alt="Team member" />
                           <div class="mil-description">
                             <div class="mil-secrc-text">
                               <h5 class="mil-muted mil-mb-5">
-                                <a href="portfolio/A-14.html">A-14</a>
+                                <a href="#">Curve</a>
                               </h5>
                               <p class="mil-link mil-light-soft mil-mb-10">
-                                Recreational
+                                Pocket Home
                               </p>
                             </div>
                           </div>
                         </div>
 
                         <div class="mil-team-card mil-up mil-mb-30">
-                          <img src="img/portfolio-images/mugapair-1st.jpg" alt="Team member" />
+                          <img src="img/portfolio-images/thuli.jpeg" alt="Team member" />
                           <div class="mil-description">
                             <div class="mil-secrc-text">
                               <h5 class="mil-muted mil-mb-5">
-                                <a href="portfolio/Mugappair-mail.html">Mogappair Mail</a>
+                                <a href="#">Thuli</a>
                               </h5>
                               <p class="mil-link mil-light-soft mil-mb-10">
-                                Commercial
+                                Pocket Home
                               </p>
                             </div>
                           </div>
@@ -602,7 +603,7 @@
                         <p class="mil-light-soft mil-up">
                           283, Mohanram Nagar, Mogappair West, Chennai, Tamil
                           Nadu – 600037<br />
-                          <span class="mil-no-wrap">+91 89390 04855</span>
+                          <span class="mil-no-wrap">+91 9600156838</span>
                         </p>
                       </div>
                   </div>
@@ -822,6 +823,46 @@
       <!-- content -->
     </div>
     <!-- wrapper end -->
+     <script>
+  function applyFilter(filter) {
+    document.querySelectorAll('.mil-filter-btn').forEach(function(btn) {
+      btn.classList.remove('active');
+      if (btn.getAttribute('data-filter') === filter) {
+        btn.classList.add('active');
+      }
+    });
+    document.querySelectorAll('[data-category]').forEach(function(item) {
+      if (filter === 'all' || item.getAttribute('data-category') === filter) {
+        item.classList.remove('mil-hidden');
+      } else {
+        item.classList.add('mil-hidden');
+      }
+    });
+  }
+
+  document.querySelectorAll('.mil-filter-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      applyFilter(this.getAttribute('data-filter'));
+    });
+  });
+
+  // Run on direct load AND after Swup transition
+  function initFilter() {
+    var params = new URLSearchParams(window.location.search);
+    var filter = params.get('filter');
+    if (filter) {
+      applyFilter(filter);
+    }
+  }
+
+  // Direct page load
+  initFilter();
+
+  // After Swup transition
+  document.addEventListener('swup:contentReplaced', function() {
+    initFilter();
+  });
+</script>
 
     <!-- jQuery js -->
     <script src="js/plugins/jquery.min.js"></script>
