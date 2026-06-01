@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,8 +15,33 @@
     <link rel="stylesheet" href="css/plugins/fancybox.min.css" />
     <!-- ashley scss -->
     <link rel="stylesheet" href="css/style.css" />
-    <!-- page name -->
-    <title>Nichekala - Portfolio</title>
+     <!-- Primary Meta Tags -->
+
+<title>Nichekala Portfolio | Architecture & Interior Design Projects</title>
+<meta name="title" content="Nichekala Portfolio | Architecture & Interior Design Projects">
+<meta name="description" content="Explore Nichekala's portfolio featuring innovative architecture, residential homes, commercial spaces, pocket homes, interior design projects, and bespoke design solutions across Chennai and beyond.">
+<meta name="keywords" content="Nichekala Portfolio, Architecture Projects Chennai, Interior Design Portfolio, Residential Architecture, Commercial Design, Pocket Homes, Modern Architecture, Chennai Architects">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Nichekala">
+
+<!-- Canonical URL -->
+
+<link rel="canonical" href="https://nichekala.in/portfolio.html">
+
+<!-- Open Graph / Facebook -->
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nichekala.in/portfolio.html">
+<meta property="og:title" content="Nichekala Portfolio | Architecture & Interior Design Projects">
+<meta property="og:description" content="Discover Nichekala's portfolio of thoughtfully designed residential, commercial, recreational, and pocket home projects crafted with creativity and purpose.">
+<meta property="og:site_name" content="Nichekala">
+
+<!-- Twitter Card -->
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://nichekala.in/portfolio.html">
+<meta name="twitter:title" content="Nichekala Portfolio | Architecture & Interior Design Projects">
+<meta name="twitter:description" content="Browse Nichekala's portfolio showcasing architecture, interiors, pocket homes, and innovative design projects.">
 
     
   </head>
@@ -896,7 +921,7 @@
     <!-- ashley js -->
     <script src="js/main.js"></script>
 
-    <script>
+   <script>
   function applyFilter(filter) {
     document.querySelectorAll('.mil-filter-btn').forEach(function(btn) {
       btn.classList.remove('active');
@@ -915,9 +940,11 @@
 
   function bindFilterButtons() {
     document.querySelectorAll('.mil-filter-btn').forEach(function(btn) {
-      btn.addEventListener('click', function() {
+      btn.removeEventListener('click', btn._filterHandler);
+      btn._filterHandler = function() {
         applyFilter(this.getAttribute('data-filter'));
-      });
+      };
+      btn.addEventListener('click', btn._filterHandler);
     });
   }
 
@@ -930,15 +957,16 @@
     }
   }
 
-  // Direct page load
-  document.addEventListener('DOMContentLoaded', function() {
-    initFilter();
-  });
+  // Direct load
+  document.addEventListener('DOMContentLoaded', initFilter);
 
-  // Swup transition - try all possible event names
-  document.addEventListener('swup:contentReplaced', initFilter);
-  document.addEventListener('swup:pageView', initFilter);
-  document.addEventListener('swup:animationInDone', initFilter);
+  // ALL possible Swup event names (covers v2 and v3)
+  ['swup:contentReplaced', 'swup:pageView', 'swup:animationInDone',
+   'swup:transitionStart', 'swup:willReplaceContent'].forEach(function(evt) {
+    document.addEventListener(evt, function() {
+      setTimeout(initFilter, 50); // slight delay ensures DOM is settled
+    });
+  });
 </script>
   </body>
 </html>
