@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/plugins/fancybox.min.css" />
     <!-- ashley scss -->
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" href="img/icons/favicon.png" />
      <!-- Primary Meta Tags -->
 
 <title>Nichekala Portfolio | Architecture & Interior Design Projects</title>
@@ -88,7 +89,10 @@
       <!-- menu -->
       <div class="mil-menu-frame">
         <div class="mil-frame-top">
-          <a href="index.html" class="mil-logo">N<span class="logo-dot">.</span></a>
+          <a href="index.html" class="mil-logo">
+        <img src="img/icons/new_logo_black.png" class="logo-black" alt="Nichekala">
+        <img src="img/icons/white_nichekala.png" class="logo-white" alt="Nichekala">
+    </a>
           <div class="mil-menu-btn"><span></span></div>
         </div>
         <div class="container">
@@ -167,7 +171,10 @@
       <!-- frame -->
       <div class="mil-frame">
         <div class="mil-frame-top">
-          <a href="index.html" class="mil-logo">N<span class="logo-dot">.</span></a>
+           <a href="index.html" class="mil-logo">
+        <img src="img/icons/new_logo_black.png" class="logo-black" alt="Nichekala">
+        <img src="img/icons/white_nichekala.png" class="logo-white" alt="Nichekala">
+    </a>
           <div class="mil-menu-btn"><span></span></div>
         </div>
         <div class="mil-frame-bottom">
@@ -944,33 +951,34 @@
     });
   }
 
-  function bindFilterButtons() {
+  function bindAndInit() {
+    // Re-bind click handlers every time content is ready
     document.querySelectorAll('.mil-filter-btn').forEach(function(btn) {
-      btn.removeEventListener('click', btn._filterHandler);
-      btn._filterHandler = function() {
+      btn.removeEventListener('click', btn._handler);
+      btn._handler = function() {
         applyFilter(this.getAttribute('data-filter'));
       };
-      btn.addEventListener('click', btn._filterHandler);
+      btn.addEventListener('click', btn._handler);
     });
-  }
 
-  function initFilter() {
-    bindFilterButtons();
+    // Apply filter from URL param if present
     var params = new URLSearchParams(window.location.search);
     var filter = params.get('filter');
-    if (filter) {
-      applyFilter(filter);
-    }
+    if (filter) applyFilter(filter);
   }
 
-  // Direct load
-  document.addEventListener('DOMContentLoaded', initFilter);
+  // On direct load / refresh
+  document.addEventListener('DOMContentLoaded', bindAndInit);
 
-  // ALL possible Swup event names (covers v2 and v3)
-  ['swup:contentReplaced', 'swup:pageView', 'swup:animationInDone',
-   'swup:transitionStart', 'swup:willReplaceContent'].forEach(function(evt) {
+  // On every Swup page transition (covers v2 + v3 event names)
+  [
+    'swup:contentReplaced',
+    'swup:pageView', 
+    'swup:animationInDone',
+    'swup:enable'
+  ].forEach(function(evt) {
     document.addEventListener(evt, function() {
-      setTimeout(initFilter, 50); // slight delay ensures DOM is settled
+      setTimeout(bindAndInit, 100); // wait for DOM to fully settle
     });
   });
 </script>

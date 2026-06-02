@@ -1174,7 +1174,7 @@ frame
 }
 .mil-frame-top .logo-dot {
   pointer-events: all;
-  color: #15c877;
+  color: #c8157b;
 }
 
 /* -------------------------------------------
@@ -3518,4 +3518,49 @@ vendor overrides
 
 .mil-logo.dark-logo .logo-white {
     display: block;
+}
+
+
+/* Show correct logo in mobile dark header */
+@media screen and (max-width: 1200px) {
+  .mil-frame .mil-frame-top .logo-black {
+    display: none;
+  }
+  .mil-frame .mil-frame-top .logo-white {
+    display: block;
+  }
+  .mil-logo img {
+  height: 40px; /* was 20px — increase to taste */
+  width: auto;
+}
+}
+
+/* ---- Logo Text Fix ---- */
+.mil-logo {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Dark sections - white text */
+.mil-dark-bg .mil-logo,
+.mil-menu-frame .mil-logo,
+.mil-banner .mil-logo {
+    color: rgb(255, 255, 255) !important;
+}
+
+/* Mobile fixed header - always white */
+@media screen and (max-width: 1200px) {
+    .mil-frame .mil-frame-top .mil-logo {
+        color: rgb(255, 255, 255) !important;
+    }
+}
+
+/* Pink dot - NEVER changes, always pink */
+.mil-logo span {
+    color: #c8157b !important;
 }

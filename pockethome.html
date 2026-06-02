@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/plugins/fancybox.min.css" />
     <!-- ashley scss -->
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon" type="image/png" href="img/icons/favicon.png" />
     <!-- Basic SEO -->
 <title>Pocket Home | Smart Small Home Design Solutions in Chennai | Nichekala</title>
 
@@ -102,8 +103,10 @@
       <div class="mil-menu-frame">
         <!-- frame clone -->
         <div class="mil-frame-top">
-          <a href="index.html" class="mil-logo">N<span class="logo-dot">.</span></a>
-          <div class="mil-menu-btn">
+          <a href="index.html" class="mil-logo">
+        <img src="img/icons/new_logo_black.png" class="logo-black" alt="Nichekala">
+        <img src="img/icons/white_nichekala.png" class="logo-white" alt="Nichekala">
+    </a><div class="mil-menu-btn">
             <span></span>
           </div>
         </div>
@@ -252,7 +255,10 @@
       <!-- frame -->
       <div class="mil-frame">
         <div class="mil-frame-top">
-          <a href="index.html" class="mil-logo">N<span class="logo-dot">.</span></a>
+           <a href="index.html" class="mil-logo">
+        <img src="img/icons/new_logo_black.png" class="logo-black" alt="Nichekala">
+        <img src="img/icons/white_nichekala.png" class="logo-white" alt="Nichekala">
+    </a>
           <div class="mil-menu-btn">
             <span></span>
           </div>
@@ -400,7 +406,7 @@
                       This Is <span class="mil-thin">Solving</span>
                     </h2>
 
-                   <a href="portfolio.html?filter=pocket-home" class="mil-services-button mil-button mil-arrow-place">
+                   <a href="portfolio.html?filter=pocket-home" data-no-swup class="mil-services-button mil-button mil-arrow-place">
   <span>Our Portfolio</span>
 </a>
 
@@ -882,30 +888,37 @@
     });
   }
 
-  document.querySelectorAll('.mil-filter-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      applyFilter(this.getAttribute('data-filter'));
+  function bindAndInit() {
+    // Re-bind click handlers every time content is ready
+    document.querySelectorAll('.mil-filter-btn').forEach(function(btn) {
+      btn.removeEventListener('click', btn._handler);
+      btn._handler = function() {
+        applyFilter(this.getAttribute('data-filter'));
+      };
+      btn.addEventListener('click', btn._handler);
     });
-  });
 
-  // Run on direct load AND after Swup transition
-  function initFilter() {
+    // Apply filter from URL param if present
     var params = new URLSearchParams(window.location.search);
     var filter = params.get('filter');
-    if (filter) {
-      applyFilter(filter);
-    }
+    if (filter) applyFilter(filter);
   }
 
-  // Direct page load
-  initFilter();
+  // On direct load / refresh
+  document.addEventListener('DOMContentLoaded', bindAndInit);
 
-  // After Swup transition
-  document.addEventListener('swup:contentReplaced', function() {
-    initFilter();
+  // On every Swup page transition (covers v2 + v3 event names)
+  [
+    'swup:contentReplaced',
+    'swup:pageView', 
+    'swup:animationInDone',
+    'swup:enable'
+  ].forEach(function(evt) {
+    document.addEventListener(evt, function() {
+      setTimeout(bindAndInit, 100); // wait for DOM to fully settle
+    });
   });
 </script>
-
     <!-- jQuery js -->
     <script src="js/plugins/jquery.min.js"></script>
     <!-- swup js -->
