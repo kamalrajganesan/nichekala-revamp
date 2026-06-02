@@ -1071,5 +1071,29 @@ $(function () {
         });
 
     });
+    const logo = document.querySelector('.mil-logo');
+const darkSections = document.querySelectorAll('.mil-dark-bg');
+
+function updateLogo() {
+    let darkBackground = false;
+
+    darkSections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+
+        if (rect.top <= 80 && rect.bottom >= 80) {
+            darkBackground = true;
+        }
+    });
+
+    if (darkBackground) {
+        logo.classList.add('dark-logo');
+    } else {
+        logo.classList.remove('dark-logo');
+    }
+}
+
+window.addEventListener('scroll', updateLogo);
+window.addEventListener('load', updateLogo);
+window.addEventListener('resize', updateLogo);
 
 });

@@ -1129,6 +1129,9 @@ frame
   .mil-frame .mil-frame-top .mil-logo {
     color: rgb(255, 255, 255);
   }
+  .mil-frame .mil-frame-top .logo-dot {
+    color: #c8157b;
+  }
   .mil-frame .mil-frame-top .mil-menu-btn span, .mil-frame .mil-frame-top .mil-menu-btn span:after, .mil-frame .mil-frame-top .mil-menu-btn span:before {
     background: rgb(255, 255, 255);
   }
@@ -1168,6 +1171,10 @@ frame
 .mil-frame-top .mil-logo {
   pointer-events: all;
   color: rgb(0, 0, 0);
+}
+.mil-frame-top .logo-dot {
+  pointer-events: all;
+  color: #15c877;
 }
 
 /* -------------------------------------------
@@ -1255,6 +1262,9 @@ menu
 }
 .mil-menu-frame .mil-frame-top .mil-logo {
   color: rgb(255, 255, 255);
+}
+.mil-menu-frame .mil-frame-top .logo-dot {
+  color: #c8157b;
 }
 .mil-menu-frame .mil-frame-top .mil-menu-btn span, .mil-menu-frame .mil-frame-top .mil-menu-btn span:after, .mil-menu-frame .mil-frame-top .mil-menu-btn span:before {
   background-color: rgb(255, 255, 255);
@@ -3489,4 +3499,23 @@ vendor overrides
 
 
 
+.mil-logo {
+    position: relative;
+    display: inline-block;
+}
 
+.mil-logo img {
+    height: 20px; /* Adjust as needed */
+}
+
+.logo-white {
+    display: none;
+}
+
+.mil-logo.dark-logo .logo-black {
+    display: none;
+}
+
+.mil-logo.dark-logo .logo-white {
+    display: block;
+}
