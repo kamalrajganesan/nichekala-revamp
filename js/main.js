@@ -110,12 +110,23 @@ $(function () {
             opacity: 0,
             ease: 'sine',
         }, "+=.2");
+// REPLACE the old .mil-up line with these two:
         timeline.fromTo(".mil-up", 0.8, {
             opacity: 0,
             y: 40,
             scale: .98,
             ease: 'sine',
+        }, {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+        }, "-=1");
 
+        timeline.fromTo(".mil-banner-up", 0.8, {
+            opacity: 0,
+            y: 40,
+            scale: .98,
+            ease: 'sine',
         }, {
             y: 0,
             opacity: 1,
@@ -125,7 +136,6 @@ $(function () {
             },
         }, "-=1");
     }
-
     // Run on initial page load
     runPreloader();
 
@@ -1045,7 +1055,7 @@ $(function () {
                 type: 'fraction',
             },
         });
-        /***************************
+       /***************************
 
         2 item slider
 
@@ -1070,7 +1080,38 @@ $(function () {
             },
         });
 
-    });
+        /***************************
+
+        portfolio filter
+
+        ***************************/
+        (function() {
+            function applyFilter(filter) {
+                document.querySelectorAll('.mil-filter-btn').forEach(function(btn) {
+                    btn.classList.remove('active');
+                    if (btn.getAttribute('data-filter') === filter) btn.classList.add('active');
+                });
+                document.querySelectorAll('[data-category]').forEach(function(item) {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.classList.remove('mil-hidden');
+                    } else {
+                        item.classList.add('mil-hidden');
+                    }
+                });
+            }
+
+            document.querySelectorAll('.mil-filter-btn').forEach(function(btn) {
+                btn.removeEventListener('click', btn._handler);
+                btn._handler = function() { applyFilter(this.getAttribute('data-filter')); };
+                btn.addEventListener('click', btn._handler);
+            });
+
+            var params = new URLSearchParams(window.location.search);
+            var filter = params.get('filter');
+            if (filter) setTimeout(function() { applyFilter(filter); }, 300);
+        })();
+
+    });  // <-- this closes swup:contentReplaced
     const logo = document.querySelector('.mil-logo');
 const darkSections = document.querySelectorAll('.mil-dark-bg');
 
