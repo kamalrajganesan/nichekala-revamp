@@ -3825,3 +3825,12 @@ vendor overrides
     padding-bottom: 120px !important;
   }
 }
+/* for scroll down on homepage  */
+.mil-ct-svg {
+    animation: mil-spin 12s linear infinite !important;
+}
+
+@keyframes mil-spin {
+    from { transform: rotate(0deg) scale(2); }
+    to   { transform: rotate(360deg) scale(2); }
+}

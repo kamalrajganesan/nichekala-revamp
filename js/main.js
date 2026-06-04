@@ -489,6 +489,13 @@ $(function () {
 
     rotate.forEach((section) => {
         var value = $(section).data("value");
+        // this line newly added now
+        var value = $(section).data("value");
+
+    if ($(section).hasClass('mil-ct-svg')) {
+        return;
+    }
+    // to here
         gsap.fromTo(section, {
             ease: 'sine',
             rotate: 0,
