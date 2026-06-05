@@ -9,6 +9,8 @@ p.s. I am available for Freelance hire (UI design, web development). email: mill
 
 ------------------------------------------- */
 
+
+
 $(function () {
 
     "use strict";
@@ -132,16 +134,45 @@ $(function () {
             y: 0,
             opacity: 1,
             scale: 1,
-            onComplete: function () {
-                $('.mil-preloader').addClass("mil-hidden");
-                document.body.classList.remove('mil-preloader-active');
-                 document.body.classList.add('mil-preloader-done');//to make logo visible on preloader
+           onComplete: function () {
+    $('.mil-preloader').addClass("mil-hidden");
+    document.body.classList.remove('mil-preloader-active');
+    document.body.classList.add('mil-preloader-done');
 
-                 // Delay to let page paint before checking dark sections
+    // DEBUG - remove after testing
+    let invisible = [];
+    document.querySelectorAll('.mil-up').forEach((el, i) => {
+        const style = window.getComputedStyle(el);
+        const rect = el.getBoundingClientRect();
+        if (style.opacity === '0' || style.visibility === 'hidden') {
+            invisible.push({ 
+                index: i, 
+                opacity: style.opacity, 
+                inViewport: rect.top < window.innerHeight && rect.bottom > 0,
+                rectTop: Math.round(rect.top)
+            });
+        }
+    });
+    console.log('=== AFTER PRELOADER DONE ===');
+    console.log('Total invisible:', invisible.length);
+    console.log('In viewport but hidden:', invisible.filter(e => e.inViewport));
+    // END DEBUG
+
+    // Delay to let page paint before checking dark sections
     setTimeout(updateLogo, 100);
     setTimeout(updateLogo, 300);
     setTimeout(updateLogo, 600);
-            },
+
+    // Fix stuck mil-up elements after preloader finishes
+//     setTimeout(() => {
+//         document.querySelectorAll('.mil-up').forEach(el => {
+//             if (window.getComputedStyle(el).opacity === '0') {
+//                 gsap.to(el, { opacity: 1, y: 0, scale: 1, duration: 0.4 });
+//             }
+//         });
+//         ScrollTrigger.refresh();
+//     }, 500);
+ },
         }, "-=1");
     }
     // Run on initial page load
@@ -648,21 +679,32 @@ $(function () {
 
     document.addEventListener("swup:contentReplaced", function () {
 
-    $('html, body').animate({
-        scrollTop: 0,
-    }, 0);
+    window.scrollTo(0, 0);
+document.documentElement.scrollTop = 0;
+document.body.scrollTop = 0;
     updateLogo();
-    gsap.to('.mil-progress', {
-        height: 0,
-        ease: 'sine',
-        onComplete: () => {
-            ScrollTrigger.refresh()
-        },
-    });                                          // ← gsap.to() closes HERE
+   gsap.to('.mil-progress', {
+    height: 0,
+    ease: 'sine',
+    onComplete: () => {
+        ScrollTrigger.refresh();
+        setTimeout(() => {
+            ScrollTrigger.refresh();
+        }, 500);
+    },
+});                                          // ← gsap.to() closes HERE
 
     document.body.classList.remove('mil-preloader-done');  // ← THEN this
     runPreloader();                                        // ← THEN this
 
+    // Safety net for stuck mil-up elements
+setTimeout(() => {
+    document.querySelectorAll('.mil-up').forEach(el => {
+        if (window.getComputedStyle(el).opacity === '0') {
+            gsap.to(el, { opacity: 1, y: 0, scale: 1, duration: 0.4 });
+        }
+    });
+}, 2000);
     /***************************
 
      menu
@@ -689,7 +731,7 @@ $(function () {
         preloader — re-run on every Swup page transition
 
         ***************************/
-        runPreloader();
+        // runPreloader();
 
         /***************************
 

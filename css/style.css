@@ -3927,3 +3927,16 @@ body.mil-preloader-active .mil-frame-top .mil-logo:not(.dark-logo) {
         background: rgb(255, 255, 255) !important;
     }
 }
+/* about page four column section */
+/* 4-column process section fix */
+.mil-dark-bg .mi-invert-fix .col-lg-3 h6,
+.mil-dark-bg .mi-invert-fix .col-lg-3 p,
+.mil-dark-bg .mi-invert-fix .col-lg-3 span,
+.mil-dark-bg .mi-invert-fix .col-lg-3 {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.mil-dark-bg .mi-invert-fix .col-lg-3 h4,
+.mil-dark-bg .mi-invert-fix .col-lg-3 h5 {
+    color: rgb(255, 255, 255) !important;
+}
