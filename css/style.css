@@ -1098,7 +1098,7 @@ frame
 .mil-frame {
   padding: 50px 60px 60px 60px;
   position: fixed;
-  z-index: 2;
+  z-index: 10;
   pointer-events: none;
   display: flex;
   flex-direction: column;
@@ -3544,9 +3544,9 @@ vendor overrides
 
 /* ---- Logo Text Fix ---- */
 .mil-logo {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 600;
-    letter-spacing: 4px;
+    letter-spacing: 7px;
     color: rgb(0, 0, 0);
     text-decoration: none;
     display: inline-flex;
@@ -3825,7 +3825,7 @@ vendor overrides
     padding-bottom: 120px !important;
   }
 }
-/* for scroll down on homepage  */
+/* for scroll down on homepage */
 .mil-ct-svg {
     animation: mil-spin 12s linear infinite !important;
 }
@@ -3833,4 +3833,97 @@ vendor overrides
 @keyframes mil-spin {
     from { transform: rotate(0deg) scale(2); }
     to   { transform: rotate(360deg) scale(2); }
+}
+
+/* ===== LOGO FIX - CLEAN VERSION ===== */
+.mil-frame {
+    isolation: isolate;
+}
+
+/* Force logo always visible */
+.mil-frame-top .mil-logo {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* Default - white text (dark bg is default on most pages) */
+.mil-frame-top .mil-logo {
+    color: rgb(255, 255, 255) !important;
+}
+
+/* Light bg - black text (when dark-logo class removed by JS) */
+.mil-frame-top .mil-logo.dark-logo {
+    color: rgb(255, 255, 255) !important;
+}
+
+.mil-frame-top .mil-logo:not(.dark-logo) {
+    color: rgb(0, 0, 0) !important;
+}
+
+/* Pink dot always */
+.mil-logo .logo-dot {
+    color: #c8157b !important;
+}
+
+/* Hamburger menu */
+.mil-frame-top .mil-menu-btn span,
+.mil-frame-top .mil-menu-btn span:after,
+.mil-frame-top .mil-menu-btn span:before {
+    background: rgb(255, 255, 255) !important;
+}
+
+.mil-frame-top .mil-logo:not(.dark-logo) ~ .mil-menu-btn span,
+.mil-frame-top .mil-logo:not(.dark-logo) ~ .mil-menu-btn span:after,
+.mil-frame-top .mil-logo:not(.dark-logo) ~ .mil-menu-btn span:before {
+    background: rgb(0, 0, 0) !important;
+}
+/* Keep logo always visible during preloader */
+.mil-preloader ~ .mil-frame .mil-logo,
+.mil-frame .mil-logo {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+/* Force white logo during preloader */
+body:not(.mil-preloader-done) .mil-frame-top .mil-logo {
+    color: rgb(255, 255, 255) !important;
+}
+/* Override the :not(.dark-logo) black rule during preloader */
+body.mil-preloader-active .mil-frame-top .mil-logo:not(.dark-logo) {
+    color: rgb(255, 255, 255) !important;
+}
+/* Logo always white inside open hamburger menu */
+.mil-menu-frame.mil-active .mil-frame-top .mil-logo:not(.dark-logo) {
+    color: rgb(255, 255, 255) !important;
+}
+/* Fixed header logo + button white when hamburger menu is open */
+.mil-menu-frame.mil-active ~ .mil-frame .mil-logo,
+.mil-menu-frame.mil-active ~ .mil-frame .mil-frame-top .mil-logo:not(.dark-logo) {
+    color: rgb(255, 255, 255) !important;
+}
+
+.mil-menu-frame.mil-active ~ .mil-frame .mil-menu-btn span,
+.mil-menu-frame.mil-active ~ .mil-frame .mil-menu-btn span:after,
+.mil-menu-frame.mil-active ~ .mil-frame .mil-menu-btn span:before {
+    background: rgb(255, 255, 255) !important;
+}
+/* Mobile/tablet fixed header — always white logo and hamburger */
+@media screen and (max-width: 1200px) {
+    .mil-frame .mil-frame-top .mil-logo,
+    .mil-frame .mil-frame-top .mil-logo:not(.dark-logo) {
+        color: rgb(255, 255, 255) !important;
+    }
+
+    .mil-frame .mil-frame-top .mil-menu-btn span,
+    .mil-frame .mil-frame-top .mil-menu-btn span:after,
+    .mil-frame .mil-frame-top .mil-menu-btn span:before {
+        background: rgb(255, 255, 255) !important;
+    }
+}
+/* Override the not(.dark-logo) sibling rule for mobile header */
+@media screen and (max-width: 1200px) {
+    .mil-frame-top .mil-logo:not(.dark-logo) ~ .mil-menu-btn span,
+    .mil-frame-top .mil-logo:not(.dark-logo) ~ .mil-menu-btn span::after,
+    .mil-frame-top .mil-logo:not(.dark-logo) ~ .mil-menu-btn span::before {
+        background: rgb(255, 255, 255) !important;
+    }
 }

@@ -50,6 +50,7 @@ $(function () {
     ***************************/
 
     function runPreloader() {
+        document.body.classList.add('mil-preloader-active');
         // Reset preloader state so animation plays cleanly each time
         $('.mil-preloader').removeClass("mil-hidden");
         gsap.set(".mil-preloader", { opacity: 1, visibility: "visible" });
@@ -133,12 +134,19 @@ $(function () {
             scale: 1,
             onComplete: function () {
                 $('.mil-preloader').addClass("mil-hidden");
+                document.body.classList.remove('mil-preloader-active');
+                 document.body.classList.add('mil-preloader-done');//to make logo visible on preloader
+
+                 // Delay to let page paint before checking dark sections
+    setTimeout(updateLogo, 100);
+    setTimeout(updateLogo, 300);
+    setTimeout(updateLogo, 600);
             },
         }, "-=1");
     }
     // Run on initial page load
     runPreloader();
-
+    
     /***************************
 
     anchor scroll
@@ -638,34 +646,31 @@ $(function () {
         },
     });
 
-    /*----------------------------------------------------------
-    ------------------------------------------------------------
-
-    REINIT
-
-    ------------------------------------------------------------
-    ----------------------------------------------------------*/
     document.addEventListener("swup:contentReplaced", function () {
 
-        $('html, body').animate({
-            scrollTop: 0,
-        }, 0);
+    $('html, body').animate({
+        scrollTop: 0,
+    }, 0);
+    updateLogo();
+    gsap.to('.mil-progress', {
+        height: 0,
+        ease: 'sine',
+        onComplete: () => {
+            ScrollTrigger.refresh()
+        },
+    });                                          // ← gsap.to() closes HERE
 
-        gsap.to('.mil-progress', {
-            height: 0,
-            ease: 'sine',
-            onComplete: () => {
-                ScrollTrigger.refresh()
-            },
-        });
-        /***************************
+    document.body.classList.remove('mil-preloader-done');  // ← THEN this
+    runPreloader();                                        // ← THEN this
 
-         menu
+    /***************************
 
-        ***************************/
-        $('.mil-menu-btn').removeClass('mil-active');
-        $('.mil-menu').removeClass('mil-active');
-        $('.mil-menu-frame').removeClass('mil-active');
+     menu
+
+    ***************************/
+    $('.mil-menu-btn').removeClass('mil-active');
+    $('.mil-menu').removeClass('mil-active');
+    $('.mil-menu-frame').removeClass('mil-active');
         /***************************
 
         append
@@ -1119,29 +1124,65 @@ $(function () {
         })();
 
     });  // <-- this closes swup:contentReplaced
-    const logo = document.querySelector('.mil-logo');
-const darkSections = document.querySelectorAll('.mil-dark-bg');
+//     const logos = document.querySelectorAll('.mil-logo');
+// const darkSections = document.querySelectorAll('.mil-dark-bg');
 
+// function updateLogo() {
+//     let darkBackground = false;
+
+//     darkSections.forEach(section => {
+//         const rect = section.getBoundingClientRect();
+//         if (rect.top <= 80 && rect.bottom >= 80) {
+//             darkBackground = true;
+//         }
+//     });
+
+//     logos.forEach(logo => {
+//         if (darkBackground) {
+//             logo.classList.add('dark-logo');
+//         } else {
+//             logo.classList.remove('dark-logo');
+//         }
+//     });
+// }
+
+// window.addEventListener('scroll', updateLogo);
+// window.addEventListener('load', updateLogo);
+// window.addEventListener('resize', updateLogo);
+
+// // Run after DOM is fully ready with slight delay
+// setTimeout(updateLogo, 100);
+// setTimeout(updateLogo, 500);
+// setTimeout(updateLogo, 1000);
+// setTimeout(updateLogo, 3000);
+// });
+}); // closes $(function(){
+
+// GLOBAL - outside jQuery
 function updateLogo() {
+        if (!document.body.classList.contains('mil-preloader-done')) return;//to make logo visible on preloader
+    const logos = document.querySelectorAll('.mil-logo');
+    const darkSections = document.querySelectorAll('.mil-dark-bg');
     let darkBackground = false;
-
     darkSections.forEach(section => {
         const rect = section.getBoundingClientRect();
-
         if (rect.top <= 80 && rect.bottom >= 80) {
             darkBackground = true;
         }
     });
-
-    if (darkBackground) {
-        logo.classList.add('dark-logo');
-    } else {
-        logo.classList.remove('dark-logo');
-    }
+    logos.forEach(logo => {
+        if (darkBackground) {
+            logo.classList.add('dark-logo');
+        } else {
+            logo.classList.remove('dark-logo');
+        }
+    });
 }
 
 window.addEventListener('scroll', updateLogo);
 window.addEventListener('load', updateLogo);
 window.addEventListener('resize', updateLogo);
-
-});
+setTimeout(updateLogo, 100);
+setTimeout(updateLogo, 500);
+setTimeout(updateLogo, 1000);
+setTimeout(updateLogo, 3000);
