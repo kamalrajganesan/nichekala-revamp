@@ -43,7 +43,7 @@ if (isset($_POST["type"])) {
             exit;
         }
 
-        $recaptchaSecret = "6Le_r_grAAAAAKRASA4LeqZp_XAYsvDwkpgRghn3"; 
+        $recaptchaSecret = "6LezNRMtAAAAAPs3JCsac7iu0o_2zUvfuGUdPfXX"; 
         $recaptchaResponse = $_POST['g-recaptcha-response'];
 
         $verifyUrl = "https://www.google.com/recaptcha/api/siteverify?secret={$recaptchaSecret}&response={$recaptchaResponse}";

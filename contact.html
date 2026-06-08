@@ -36,6 +36,7 @@
 <meta name="twitter:url" content="https://nichekala.in/contact.html">
 <meta name="twitter:title" content="Contact Nichekala | Architecture & Interior Design Studio Chennai">
 <meta name="twitter:description" content="Reach out to Nichekala Architecture & Design Studio for architecture and interior design services in Chennai.">
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <style>
       
       /*toast*/
@@ -374,7 +375,7 @@
                 </div>
 
           <div class="col-lg-8 mil-up">
-  <div class="g-recaptcha" data-sitekey="6Le_r_grAAAAANUnAPLrGPAxpuzX8FuzTaNWX6Zh"></div>
+  <div class="g-recaptcha" data-sitekey="6LezNRMtAAAAADEe8OkoKgsWi3toql6SAucG8fmE"></div>
   <span id="captcha-error" class="text-danger"></span>
   <p class="mil-up mil-mb-30" style="margin-top: 20px;">
     <span class="mil-accent">*</span> We promise not to disclose
@@ -734,9 +735,28 @@
     <!-- scroll to js -->
     <script src="js/plugins/ScrollTo.min.js"></script>
     <!-- ashley js -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    
     <script src="js/main.js"></script>
     <script src="js/mailer.js"></script>
     <!-- <script src="js/mailHelper.js"></script> -->
+     <script>
+  // Reinitialize reCAPTCHA after Swup page transition
+  if (typeof swup !== 'undefined') {
+    swup.on('contentReplaced', function () {
+      if (document.querySelector('.g-recaptcha')) {
+        // Remove old script if exists
+        var oldScript = document.querySelector('script[src*="recaptcha"]');
+        if (oldScript) oldScript.remove();
+
+        // Reload reCAPTCHA script
+        var script = document.createElement('script');
+        script.src = 'https://www.google.com/recaptcha/api.js';
+        script.async = true;
+        script.defer = true;
+        document.head.appendChild(script);
+      }
+    });
+  }
+</script>
   </body>
 </html>
