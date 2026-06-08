@@ -180,5 +180,6 @@ document.addEventListener('swup:contentReplaced', function () {
     initContactForm();
     setTimeout(function() {
         initRecaptcha();
-    }, 1500);
+    }, 
+    500);
 });
