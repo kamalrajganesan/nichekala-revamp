@@ -154,9 +154,9 @@ window.swup = swup;
             });
         }
     });
-    console.log('=== AFTER PRELOADER DONE ===');
-    console.log('Total invisible:', invisible.length);
-    console.log('In viewport but hidden:', invisible.filter(e => e.inViewport));
+    // console.log('=== AFTER PRELOADER DONE ===');
+    // console.log('Total invisible:', invisible.length);
+    // console.log('In viewport but hidden:', invisible.filter(e => e.inViewport));
     // END DEBUG
 
     // Delay to let page paint before checking dark sections
