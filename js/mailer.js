@@ -16,19 +16,12 @@ function showToast(message, type) {
     }, 3000);
 }
 
-/* ------------------------------------------
-   capturePrevent — top level so same reference
-   is used for remove + add every time
-------------------------------------------- */
 function capturePrevent(e) {
     e.preventDefault();
     e.stopPropagation();
     e.stopImmediatePropagation();
 }
 
-/* ------------------------------------------
-   handleFormSubmit — the actual submit logic
-------------------------------------------- */
 function handleFormSubmit(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -42,7 +35,6 @@ function handleFormSubmit(e) {
     var captchaResponse = typeof grecaptcha !== 'undefined' ? grecaptcha.getResponse() : '';
     var isValid         = true;
 
-    // Clear old errors
     document.querySelectorAll('.text-danger').forEach(function(el) { el.remove(); });
     document.getElementById('captcha-error').textContent = '';
 
@@ -87,7 +79,6 @@ function handleFormSubmit(e) {
         return false;
     }
 
-    // AJAX via native fetch — no jQuery dependency
     var formData = new FormData();
     formData.append('name', name);
     formData.append('email', email);
@@ -118,58 +109,44 @@ function handleFormSubmit(e) {
     return false;
 }
 
-/* ------------------------------------------
-   initContactForm — pure native DOM, no jQuery
-------------------------------------------- */
 function initContactForm() {
     var form = document.getElementById('contactForm');
     if (!form) return;
-
-    // Remove both listeners before re-adding (prevents stacking)
     form.removeEventListener('submit', capturePrevent, true);
     form.removeEventListener('submit', handleFormSubmit, false);
-
-    // Capture phase — fires first, kills default
     form.addEventListener('submit', capturePrevent, true);
-
-    // Bubble phase — runs the actual logic
     form.addEventListener('submit', handleFormSubmit, false);
 }
 
-/* ------------------------------------------
-   initRecaptcha
-------------------------------------------- */
 function initRecaptcha() {
     var widget = document.querySelector('.g-recaptcha');
     if (!widget) return;
     var oldScript = document.querySelector('script[src*="recaptcha/api.js"]');
     if (oldScript) oldScript.remove();
     widget.innerHTML = '';
+    if (window.grecaptcha) window.grecaptcha = undefined;
     var script = document.createElement('script');
     script.src = 'https://www.google.com/recaptcha/api.js';
     script.async = true;
     script.defer = true;
+    script.onload = function () {
+        console.log('✅ reCAPTCHA loaded and rendered');
+    };
     document.head.appendChild(script);
 }
 
 /* ------------------------------------------
-   On first page load — native, no jQuery needed
+   FIRST PAGE LOAD — single direct call
+   (script is at bottom of body so DOM is ready)
 ------------------------------------------- */
-// document.addEventListener('DOMContentLoaded', function () {
-//     initContactForm();
-// });
-
-// Safety net if DOMContentLoaded already fired
-// if (document.readyState === 'complete' || document.readyState === 'interactive') {
-//     initContactForm();
-// }
+initContactForm();
 
 /* ------------------------------------------
-   On every Swup page transition
+   SWUP TRANSITIONS
 ------------------------------------------- */
 document.addEventListener('swup:contentReplaced', function () {
     initContactForm();
     setTimeout(function () {
         initRecaptcha();
-    }, 1500);
+    }, 1000);
 });
