@@ -43,8 +43,18 @@ function initContactForm() {
     // Only run if the contact form exists on this page
     if (!document.getElementById('contactForm')) return;
 
+
+    var form = document.getElementById('contactForm');
+    
+    // Native capture-phase listener — fires FIRST, blocks page refresh
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+    }, true);
+
+
     $('#contactForm').off('submit').on('submit', function (e) {
         e.preventDefault();
+        e.stopPropagation();
 
         var name            = $('#name').val().trim();
         var email           = $('#email').val().trim();
@@ -154,8 +164,12 @@ function initRecaptcha() {
 ------------------------------------------- */
 $(document).ready(function () {
     initContactForm();
-    // reCAPTCHA auto-renders itself on first load via api.js, no need to call initRecaptcha here
 });
+
+// Also bind immediately in case DOM is already ready
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    initContactForm();
+}
 
 /* ------------------------------------------
    On every Swup page transition
