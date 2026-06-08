@@ -137,7 +137,7 @@ function initRecaptcha() {
     // Only render if grecaptcha is loaded and widget is empty (not already rendered)
     if (typeof grecaptcha !== 'undefined' && widget.innerHTML.trim() === '') {
         grecaptcha.render(widget, {
-            sitekey: '6Le_r_grAAAAANUnAPLrGPAxpuzX8FuzTaNWX6Zh'
+            sitekey: '6LezNRMtAAAAADEe8OkoKgsWi3toql6SAucG8fmE'
         });
     }
 }
