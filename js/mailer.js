@@ -164,5 +164,7 @@ $(document).ready(function () {
 ------------------------------------------- */
 document.addEventListener('swup:contentReplaced', function () {
     initContactForm();
-    initRecaptcha();
+    setTimeout(function() {
+        initRecaptcha();
+    }, 1500);
 });

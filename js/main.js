@@ -679,7 +679,20 @@ window.swup = swup;
     });
 
     document.addEventListener("swup:contentReplaced", function () {
-
+    // reCAPTCHA reload
+    if (document.querySelector('.g-recaptcha')) {
+        setTimeout(function() {
+            var oldScript = document.querySelector('script[src*="recaptcha/api.js"]');
+            if (oldScript) oldScript.remove();
+            document.querySelector('.g-recaptcha').innerHTML = '';
+            var script = document.createElement('script');
+            script.src = 'https://www.google.com/recaptcha/api.js';
+            script.async = true;
+            script.defer = true;
+            document.head.appendChild(script);
+            console.log('✅ reCAPTCHA reloaded from main.js');
+        }, 800);
+    }
     window.scrollTo(0, 0);
 document.documentElement.scrollTop = 0;
 document.body.scrollTop = 0;
