@@ -54,7 +54,7 @@ function initContactForm() {
 
     $('#contactForm').off('submit').on('submit', function (e) {
         e.preventDefault();
-        e.stopPropagation();
+        e.stopImmediatePropagation();
 
         var name            = $('#name').val().trim();
         var email           = $('#email').val().trim();
