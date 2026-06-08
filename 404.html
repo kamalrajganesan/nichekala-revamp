@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en-IN">
 
 <head>
 
@@ -8,6 +8,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- bootstrap grid css -->
+    <!-- Preconnect to font + CDN origins for faster LCP -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
     <link rel="stylesheet" href="css/plugins/bootstrap-grid.css">
     <!-- font awesome css -->
     <link rel="stylesheet" href="css/plugins/font-awesome.min.css">
@@ -17,9 +21,104 @@
     <link rel="stylesheet" href="css/plugins/fancybox.min.css">
     <!-- ashley scss -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
     <!-- page name -->
-    <title>Nichekala</title>
+    <title>404 - Page Not Found | Nichekala</title>
+    <!-- Basic SEO -->
+<meta name="description" content="Nichekala - Creative solutions, innovative designs, and professional services tailored to your needs.">
+<meta name="keywords" content="Nichekala, creative agency, design, branding, web development, digital solutions">
+<meta name="author" content="Nichekala">
+<meta name="robots" content="noindex, follow">
 
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="404 - Page Not Found | Nichekala">
+<meta property="og:description" content="The page you are looking for could not be found. Return to the Nichekala homepage.">
+<meta property="og:site_name" content="Nichekala">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="404 - Page Not Found | Nichekala">
+<meta name="twitter:description" content="The page you are looking for could not be found. Return to the Nichekala homepage.">
+<!-- ── Structured Data: Organization + LocalBusiness + WebSite (shared across all pages) ── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://nichekala.in/#organization",
+      "name": "Nichekala Architecture and Design Studio",
+      "alternateName": "Nichekala",
+      "legalName": "Nichekala Designs Private Limited",
+      "url": "https://nichekala.in/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://nichekala.in/img/icons/new_logo_black.png",
+        "width": 512,
+        "height": 512
+      },
+      "email": "info@nichekala.in",
+      "telephone": "+91-9600156838",
+      "sameAs": [
+        "https://www.facebook.com/people/Nichekala/100065317878556/",
+        "https://www.instagram.com/nichekala_official/"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "283, Mohanram Nagar, Mogappair West",
+        "addressLocality": "Chennai",
+        "addressRegion": "Tamil Nadu",
+        "addressCountry": "IN"
+      }
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://nichekala.in/#localbusiness",
+      "name": "Nichekala Architecture and Design Studio",
+      "alternateName": "Nichekala",
+      "image": "https://nichekala.in/img/icons/new_logo_black.png",
+      "url": "https://nichekala.in/",
+      "telephone": "+91-9600156838",
+      "email": "info@nichekala.in",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "283, Mohanram Nagar, Mogappair West",
+        "addressLocality": "Chennai",
+        "addressRegion": "Tamil Nadu",
+        "addressCountry": "IN"
+      },
+      "areaServed": [
+        {"@type": "City", "name": "Chennai"},
+        {"@type": "State", "name": "Tamil Nadu"},
+        {"@type": "Country", "name": "India"}
+      ],
+      "knowsAbout": [
+        "Interior Design",
+        "Architecture",
+        "Residential Design",
+        "Commercial Design",
+        "Pocket Home Design",
+        "Heritage Conservation"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://nichekala.in/#website",
+      "url": "https://nichekala.in/",
+      "name": "Nichekala",
+      "publisher": {"@id": "https://nichekala.in/#organization"},
+      "inLanguage": "en-IN"
+    }
+  ]
+}
+</script>
 </head>
 
 <body>
@@ -67,8 +166,8 @@
         <div class="mil-menu-frame">
             <!-- frame clone -->
             <div class="mil-frame-top">
-                <a href="index.html" class="mil-logo">N.</a>
-                <div class="mil-menu-btn">
+                <a href="index.html" class="mil-logo">N<span class="logo-dot">.</span></a>
+                <a href="https://wa.me/919600156838?text=Hi%20Nichekala%2C%20I%27d%20like%20to%20enquire%20about%20your%20services." target="_blank" rel="noopener" class="mil-wa-btn" aria-label="Chat with Nichekala on WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a><div class="mil-menu-btn">
                     <span></span>
                 </div>
             </div>
@@ -91,7 +190,7 @@
                                     <li class="mil-has-children">
                                         <a href="#.">Portfolio</a>
                                         <ul>
-                                            <li><a href="portfolio-1.html">Grid type 1</a></li>
+                                            <li><a href="portfolio.html">Grid type 1</a></li>
                                             <li><a href="portfolio-2.html">Grid type 2</a></li>
                                             <li><a href="portfolio-3.html">Slider</a></li>
                                         </ul>
@@ -150,12 +249,16 @@
 
                                             <h6 class="mil-muted mil-mb-30">Useful links</h6>
 
-                                            <ul class="mil-menu-list">
-                                                <li><a href="#." class="mil-light-soft">Privacy Policy</a></li>
-                                                <li><a href="#." class="mil-light-soft">Terms and conditions</a></li>
-                                                <li><a href="#." class="mil-light-soft">Cookie Policy</a></li>
-                                                <li><a href="#." class="mil-light-soft">Careers</a></li>
-                                            </ul>
+                                           <li>
+                                    <a href="privacy-policy.html" class="mil-light-soft"
+                                    >Privacy Policy</a
+                                    >
+                                </li>
+                                <li>
+                                    <a href="terms-conditions.html" class="mil-light-soft"
+                                    >Terms and conditions</a
+                                    >
+                                </li>
 
                                         </div>
                                     </div>
@@ -194,8 +297,8 @@
         <!-- frame -->
         <div class="mil-frame">
             <div class="mil-frame-top">
-                <a href="index.html" class="mil-logo">N.</a>
-                <div class="mil-menu-btn">
+                <a href="index.html" class="mil-logo">N<span style="color:#c8157b"></span>.</span></a>
+                <a href="https://wa.me/919600156838?text=Hi%20Nichekala%2C%20I%27d%20like%20to%20enquire%20about%20your%20services." target="_blank" rel="noopener" class="mil-wa-btn" aria-label="Chat with Nichekala on WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a><div class="mil-menu-btn">
                     <span></span>
                 </div>
             </div>

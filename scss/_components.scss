@@ -181,6 +181,7 @@ frame
     }
 }
 
+
 .mil-frame {
     padding: 50px 60px 60px 60px;
     position: fixed;
@@ -212,6 +213,9 @@ frame
 
             & .mil-logo {
                 color: $light;
+            }
+            & .logo-dot{
+                color: #c8157b;
             }
 
             & .mil-menu-btn {
@@ -264,6 +268,9 @@ frame
         pointer-events: all;
         color: $dark;
     }
+     & .logo-dot{
+                color: #15c877;
+            }
 }
 
 /* -------------------------------------------
@@ -365,6 +372,9 @@ menu
         & .mil-logo {
             color: $light;
         }
+         & .logo-dot{
+                color: #c8157b
+            }
 
         & .mil-menu-btn {
 
