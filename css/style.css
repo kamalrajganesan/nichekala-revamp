@@ -8,6 +8,16 @@ Portfolio:  https://themeforest.net/user/millerdigitaldesign/portfolio?ref=Mille
 p.s. I am available for Freelance hire (UI design, web development). email: miller.themes@gmail.com
 
 ------------------------------------------- */
+
+/* Text selection color — brand accent */
+::selection {
+  background-color: #c8157b;
+  color: #ffffff;
+}
+::-moz-selection {
+  background-color: #c8157b;
+  color: #ffffff;
+}
 /*--------------------------------------------
 
 1. common
@@ -86,8 +96,12 @@ body {
 }
 
 *::selection {
-  color: inherit;
-  background-color: transparent;
+  color: #ffffff;
+  background-color: #c8157b;
+}
+*::-moz-selection {
+  color: #ffffff;
+  background-color: #c8157b;
 }
 
 .mil-wrapper {
