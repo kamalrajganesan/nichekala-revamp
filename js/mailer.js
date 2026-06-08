@@ -181,5 +181,5 @@ document.addEventListener('swup:contentReplaced', function () {
     setTimeout(function() {
         initRecaptcha();
     }, 
-    500);
+    1500);
 });
