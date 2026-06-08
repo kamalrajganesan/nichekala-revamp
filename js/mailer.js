@@ -17,97 +17,123 @@ function showToast(message, type) {
 }
 
 /* ------------------------------------------
-   capturePrevent — MUST be outside initContactForm
-   so removeEventListener can match the same reference
+   capturePrevent — top level so same reference
+   is used for remove + add every time
 ------------------------------------------- */
 function capturePrevent(e) {
     e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
 }
 
 /* ------------------------------------------
-   initContactForm
+   handleFormSubmit — the actual submit logic
+------------------------------------------- */
+function handleFormSubmit(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+
+    var name            = document.getElementById('name').value.trim();
+    var email           = document.getElementById('email').value.trim();
+    var phone           = document.getElementById('phone').value.trim();
+    var subject         = document.getElementById('subject').value.trim();
+    var message         = document.getElementById('message').value.trim();
+    var captchaResponse = typeof grecaptcha !== 'undefined' ? grecaptcha.getResponse() : '';
+    var isValid         = true;
+
+    // Clear old errors
+    document.querySelectorAll('.text-danger').forEach(function(el) { el.remove(); });
+    document.getElementById('captcha-error').textContent = '';
+
+    if (name === '') {
+        var err = document.createElement('p');
+        err.className = 'text-danger';
+        err.textContent = 'Name field is required';
+        document.getElementById('name').insertAdjacentElement('afterend', err);
+        isValid = false;
+    }
+
+    var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|in)$/;
+    if (email === '') {
+        var err = document.createElement('p');
+        err.className = 'text-danger';
+        err.textContent = 'Email field is required';
+        document.getElementById('email').insertAdjacentElement('afterend', err);
+        isValid = false;
+    } else if (!emailPattern.test(email)) {
+        var err = document.createElement('p');
+        err.className = 'text-danger';
+        err.textContent = 'Enter a valid email address';
+        document.getElementById('email').insertAdjacentElement('afterend', err);
+        isValid = false;
+    }
+
+    if (phone === '') {
+        var err = document.createElement('p');
+        err.className = 'text-danger';
+        err.textContent = 'Phone field is required';
+        document.getElementById('phone').insertAdjacentElement('afterend', err);
+        isValid = false;
+    }
+
+    if (captchaResponse.length === 0) {
+        document.getElementById('captcha-error').textContent = 'Please verify the captcha before submitting.';
+        isValid = false;
+    }
+
+    if (!isValid) {
+        showToast('Please fill out all required fields and verify captcha.', 'error');
+        return false;
+    }
+
+    // AJAX via native fetch — no jQuery dependency
+    var formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('phone', phone);
+    formData.append('subject', subject);
+    formData.append('message', message);
+    formData.append('type', 'contactForm');
+    formData.append('g-recaptcha-response', captchaResponse);
+
+    fetch('./php/mailController.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(function(response) { return response.json(); })
+    .then(function(data) {
+        if (data.success) {
+            showToast('Form submitted successfully!', 'success');
+            document.getElementById('contactForm').reset();
+            if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
+        } else {
+            showToast(data.message || 'Something went wrong!', 'error');
+        }
+    })
+    .catch(function() {
+        showToast('Server error! Please try again later.', 'error');
+    });
+
+    return false;
+}
+
+/* ------------------------------------------
+   initContactForm — pure native DOM, no jQuery
 ------------------------------------------- */
 function initContactForm() {
-    if (!document.getElementById('contactForm')) return;
-
     var form = document.getElementById('contactForm');
+    if (!form) return;
 
-    // Now remove actually works because capturePrevent is the same reference every time
+    // Remove both listeners before re-adding (prevents stacking)
     form.removeEventListener('submit', capturePrevent, true);
+    form.removeEventListener('submit', handleFormSubmit, false);
+
+    // Capture phase — fires first, kills default
     form.addEventListener('submit', capturePrevent, true);
 
-    $('#contactForm').off('submit').on('submit', function (e) {
-        e.preventDefault();
-        e.stopImmediatePropagation();
-
-        var name            = $('#name').val().trim();
-        var email           = $('#email').val().trim();
-        var phone           = $('#phone').val().trim();
-        var subject         = $('#subject').val().trim();
-        var message         = $('#message').val().trim();
-        var captchaResponse = typeof grecaptcha !== 'undefined' ? grecaptcha.getResponse() : '';
-        var isValid         = true;
-
-        $('.text-danger').remove();
-        $('#captcha-error').text('');
-
-        if (name === '') {
-            $('#name').after('<p class="text-danger">Name field is required</p>');
-            isValid = false;
-        }
-
-        var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|in)$/;
-        if (email === '') {
-            $('#email').after('<p class="text-danger">Email field is required</p>');
-            isValid = false;
-        } else if (!emailPattern.test(email)) {
-            $('#email').after('<p class="text-danger">Enter a valid email address</p>');
-            isValid = false;
-        }
-
-        if (phone === '') {
-            $('#phone').after('<p class="text-danger">Phone field is required</p>');
-            isValid = false;
-        }
-
-        if (captchaResponse.length === 0) {
-            $('#captcha-error').text('Please verify the captcha before submitting.');
-            isValid = false;
-        }
-
-        if (isValid) {
-            $.ajax({
-                url: './php/mailController.php',
-                type: 'POST',
-                data: {
-                    name: name,
-                    email: email,
-                    phone: phone,
-                    subject: subject,
-                    message: message,
-                    type: 'contactForm',
-                    'g-recaptcha-response': captchaResponse
-                },
-                dataType: 'json',
-                success: function (response) {
-                    if (response.success) {
-                        showToast('Form submitted successfully!', 'success');
-                        $('#contactForm')[0].reset();
-                        if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
-                    } else {
-                        showToast(response.message || 'Something went wrong!', 'error');
-                    }
-                },
-                error: function () {
-                    showToast('Server error! Please try again later.', 'error');
-                }
-            });
-        } else {
-            showToast('Please fill out all required fields and verify captcha.', 'error');
-        }
-
-        return false;
-    });
+    // Bubble phase — runs the actual logic
+    form.addEventListener('submit', handleFormSubmit, false);
 }
 
 /* ------------------------------------------
@@ -127,11 +153,16 @@ function initRecaptcha() {
 }
 
 /* ------------------------------------------
-   On first page load
+   On first page load — native, no jQuery needed
 ------------------------------------------- */
-$(document).ready(function () {
-    initContactForm();
-});
+// document.addEventListener('DOMContentLoaded', function () {
+//     initContactForm();
+// });
+
+// Safety net if DOMContentLoaded already fired
+// if (document.readyState === 'complete' || document.readyState === 'interactive') {
+//     initContactForm();
+// }
 
 /* ------------------------------------------
    On every Swup page transition
