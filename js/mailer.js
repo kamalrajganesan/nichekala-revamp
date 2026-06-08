@@ -132,14 +132,21 @@ function initContactForm() {
 ------------------------------------------- */
 function initRecaptcha() {
     var widget = document.querySelector('.g-recaptcha');
-    if (!widget) return; // not on contact page
+    if (!widget) return;
 
-    // Only render if grecaptcha is loaded and widget is empty (not already rendered)
-    if (typeof grecaptcha !== 'undefined' && widget.innerHTML.trim() === '') {
-        grecaptcha.render(widget, {
-            sitekey: '6LezNRMtAAAAADEe8OkoKgsWi3toql6SAucG8fmE'
-        });
-    }
+    // Remove old recaptcha script
+    var oldScript = document.querySelector('script[src*="recaptcha/api.js"]');
+    if (oldScript) oldScript.remove();
+
+    // Reset widget
+    widget.innerHTML = '';
+
+    // Reload api.js fresh - it will auto-render the widget
+    var script = document.createElement('script');
+    script.src = 'https://www.google.com/recaptcha/api.js';
+    script.async = true;
+    script.defer = true;
+    document.head.appendChild(script);
 }
 
 /* ------------------------------------------
