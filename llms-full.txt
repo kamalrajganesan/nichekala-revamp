@@ -1,0 +1,162 @@
+# Nichekala Architecture and Design Studio — Full Site Reference
+
+> Long-form companion to llms.txt. Each section below is a page on https://nichekala.in/ with its title and meta description. Use this file as a comprehensive index of the studio's site content for LLM retrieval, citation, and summarization.
+
+---
+
+## Studio identity
+
+- **Name**: Nichekala Architecture and Design Studio
+- **Legal entity**: Nichekala Designs Private Limited
+- **Location**: 283, Mohanram Nagar, Mogappair West, Chennai, Tamil Nadu, India
+- **Phone**: +91-9600156838
+- **Email**: info@nichekala.in
+- **Facebook**: https://www.facebook.com/people/Nichekala/100065317878556/
+- **Instagram**: https://www.instagram.com/nichekala_official/
+- **Domain**: https://nichekala.in/
+- **Service area**: Chennai and Tamil Nadu (primary); select projects across India (e.g., Goa)
+- **Disciplines**: Architecture, Interior Design, Pocket Home Design, Residential, Commercial, Heritage Conservation
+
+---
+
+# Core pages
+
+## [Nichekala - Design Studio](https://nichekala.in/)
+
+Nichekala is a Chennai-based architecture and interior design studio creating purposeful homes, pocket homes, commercial spaces, and heritage conservation projects tailored to modern living.
+
+## [About Nichekala | Architecture & Interior Design Studio in Chennai](https://nichekala.in/about)
+
+Nichekala is a Chennai-based architecture and interior design studio specializing in pocket homes, architectural design, interiors, and space optimization.
+
+## [Architecture & Interior Design Services in Chennai](https://nichekala.in/services)
+
+Explore Nichekala's architecture, interior design, branding, creative consulting, and website development services. Transforming spaces and brands with innovative design solutions in Chennai.
+
+## [Nichekala Portfolio | Architecture & Interior Design Projects](https://nichekala.in/portfolio)
+
+Explore Nichekala's portfolio featuring innovative architecture, residential homes, commercial spaces, pocket homes, interior design projects, and bespoke design solutions across Chennai and beyond.
+
+## [Pocket Home | Smart Small Home Design Solutions in Chennai](https://nichekala.in/pockethome)
+
+Pocket Home by Nichekala reimagines compact living spaces through smart architecture, efficient layouts, natural light, and personalized design solutions in Chennai.
+
+## [Our Team | Architects & Interior Designers in Chennai](https://nichekala.in/team)
+
+Meet the creative team behind Nichekala. Discover the architects, interior designers, planners, and design professionals dedicated to creating innovative and timeless spaces.
+
+## [Architecture & Interior Design Blog](https://nichekala.in/blog)
+
+Explore Nichekala's blog for expert insights on architecture, interior design, pocket homes, and home design trends in Chennai and Tamil Nadu.
+
+## [Contact Nichekala | Architecture & Interior Design Studio Chennai](https://nichekala.in/contact)
+
+Get in touch with Nichekala Architecture & Design Studio in Chennai. Contact us for architectural design, interior design, residential, commercial, and custom design consultations.
+
+---
+
+# Portfolio projects
+
+## [20x60 Residential Design Project in Chennai](https://nichekala.in/portfolio/20X60)
+
+Explore Nichekala's 20x60 residential design project in Chennai. A contemporary two-storey residence featuring a strategically placed light well to maximize natural light and ventilation in a compact urban plot.
+
+## [A-14 Recreational Project in Chennai](https://nichekala.in/portfolio/A-14)
+
+Explore A-14, a recreational architecture project by Nichekala in Chennai. Completed in 2021, this project showcases thoughtful design, functionality, and aesthetic excellence.
+
+## [Arjavam | Residential Architecture Project in Goa](https://nichekala.in/portfolio/Arjavam)
+
+Arjavam is an ongoing residential architecture project in Goa by Nichekala. Designed with simplicity, Vastu Shastra principles, vernacular architecture, and harmony with the natural landscape.
+
+## [Coffee And Conversation | Cafe Interior Design Project in Chennai](https://nichekala.in/portfolio/Coffee-and-conversation)
+
+Coffee And Conversation is a recreational cafe interior design project in Chennai by Nichekala. Designed with minimal interiors, clean lines, and thoughtfully curated spaces that encourage both solitude and meaningful conversations.
+
+## [Inside Out | Residential Architecture Project in Chennai](https://nichekala.in/portfolio/Inside-out)
+
+Explore Inside Out, a residential architecture project by Nichekala in Chennai. Designed on a 1200 sqft plot, the project features spacious bedrooms, open balconies, double-height spaces, and a strong connection to its surroundings.
+
+## [Mugappair Mail | Commercial Interior Design Project in Chennai](https://nichekala.in/portfolio/Mugappair-mail)
+
+Explore Mugappair Mail, a commercial interior design project by Nichekala in Chennai. A modern workspace transformation focused on ergonomics, natural lighting, functionality, and visual clarity.
+
+## [Skewed Commercial Building Design in Chennai](https://nichekala.in/portfolio/Skewed)
+
+Explore Skewed, a completed commercial architecture project by Nichekala in Chennai. A contemporary commercial space showcasing innovative design, functionality, and modern aesthetics.
+
+## [Fuel One | Recreational Interior Design Project in Chennai](https://nichekala.in/portfolio/fuel-one)
+
+Explore Fuel One, a recreational interior design project by Nichekala in Chennai. Completed in 2021, this project reflects thoughtful spatial planning, modern aesthetics, and functional design.
+
+## [Panaroma Box | Residential Architecture Project in Chennai](https://nichekala.in/portfolio/panaroma-Box)
+
+Panaroma Box is an ongoing residential architecture project in Chennai by Nichekala. Designed on a compact corner plot, the home features north light integration, open balconies, terraces, and contemporary spatial planning.
+
+## [Weekend Homes | Recreational Architecture Project in Chennai](https://nichekala.in/portfolio/weekend-homes)
+
+Explore Weekend Homes, a recreational architecture project by Nichekala in Chennai. Designed to create relaxing and functional living spaces with contemporary architectural excellence.
+
+---
+
+# Editorial / Blog
+
+## [10 Hacks to Manifest a Home Sweet Home](https://nichekala.in/blogs/10-hacks-on-how-to-manifest-home)
+
+Discover 10 simple hacks to make your home feel warm, cozy, and personal — from decluttering to ambient lighting. Home transformation tips by Nichekala, Chennai.
+
+## [10 Pointers to Make Your Home Office More Productive](https://nichekala.in/blogs/10-pointers-on-making-your-home-office-productive-space)
+
+Transform your home office into a productive workspace with these 10 expert pointers — from ergonomic furniture to noise reduction. Design tips by Nichekala, Chennai.
+
+## [10 Tips to Maximise Utility in Small Kitchens](https://nichekala.in/blogs/10-tips-for-maximising-utility-in-small-kitchen)
+
+Make the most of your compact kitchen with 10 smart tips — from vertical storage to minimalist decor. Small kitchen design solutions by Nichekala, Chennai.
+
+## [20 Questions to Ask Your Architect Before Starting a Project](https://nichekala.in/blogs/20-questions-you-should-discuss)
+
+Planning a construction or design project? Here are 20 essential questions to discuss with your architect or designer before you begin. Expert advice by Nichekala, Chennai.
+
+## [5 Shades of Beige for a Minimal Chic Living Space](https://nichekala.in/blogs/5-shades-of-beige-to-acheive-your-minimal-chic-living-space)
+
+Discover 5 stunning shades of beige — classic, sand, greige, taupe, and ivory — to create a timeless minimal chic living space. Design tips by Nichekala, Chennai.
+
+## [Budget-Friendly Home Design in Tamil Nadu](https://nichekala.in/blogs/budget-friendly-home-design)
+
+Discover 10 budget-friendly home design tips for Tamil Nadu homes. Learn how to use local materials, vernacular architecture, and smart planning to create beautiful spaces without overspending.
+
+## [Eco-Friendly Home Design in Chennai](https://nichekala.in/blogs/eco-friendly-home-design-in-chennai)
+
+Explore Nichekala's eco-friendly home design approach in Chennai — solar panels, rainwater harvesting, biophilic design, and sustainable materials for a greener lifestyle.
+
+## [Guide to Transforming Your Balcony Corner into a Green Oasis](https://nichekala.in/blogs/guide-to-convert-your-balcony-corner-into-a-green-thumb)
+
+Transform your balcony into a lush green oasis with Nichekala's 10-step guide. Learn plant selection, container gardening, layout tips, and maintenance for a thriving balcony garden.
+
+## [Accent Lighting vs Ambient Lighting: Elevate Your Space](https://nichekala.in/blogs/how-to-elevate-your-space)
+
+Learn how to balance accent lighting and ambient lighting to transform your home interiors. Discover where and how to use each lighting type for a stunning, well-designed space.
+
+## [How to Create Gender-Neutral Spaces at Your Residence](https://nichekala.in/blogs/how-to-initiate-grndar-neutral-spaces)
+
+Learn how to design inclusive, gender-neutral spaces at home with Nichekala's 10-step guide — neutral palettes, flexible layouts, inclusive bathrooms, and personalized spaces for everyone.
+
+## [The Art of Interior Design in Creating Stunning Spaces](https://nichekala.in/blogs/mastering-the-art-of-interior-design)
+
+Discover how Nichekala masters the art of interior design — from understanding your vision and balancing aesthetics to custom furniture, lighting, and personalized spaces that tell your story.
+
+## [Pros and Cons of Natural and Traditional Flooring for Indoor Spaces](https://nichekala.in/blogs/pros-and-cons-to-natural-and-traditional-flooring)
+
+Compare natural flooring (cork, bamboo, wood) vs traditional flooring (hardwood, laminate, tile) — explore the pros and cons of each to choose the best option for your indoor spaces.
+
+## [Nichekala](https://nichekala.in/blogs/top-architectural-design-trends)
+
+Explore the latest architectural design trends in India including sustainable architecture, smart homes, vernacular revival, adaptive reuse, minimalism, and green buildings with Nichekala.
+
+## [Nichekala](https://nichekala.in/blogs/top-interior-trends-in-chennai)
+
+Discover the latest interior design trends in Chennai for 2023 including sustainable interiors, smart homes, minimalist South Indian designs, vibrant color palettes, and modern living ideas by Nichekala.
+
+## [Nichekala](https://nichekala.in/blogs/uneviling-the-science-of-drapes-and-curtains-for-your-home)
+
+Discover the science behind drapes and curtains for your home. Learn about light control, temperature regulation, acoustic comfort, sustainable fabrics, and modern curtain design ideas with Nichekala Chennai.

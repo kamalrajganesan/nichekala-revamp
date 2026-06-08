@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IN">
 
 <head>
 
@@ -8,6 +8,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- bootstrap grid css -->
+    <!-- Preconnect to font + CDN origins for faster LCP -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
     <link rel="stylesheet" href="../css/plugins/bootstrap-grid.css">
     <!-- font awesome css -->
     <link rel="stylesheet" href="../css/plugins/font-awesome.min.css">
@@ -46,7 +50,109 @@
             color:black;
         }
     </style>
+<!-- ── Structured Data: Organization + LocalBusiness + WebSite (shared across all pages) ── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://nichekala.in/#organization",
+      "name": "Nichekala Architecture and Design Studio",
+      "alternateName": "Nichekala",
+      "legalName": "Nichekala Designs Private Limited",
+      "url": "https://nichekala.in/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://nichekala.in/img/icons/new_logo_black.png",
+        "width": 512,
+        "height": 512
+      },
+      "email": "info@nichekala.in",
+      "telephone": "+91-9600156838",
+      "sameAs": [
+        "https://www.facebook.com/people/Nichekala/100065317878556/",
+        "https://www.instagram.com/nichekala_official/"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "283, Mohanram Nagar, Mogappair West",
+        "addressLocality": "Chennai",
+        "addressRegion": "Tamil Nadu",
+        "addressCountry": "IN"
+      }
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://nichekala.in/#localbusiness",
+      "name": "Nichekala Architecture and Design Studio",
+      "alternateName": "Nichekala",
+      "image": "https://nichekala.in/img/icons/new_logo_black.png",
+      "url": "https://nichekala.in/",
+      "telephone": "+91-9600156838",
+      "email": "info@nichekala.in",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "283, Mohanram Nagar, Mogappair West",
+        "addressLocality": "Chennai",
+        "addressRegion": "Tamil Nadu",
+        "addressCountry": "IN"
+      },
+      "areaServed": [
+        {"@type": "City", "name": "Chennai"},
+        {"@type": "State", "name": "Tamil Nadu"},
+        {"@type": "Country", "name": "India"}
+      ],
+      "knowsAbout": [
+        "Interior Design",
+        "Architecture",
+        "Residential Design",
+        "Commercial Design",
+        "Pocket Home Design",
+        "Heritage Conservation"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://nichekala.in/#website",
+      "url": "https://nichekala.in/",
+      "name": "Nichekala",
+      "publisher": {"@id": "https://nichekala.in/#organization"},
+      "inLanguage": "en-IN"
+    }
+  ]
+}
+</script>
 
+<!-- ── Structured Data: CreativeWork (project) ── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Mugappair Mail | Commercial Interior Design Project in Chennai",
+  "description": "Explore Mugappair Mail, a commercial interior design project by Nichekala in Chennai. A modern workspace transformation focused on ergonomics, natural lighting, functionality, and visual clarity.",
+  "url": "https://yourdomain.com/projects/mugappair-mail.html",
+  "image": "https://nichekala.in/img/portfolio-images/mugappairmain.jpg",
+  "genre": "Commercial Interior & Architecture",
+  "locationCreated": {
+    "@type": "Place",
+    "name": "Chennai",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Chennai",
+      "addressCountry": "IN"
+    }
+  },
+  "creator": {"@id": "https://nichekala.in/#organization"},
+  "publisher": {"@id": "https://nichekala.in/#organization"},
+  "inLanguage": "en"
+}
+</script>
+<meta property="og:image" content="https://nichekala.in/img/portfolio-images/mugappairmain.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="800" />
+<meta property="og:image:alt" content="Nichekala Architecture and Design Studio" />
+<meta name="twitter:image" content="https://nichekala.in/img/portfolio-images/mugappairmain.jpg" />
 </head>
 
 <body>
