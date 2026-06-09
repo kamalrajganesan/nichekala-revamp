@@ -27,7 +27,7 @@ $(function () {
         animationSelector: '[class="mil-main-transition"]'
     };
     const swup = new Swup(options);
-
+    window.swup = swup;
     /***************************
 
     register gsap plugins
