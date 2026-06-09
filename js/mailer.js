@@ -101,9 +101,12 @@ if (document.readyState === 'loading') {
         setTimeout(initContactForm, 500);
     });
 } else {
-    setTimeout(initContactForm, 500);
+    setTimeout(initContactForm, 1500);
 }
 
 document.addEventListener('swup:contentReplaced', function () {
+    initContactForm();
+});
+document.addEventListener('swup:animationInDone', function () {
     initContactForm();
 });
