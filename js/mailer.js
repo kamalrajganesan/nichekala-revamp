@@ -96,7 +96,13 @@ function initContactForm() {
     form.addEventListener('submit', handleFormSubmit, false);
 }
 
-initContactForm();
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        initContactForm();
+    });
+} else {
+    initContactForm();
+}
 
 document.addEventListener('swup:contentReplaced', function () {
     initContactForm();
