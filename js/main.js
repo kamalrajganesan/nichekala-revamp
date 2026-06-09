@@ -26,11 +26,14 @@ $(function () {
         linkSelector: 'a:not([data-no-swup])',
         animationSelector: '[class="mil-main-transition"]'
     };
-    const swup = new Swup(options);
-    window.swup = swup;
-    swup.on('contentReplaced', function() {
+   const swup = new Swup(options);
+window.swup = swup;
+
+swup.on('contentReplaced', function() {
+    console.log('swup contentReplaced fired');
     if (typeof initContactForm === 'function') {
         initContactForm();
+        console.log('initContactForm called');
     }
 });
     /***************************
