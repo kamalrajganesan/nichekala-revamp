@@ -86,7 +86,7 @@ function handleFormSubmit(e) {
         showToast('Server error! Please try again later.', 'error');
     });
 
-    return false;
+return false;
 }
 
 function initContactForm() {
@@ -98,10 +98,10 @@ function initContactForm() {
 
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
-        initContactForm();
+        setTimeout(initContactForm, 500);
     });
 } else {
-    initContactForm();
+    setTimeout(initContactForm, 500);
 }
 
 document.addEventListener('swup:contentReplaced', function () {
