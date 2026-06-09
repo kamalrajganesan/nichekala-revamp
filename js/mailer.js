@@ -101,12 +101,12 @@ if (document.readyState === 'loading') {
         setTimeout(initContactForm, 500);
     });
 } else {
-    setTimeout(initContactForm, 1500);
+    setTimeout(initContactForm, 3000);
 }
 
-// document.addEventListener('swup:contentReplaced', function () {
-//     initContactForm();
-// });
+document.addEventListener('swup:contentReplaced', function () {
+    initContactForm();
+});
 // document.addEventListener('swup:animationInDone', function () {
 //     initContactForm();
 // });
