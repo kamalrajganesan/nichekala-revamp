@@ -28,6 +28,11 @@ $(function () {
     };
     const swup = new Swup(options);
     window.swup = swup;
+    swup.on('contentReplaced', function() {
+    if (typeof initContactForm === 'function') {
+        initContactForm();
+    }
+});
     /***************************
 
     register gsap plugins
