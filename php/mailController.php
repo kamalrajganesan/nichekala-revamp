@@ -33,30 +33,30 @@ if (isset($_POST["type"])) {
         $_POST['message'] = $message;
     }
 
-    $formsWithCaptcha = ["contactForm"];
+    // $formsWithCaptcha = ["contactForm"];
 
-    if (in_array($_POST["type"], $formsWithCaptcha)) {
-        if (empty($_POST['g-recaptcha-response'])) {
-            $res["success"] = false;
-            $res["message"] = "Please complete the CAPTCHA.";
-            echo json_encode($res);
-            exit;
-        }
+    // if (in_array($_POST["type"], $formsWithCaptcha)) {
+    //     if (empty($_POST['g-recaptcha-response'])) {
+    //         $res["success"] = false;
+    //         $res["message"] = "Please complete the CAPTCHA.";
+    //         echo json_encode($res);
+    //         exit;
+    //     }
 
         $recaptchaSecret = "6LezNRMtAAAAAPs3JCsac7iu0o_2zUvfuGUdPfXX"; 
         $recaptchaResponse = $_POST['g-recaptcha-response'];
 
-        $verifyUrl = "https://www.google.com/recaptcha/api/siteverify?secret={$recaptchaSecret}&response={$recaptchaResponse}";
-        $response = file_get_contents($verifyUrl);
-        $responseData = json_decode($response);
+    //     $verifyUrl = "https://www.google.com/recaptcha/api/siteverify?secret={$recaptchaSecret}&response={$recaptchaResponse}";
+    //     $response = file_get_contents($verifyUrl);
+    //     $responseData = json_decode($response);
 
-        if (!$responseData->success) {
-            $res["success"] = false;
-            $res["message"] = "CAPTCHA verification failed. Please try again.";
-            echo json_encode($res);
-            exit;
-        }
-    }
+    //     if (!$responseData->success) {
+    //         $res["success"] = false;
+    //         $res["message"] = "CAPTCHA verification failed. Please try again.";
+    //         echo json_encode($res);
+    //         exit;
+    //     }
+    // }
 
     switch ($_POST["type"]) {
         case "contactForm":
