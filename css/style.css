@@ -2317,12 +2317,12 @@ team
 }
 
 /* Portrait card — show full image without cropping */
-.mil-team-card.mil-portrait-card img,
+/* .mil-team-card.mil-portrait-card img,
 .mil-team-card.mil-portrait-card:hover img {
   height: auto;
   object-fit: contain;
   transform: none;
-}
+} */
 
 @media screen and (max-width: 992px) {
   .mil-team-card.mil-portrait-card img {
