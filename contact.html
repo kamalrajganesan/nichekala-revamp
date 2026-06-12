@@ -436,54 +436,73 @@
           <!-- map end -->
          
           <!-- contact form -->
-          <section id="contact">
-            <div class="container mil-p-120-90">
-              <h3 class="mil-center mil-up mil-mb-120">
-                Let's <span class="mil-thin">Talk</span>
-              </h3>
-              <div id="toast-container"></div>
-              <form class="row align-items-center contact-form" id="contactForm">
-                <div class="col-lg-6 mil-up">
-                  <input id="name" name="name" type="text" placeholder="What's your name" />
-                </div>
-                <div class="col-lg-6 mil-up">
-                  <input id="email" name="email" type="email" placeholder="Your Email" />
-                </div>
-                <div class="col-lg-6 mil-up">
-                  <input id="phone" name="phone" type="number" placeholder="Phone number" />
-                </div>
-                <div class="col-lg-6 mil-up">
-                  <input id="subject" name="subject" type="text" placeholder="Subject" />
-                </div>
+<section id="contact">
+  <div class="container mil-p-120-90">
+    <h3 class="mil-center mil-up mil-mb-120">
+      Let's <span class="mil-thin">Talk</span>
+    </h3>
 
-                <div class="col-lg-12 mil-up">
-                  <textarea id="message" name="message" placeholder="Tell us about our project"></textarea>
-                </div>
+    <!-- Toast container (used by showToast in contact.js) -->
+    <div id="toast-container"></div>
 
-          <div class="col-lg-8 mil-up">
-  <div class="g-recaptcha" data-sitekey="6LezNRMtAAAAADEe8OkoKgsWi3toql6SAucG8fmE"></div>
-  <span id="captcha-error" class="text-danger"></span>
-  <p class="mil-up mil-mb-30" style="margin-top: 20px;">
-    <span class="mil-accent">*</span> We promise not to disclose
-    your personal information to third parties.
-  </p>
-</div> 
-<div class="col-lg-4 mil-up">
-  <div class="mil-adaptive-right mil-up mil-mb-30">
-    <button type="submit" class="mil-button mil-arrow-place">
-      <span>Send message</span>
-    </button>
+    <form class="row align-items-center contact-form" id="contactForm" action="#">
+
+      <!-- CSRF token -->
+      <input type="hidden" id="csrf_token" name="csrf_token">
+
+      <!-- Honeypot (one hidden field named "website", invisible to humans) -->
+      <input type="text" name="website" style="display:none;" tabindex="-1" autocomplete="off">
+
+      <!-- Real fields — visible, correct ids and names -->
+      <div class="col-lg-6 mil-up">
+        <div class="form-group">
+          <input id="name" name="name" type="text" placeholder="What's your name">
+        </div>
+      </div>
+
+      <div class="col-lg-6 mil-up">
+        <div class="form-group">
+          <input id="email" name="email" type="email" placeholder="Your Email">
+        </div>
+      </div>
+
+      <div class="col-lg-6 mil-up">
+        <div class="form-group">
+          <input id="phone" name="phone" type="tel" placeholder="Phone number">
+        </div>
+      </div>
+
+      <div class="col-lg-6 mil-up">
+        <div class="form-group">
+          <input id="subject" name="subject" type="text" placeholder="Subject">
+        </div>
+      </div>
+
+      <div class="col-lg-12 mil-up">
+        <textarea id="message" name="message" placeholder="Tell us about your project"></textarea>
+      </div>
+
+      <div class="col-lg-8 mil-up">
+        <div class="g-recaptcha" data-sitekey="6LezNRMtAAAAADEe8OkoKgsWi3toql6SAucG8fmE"></div>
+        <!-- Single captcha error span -->
+        <span id="captcha-error" class="text-danger"></span>
+        <p class="mil-up mil-mb-30" style="margin-top: 20px;">
+          <span class="mil-accent">*</span> We promise not to disclose
+          your personal information to third parties.
+        </p>
+      </div>
+
+      <div class="col-lg-4 mil-up">
+        <div class="mil-adaptive-right mil-up mil-mb-30">
+          <button type="submit" class="mil-button mil-arrow-place">
+            <span>Send message</span>
+          </button>
+        </div>
+      </div>
+
+    </form>
   </div>
-</div>
-
-                <!-- Alert Message -->
-                <div class="col-lg-12 alert-notification">
-                  <div id="messageBox" class="alert-msg"></div>
-                </div>
-              </form>
-            </div>
-          </section>
-
+</section>
           <div class="container mil-p-0-90">
             <div class="row">
              <!-- Email -->
@@ -820,11 +839,11 @@
     <script src="js/plugins/ScrollTrigger.min.js"></script>
     <!-- scroll to js -->
     <script src="js/plugins/ScrollTo.min.js"></script>
-     <script src="js/mailer.js"></script>
+     <!-- <script src="js/mailer.js"></script> -->
     <!-- ashley js -->
-    
+    <script src="js/mailHelper.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/mailer.js"></script>
+    <!-- <script src="js/mailer.js"></script> -->
     <!-- <script src="js/mailHelper.js"></script> -->
      <!-- <script>
   

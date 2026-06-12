@@ -27,15 +27,16 @@ $(function () {
         animationSelector: '[class="mil-main-transition"]'
     };
     const swup = new Swup(options);
-window.swup = swup;
+    window.swup = swup;
 
-swup.on('contentReplaced', function() {
-    console.log('swup contentReplaced fired');
-    if (typeof initContactForm === 'function') {
-        initContactForm();
-        console.log('initContactForm called');
-    }
-});
+    swup.on('contentReplaced', function() {
+        console.log('swup contentReplaced fired');
+        if (typeof initContactForm === 'function') {
+            initContactForm();
+            console.log('initContactForm called');
+        }
+    });
+
     /***************************
 
     register gsap plugins
@@ -121,7 +122,7 @@ swup.on('contentReplaced', function() {
             opacity: 0,
             ease: 'sine',
         }, "+=.2");
-// REPLACE the old .mil-up line with these two:
+
         timeline.fromTo(".mil-up", 0.8, {
             opacity: 0,
             y: 40,
@@ -142,50 +143,20 @@ swup.on('contentReplaced', function() {
             y: 0,
             opacity: 1,
             scale: 1,
-           onComplete: function () {
-    $('.mil-preloader').addClass("mil-hidden");
-    document.body.classList.remove('mil-preloader-active');
-    document.body.classList.add('mil-preloader-done');
+            onComplete: function () {
+                $('.mil-preloader').addClass("mil-hidden");
+                document.body.classList.remove('mil-preloader-active');
+                document.body.classList.add('mil-preloader-done');
 
-    // DEBUG - remove after testing
-    let invisible = [];
-    document.querySelectorAll('.mil-up').forEach((el, i) => {
-        const style = window.getComputedStyle(el);
-        const rect = el.getBoundingClientRect();
-        if (style.opacity === '0' || style.visibility === 'hidden') {
-            invisible.push({ 
-                index: i, 
-                opacity: style.opacity, 
-                inViewport: rect.top < window.innerHeight && rect.bottom > 0,
-                rectTop: Math.round(rect.top)
-            });
-        }
-    });
-    // console.log('=== AFTER PRELOADER DONE ===');
-    // console.log('Total invisible:', invisible.length);
-    // console.log('In viewport but hidden:', invisible.filter(e => e.inViewport));
-    // END DEBUG
-
-    // Delay to let page paint before checking dark sections
-    setTimeout(updateLogo, 100);
-    setTimeout(updateLogo, 300);
-    setTimeout(updateLogo, 600);
-
-    // Fix stuck mil-up elements after preloader finishes
-//     setTimeout(() => {
-//         document.querySelectorAll('.mil-up').forEach(el => {
-//             if (window.getComputedStyle(el).opacity === '0') {
-//                 gsap.to(el, { opacity: 1, y: 0, scale: 1, duration: 0.4 });
-//             }
-//         });
-//         ScrollTrigger.refresh();
-//     }, 500);
- },
+                setTimeout(updateLogo, 100);
+                setTimeout(updateLogo, 300);
+                setTimeout(updateLogo, 600);
+            },
         }, "-=1");
     }
     // Run on initial page load
     runPreloader();
-    
+
     /***************************
 
     anchor scroll
@@ -512,7 +483,6 @@ swup.on('contentReplaced', function() {
 
     const parallaxImage = document.querySelectorAll(".mil-parallax");
 
-
     if ($(window).width() > 960) {
         parallaxImage.forEach((section) => {
             var value1 = $(section).data("value-1");
@@ -536,13 +506,11 @@ swup.on('contentReplaced', function() {
 
     rotate.forEach((section) => {
         var value = $(section).data("value");
-        // this line newly added now
-        var value = $(section).data("value");
 
-    if ($(section).hasClass('mil-ct-svg')) {
-        return;
-    }
-    // to here
+        if ($(section).hasClass('mil-ct-svg')) {
+            return;
+        }
+
         gsap.fromTo(section, {
             ease: 'sine',
             rotate: 0,
@@ -580,7 +548,6 @@ swup.on('contentReplaced', function() {
 
     var menu = ['<div class="mil-custom-dot mil-slide-1"></div>', '<div class="mil-custom-dot mil-slide-2"></div>', '<div class="mil-custom-dot mil-slide-3"></div>', '<div class="mil-custom-dot mil-slide-4"></div>', '<div class="mil-custom-dot mil-slide-5"></div>', '<div class="mil-custom-dot mil-slide-6"></div>', '<div class="mil-custom-dot mil-slide-7"></div>']
     var mySwiper = new Swiper('.mil-reviews-slider', {
-        // If we need pagination
         pagination: {
             el: '.mil-revi-pagination',
             clickable: true,
@@ -595,7 +562,7 @@ swup.on('contentReplaced', function() {
             nextEl: '.mil-revi-next',
             prevEl: '.mil-revi-prev',
         },
-    })
+    });
 
     /***************************
 
@@ -606,7 +573,6 @@ swup.on('contentReplaced', function() {
         slidesPerView: 2,
         spaceBetween: 30,
         speed: 5000,
-        autoplay: true,
         autoplay: {
             delay: 0,
         },
@@ -685,60 +651,83 @@ swup.on('contentReplaced', function() {
         },
     });
 
-    document.addEventListener("swup:contentReplaced", function () {
-    // reCAPTCHA reload
-    if (document.querySelector('.g-recaptcha')) {
-        setTimeout(function() {
-            var oldScript = document.querySelector('script[src*="recaptcha/api.js"]');
-            if (oldScript) oldScript.remove();
-            document.querySelector('.g-recaptcha').innerHTML = '';
-            var script = document.createElement('script');
-            script.src = 'https://www.google.com/recaptcha/api.js';
-            script.async = true;
-            script.defer = true;
-            document.head.appendChild(script);
-            console.log('✅ reCAPTCHA reloaded from main.js');
-        }, 800);
-    }
-    window.scrollTo(0, 0);
-document.documentElement.scrollTop = 0;
-document.body.scrollTop = 0;
-    updateLogo();
-   gsap.to('.mil-progress', {
-    height: 0,
-    ease: 'sine',
-    onComplete: () => {
-        ScrollTrigger.refresh();
-        setTimeout(() => {
-            ScrollTrigger.refresh();
-        }, 500);
-    },
-});                                          // ← gsap.to() closes HERE
-
-    document.body.classList.remove('mil-preloader-done');  // ← THEN this
-    runPreloader();                                        // ← THEN this
-
-    // Safety net for stuck mil-up elements
-setTimeout(() => {
-    document.querySelectorAll('.mil-up').forEach(el => {
-        if (window.getComputedStyle(el).opacity === '0') {
-            gsap.to(el, { opacity: 1, y: 0, scale: 1, duration: 0.4 });
-        }
-    });
-}, 2000);
     /***************************
 
-     menu
+    swup:contentReplaced — runs on every Swup page transition
 
     ***************************/
-    $('.mil-menu-btn').removeClass('mil-active');
-    $('.mil-menu').removeClass('mil-active');
-    $('.mil-menu-frame').removeClass('mil-active');
-        /***************************
+    document.addEventListener("swup:contentReplaced", function () {
 
-        append
+        // ── reCAPTCHA reload ───────────────────────────────
+        if (document.querySelector('.g-recaptcha')) {
+            setTimeout(function() {
+                var oldScript = document.querySelector('script[src*="recaptcha/api.js"]');
+                if (oldScript) oldScript.remove();
+                document.querySelector('.g-recaptcha').innerHTML = '';
+                var script = document.createElement('script');
+                script.src = 'https://www.google.com/recaptcha/api.js';
+                script.async = true;
+                script.defer = true;
+                document.head.appendChild(script);
+                console.log('✅ reCAPTCHA reloaded');
+            }, 800);
+        }
 
-        ***************************/
+        // ── CSRF token re-fetch ────────────────────────────
+        // Needed because contact.js fetches the token on document.ready,
+        // which does NOT fire again on Swup transitions.
+        if (document.querySelector('#csrf_token')) {
+            var $submitBtn = $('#contactForm').find("button[type='submit']");
+            $submitBtn.prop('disabled', true);
+
+            $.get('./php/csrf.php')
+                .done(function (token) {
+                    $('#csrf_token').val(String(token).trim());
+                    $submitBtn.prop('disabled', false);
+                    console.log('✅ CSRF token refreshed after Swup transition');
+                })
+                .fail(function () {
+                    console.warn('❌ CSRF token fetch failed after Swup transition');
+                });
+        }
+
+        // ── Scroll reset ───────────────────────────────────
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+
+        updateLogo();
+
+        // ── Progress bar + ScrollTrigger refresh ──────────
+        gsap.to('.mil-progress', {
+            height: 0,
+            ease: 'sine',
+            onComplete: () => {
+                ScrollTrigger.refresh();
+                setTimeout(() => {
+                    ScrollTrigger.refresh();
+                }, 500);
+            },
+        });
+
+        document.body.classList.remove('mil-preloader-done');
+        runPreloader();
+
+        // ── Safety net for stuck mil-up elements ───────────
+        setTimeout(() => {
+            document.querySelectorAll('.mil-up').forEach(el => {
+                if (window.getComputedStyle(el).opacity === '0') {
+                    gsap.to(el, { opacity: 1, y: 0, scale: 1, duration: 0.4 });
+                }
+            });
+        }, 2000);
+
+        // ── Menu close ────────────────────────────────────
+        $('.mil-menu-btn').removeClass('mil-active');
+        $('.mil-menu').removeClass('mil-active');
+        $('.mil-menu-frame').removeClass('mil-active');
+
+        // ── Append clones ─────────────────────────────────
         $(document).ready(function () {
             $(".mil-arrow-place .mil-arrow, .mil-animation .mil-dodecahedron, .mil-current-page a").remove();
             $(".mil-arrow").clone().appendTo(".mil-arrow-place");
@@ -747,19 +736,7 @@ setTimeout(() => {
             $(".mil-main-menu ul li.mil-active > a").clone().appendTo(".mil-current-page");
         });
 
-        /***************************
-
-        preloader — re-run on every Swup page transition
-
-        ***************************/
-        // runPreloader();
-
-        /***************************
-
-        accordion
-
-        ***************************/
-
+        // ── Accordion ─────────────────────────────────────
         let groups = gsap.utils.toArray(".mil-accordion-group");
         let menus = gsap.utils.toArray(".mil-accordion-menu");
         let menuToggles = groups.map(createAnimation);
@@ -779,31 +756,14 @@ setTimeout(() => {
             let minusElement = element.querySelector(".mil-minus");
             let plusElement = element.querySelector(".mil-plus");
 
-            gsap.set(box, {
-                height: "auto",
-            });
+            gsap.set(box, { height: "auto" });
 
             let animation = gsap
                 .timeline()
-                .from(box, {
-                    height: 0,
-                    duration: 0.4,
-                    ease: "sine"
-                })
-                .from(minusElement, {
-                    duration: 0.4,
-                    autoAlpha: 0,
-                    ease: "none",
-                }, 0)
-                .to(plusElement, {
-                    duration: 0.4,
-                    autoAlpha: 0,
-                    ease: "none",
-                }, 0)
-                .to(symbol, {
-                    background: accent,
-                    ease: "none",
-                }, 0)
+                .from(box, { height: 0, duration: 0.4, ease: "sine" })
+                .from(minusElement, { duration: 0.4, autoAlpha: 0, ease: "none" }, 0)
+                .to(plusElement, { duration: 0.4, autoAlpha: 0, ease: "none" }, 0)
+                .to(symbol, { background: accent, ease: "none" }, 0)
                 .reverse();
 
             return function (clickedMenu) {
@@ -815,242 +775,116 @@ setTimeout(() => {
             };
         }
 
-        /***************************
-
-        cursor
-
-        ***************************/
-
+        // ── Cursor rebind ──────────────────────────────────
         $('.mil-drag, .mil-more, .mil-choose').mouseover(function () {
-            gsap.to($(cursor), .2, {
-                width: 90,
-                height: 90,
-                opacity: 1,
-                ease: 'sine',
-            });
+            gsap.to($(cursor), .2, { width: 90, height: 90, opacity: 1, ease: 'sine' });
         });
-
         $('.mil-drag, .mil-more, .mil-choose').mouseleave(function () {
-            gsap.to($(cursor), .2, {
-                width: 20,
-                height: 20,
-                opacity: .1,
-                ease: 'sine',
-            });
+            gsap.to($(cursor), .2, { width: 20, height: 20, opacity: .1, ease: 'sine' });
         });
-
         $('.mil-accent-cursor').mouseover(function () {
-            gsap.to($(cursor), .2, {
-                background: accent,
-                ease: 'sine',
-            });
+            gsap.to($(cursor), .2, { background: accent, ease: 'sine' });
             $(cursor).addClass('mil-accent');
         });
-
         $('.mil-accent-cursor').mouseleave(function () {
-            gsap.to($(cursor), .2, {
-                background: dark,
-                ease: 'sine',
-            });
+            gsap.to($(cursor), .2, { background: dark, ease: 'sine' });
             $(cursor).removeClass('mil-accent');
         });
-
         $('.mil-drag').mouseover(function () {
-            gsap.to($('.mil-ball .mil-icon-1'), .2, {
-                scale: '1',
-                ease: 'sine',
-            });
+            gsap.to($('.mil-ball .mil-icon-1'), .2, { scale: '1', ease: 'sine' });
         });
-
         $('.mil-drag').mouseleave(function () {
-            gsap.to($('.mil-ball .mil-icon-1'), .2, {
-                scale: '0',
-                ease: 'sine',
-            });
+            gsap.to($('.mil-ball .mil-icon-1'), .2, { scale: '0', ease: 'sine' });
         });
-
         $('.mil-more').mouseover(function () {
-            gsap.to($('.mil-ball .mil-more-text'), .2, {
-                scale: '1',
-                ease: 'sine',
-            });
+            gsap.to($('.mil-ball .mil-more-text'), .2, { scale: '1', ease: 'sine' });
         });
-
         $('.mil-more').mouseleave(function () {
-            gsap.to($('.mil-ball .mil-more-text'), .2, {
-                scale: '0',
-                ease: 'sine',
-            });
+            gsap.to($('.mil-ball .mil-more-text'), .2, { scale: '0', ease: 'sine' });
         });
-
         $('.mil-choose').mouseover(function () {
-            gsap.to($('.mil-ball .mil-choose-text'), .2, {
-                scale: '1',
-                ease: 'sine',
-            });
+            gsap.to($('.mil-ball .mil-choose-text'), .2, { scale: '1', ease: 'sine' });
         });
-
         $('.mil-choose').mouseleave(function () {
-            gsap.to($('.mil-ball .mil-choose-text'), .2, {
-                scale: '0',
-                ease: 'sine',
-            });
+            gsap.to($('.mil-ball .mil-choose-text'), .2, { scale: '0', ease: 'sine' });
         });
-
         $('a:not(".mil-choose , .mil-more , .mil-drag , .mil-accent-cursor"), input , textarea, .mil-accordion-menu').mouseover(function () {
-            gsap.to($(cursor), .2, {
-                scale: 0,
-                ease: 'sine',
-            });
-            gsap.to($('.mil-ball svg'), .2, {
-                scale: 0,
-            });
+            gsap.to($(cursor), .2, { scale: 0, ease: 'sine' });
+            gsap.to($('.mil-ball svg'), .2, { scale: 0 });
         });
-
         $('a:not(".mil-choose , .mil-more , .mil-drag , .mil-accent-cursor"), input, textarea, .mil-accordion-menu').mouseleave(function () {
-            gsap.to($(cursor), .2, {
-                scale: 1,
-                ease: 'sine',
-            });
-
-            gsap.to($('.mil-ball svg'), .2, {
-                scale: 1,
-            });
+            gsap.to($(cursor), .2, { scale: 1, ease: 'sine' });
+            gsap.to($('.mil-ball svg'), .2, { scale: 1 });
         });
-
         $('body').mousedown(function () {
-            gsap.to($(cursor), .2, {
-                scale: .1,
-                ease: 'sine',
-            });
+            gsap.to($(cursor), .2, { scale: .1, ease: 'sine' });
         });
         $('body').mouseup(function () {
-            gsap.to($(cursor), .2, {
-                scale: 1,
-                ease: 'sine',
-            });
+            gsap.to($(cursor), .2, { scale: 1, ease: 'sine' });
         });
-        /***************************
 
-        main menu
-
-        ***************************/
+        // ── Main menu ──────────────────────────────────────
         $('.mil-has-children a').on('click', function () {
             $('.mil-has-children ul').removeClass('mil-active');
             $('.mil-has-children a').removeClass('mil-active');
             $(this).toggleClass('mil-active');
             $(this).next().toggleClass('mil-active');
         });
-        /***************************
 
-        scroll animations
-
-        ***************************/
-
+        // ── Scroll animations ──────────────────────────────
         const appearance = document.querySelectorAll(".mil-up");
-
         appearance.forEach((section) => {
             gsap.fromTo(section, {
-                opacity: 0,
-                y: 40,
-                scale: .98,
-                ease: 'sine',
-
+                opacity: 0, y: 40, scale: .98, ease: 'sine',
             }, {
-                y: 0,
-                opacity: 1,
-                scale: 1,
-                duration: .4,
-                scrollTrigger: {
-                    trigger: section,
-                    toggleActions: 'play none none reverse',
-                }
+                y: 0, opacity: 1, scale: 1, duration: .4,
+                scrollTrigger: { trigger: section, toggleActions: 'play none none reverse' }
             });
         });
 
         const scaleImage = document.querySelectorAll(".mil-scale");
-
         scaleImage.forEach((section) => {
             var value1 = $(section).data("value-1");
             var value2 = $(section).data("value-2");
-            gsap.fromTo(section, {
-                ease: 'sine',
-                scale: value1,
-
-            }, {
+            gsap.fromTo(section, { ease: 'sine', scale: value1 }, {
                 scale: value2,
-                scrollTrigger: {
-                    trigger: section,
-                    scrub: true,
-                    toggleActions: 'play none none reverse',
-                }
+                scrollTrigger: { trigger: section, scrub: true, toggleActions: 'play none none reverse' }
             });
         });
 
         const parallaxImage = document.querySelectorAll(".mil-parallax");
-
-
         if ($(window).width() > 960) {
             parallaxImage.forEach((section) => {
                 var value1 = $(section).data("value-1");
                 var value2 = $(section).data("value-2");
-                gsap.fromTo(section, {
-                    ease: 'sine',
-                    y: value1,
-
-                }, {
+                gsap.fromTo(section, { ease: 'sine', y: value1 }, {
                     y: value2,
-                    scrollTrigger: {
-                        trigger: section,
-                        scrub: true,
-                        toggleActions: 'play none none reverse',
-                    }
+                    scrollTrigger: { trigger: section, scrub: true, toggleActions: 'play none none reverse' }
                 });
             });
         }
 
         const rotate = document.querySelectorAll(".mil-rotate");
-
         rotate.forEach((section) => {
             var value = $(section).data("value");
-            gsap.fromTo(section, {
-                ease: 'sine',
-                rotate: 0,
-
-            }, {
+            if ($(section).hasClass('mil-ct-svg')) return;
+            gsap.fromTo(section, { ease: 'sine', rotate: 0 }, {
                 rotate: value,
-                scrollTrigger: {
-                    trigger: section,
-                    scrub: true,
-                    toggleActions: 'play none none reverse',
-                }
+                scrollTrigger: { trigger: section, scrub: true, toggleActions: 'play none none reverse' }
             });
         });
-        /***************************
 
-        fancybox
-
-        ***************************/
+        // ── Fancybox ───────────────────────────────────────
         $('[data-fancybox="gallery"]').fancybox({
-            buttons: [
-            "slideShow",
-            "zoom",
-            "fullScreen",
-            "close"
-          ],
+            buttons: ["slideShow", "zoom", "fullScreen", "close"],
             loop: false,
             protect: true
         });
         $.fancybox.defaults.hash = false;
-        /***************************
 
-        reviews slider
-
-        ***************************/
-
-        var menu = ['<div class="mil-custom-dot mil-slide-1"></div>', '<div class="mil-custom-dot mil-slide-2"></div>', '<div class="mil-custom-dot mil-slide-3"></div>', '<div class="mil-custom-dot mil-slide-4"></div>', '<div class="mil-custom-dot mil-slide-5"></div>', '<div class="mil-custom-dot mil-slide-6"></div>', '<div class="mil-custom-dot mil-slide-7"></div>']
+        // ── Reviews slider ─────────────────────────────────
+        var menu = ['<div class="mil-custom-dot mil-slide-1"></div>', '<div class="mil-custom-dot mil-slide-2"></div>', '<div class="mil-custom-dot mil-slide-3"></div>', '<div class="mil-custom-dot mil-slide-4"></div>', '<div class="mil-custom-dot mil-slide-5"></div>', '<div class="mil-custom-dot mil-slide-6"></div>', '<div class="mil-custom-dot mil-slide-7"></div>'];
         var mySwiper = new Swiper('.mil-reviews-slider', {
-            // If we need pagination
             pagination: {
                 el: '.mil-revi-pagination',
                 clickable: true,
@@ -1061,105 +895,44 @@ setTimeout(() => {
             speed: 800,
             effect: 'fade',
             parallax: true,
-            navigation: {
-                nextEl: '.mil-revi-next',
-                prevEl: '.mil-revi-prev',
-            },
-        })
+            navigation: { nextEl: '.mil-revi-next', prevEl: '.mil-revi-prev' },
+        });
 
-        /***************************
-
-        infinite slider
-
-        ***************************/
+        // ── Infinite slider ────────────────────────────────
         var swiper = new Swiper('.mil-infinite-show', {
             slidesPerView: 2,
             spaceBetween: 30,
             speed: 5000,
-            autoplay: true,
-            autoplay: {
-                delay: 0,
-            },
+            autoplay: { delay: 0 },
             loop: true,
             freeMode: true,
-            breakpoints: {
-                992: {
-                    slidesPerView: 4,
-                },
-            },
+            breakpoints: { 992: { slidesPerView: 4 } },
         });
 
-        /***************************
-
-        portfolio slider
-
-        ***************************/
+        // ── Portfolio slider ───────────────────────────────
         var swiper = new Swiper('.mil-portfolio-slider', {
-            slidesPerView: 1,
-            spaceBetween: 0,
-            speed: 800,
-            parallax: true,
-            mousewheel: {
-                enable: true
-            },
-            navigation: {
-                nextEl: '.mil-portfolio-next',
-                prevEl: '.mil-portfolio-prev',
-            },
-            pagination: {
-                el: '.swiper-portfolio-pagination',
-                type: 'fraction',
-            },
+            slidesPerView: 1, spaceBetween: 0, speed: 800, parallax: true,
+            mousewheel: { enable: true },
+            navigation: { nextEl: '.mil-portfolio-next', prevEl: '.mil-portfolio-prev' },
+            pagination: { el: '.swiper-portfolio-pagination', type: 'fraction' },
         });
-        /***************************
 
-        1 item slider
-
-        ***************************/
+        // ── 1 item slider ──────────────────────────────────
         var swiper = new Swiper('.mil-1-slider', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            speed: 800,
-            parallax: true,
-            navigation: {
-                nextEl: '.mil-portfolio-next',
-                prevEl: '.mil-portfolio-prev',
-            },
-            pagination: {
-                el: '.swiper-portfolio-pagination',
-                type: 'fraction',
-            },
+            slidesPerView: 1, spaceBetween: 30, speed: 800, parallax: true,
+            navigation: { nextEl: '.mil-portfolio-next', prevEl: '.mil-portfolio-prev' },
+            pagination: { el: '.swiper-portfolio-pagination', type: 'fraction' },
         });
-       /***************************
 
-        2 item slider
-
-        ***************************/
+        // ── 2 item slider ──────────────────────────────────
         var swiper = new Swiper('.mil-2-slider', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            speed: 800,
-            parallax: true,
-            navigation: {
-                nextEl: '.mil-portfolio-next',
-                prevEl: '.mil-portfolio-prev',
-            },
-            pagination: {
-                el: '.swiper-portfolio-pagination',
-                type: 'fraction',
-            },
-            breakpoints: {
-                992: {
-                    slidesPerView: 2,
-                },
-            },
+            slidesPerView: 1, spaceBetween: 30, speed: 800, parallax: true,
+            navigation: { nextEl: '.mil-portfolio-next', prevEl: '.mil-portfolio-prev' },
+            pagination: { el: '.swiper-portfolio-pagination', type: 'fraction' },
+            breakpoints: { 992: { slidesPerView: 2 } },
         });
 
-        /***************************
-
-        portfolio filter
-
-        ***************************/
+        // ── Portfolio filter ───────────────────────────────
         (function() {
             function applyFilter(filter) {
                 document.querySelectorAll('.mil-filter-btn').forEach(function(btn) {
@@ -1186,44 +959,14 @@ setTimeout(() => {
             if (filter) setTimeout(function() { applyFilter(filter); }, 300);
         })();
 
-    });  // <-- this closes swup:contentReplaced
-//     const logos = document.querySelectorAll('.mil-logo');
-// const darkSections = document.querySelectorAll('.mil-dark-bg');
+    }); // closes swup:contentReplaced
 
-// function updateLogo() {
-//     let darkBackground = false;
-
-//     darkSections.forEach(section => {
-//         const rect = section.getBoundingClientRect();
-//         if (rect.top <= 80 && rect.bottom >= 80) {
-//             darkBackground = true;
-//         }
-//     });
-
-//     logos.forEach(logo => {
-//         if (darkBackground) {
-//             logo.classList.add('dark-logo');
-//         } else {
-//             logo.classList.remove('dark-logo');
-//         }
-//     });
-// }
-
-// window.addEventListener('scroll', updateLogo);
-// window.addEventListener('load', updateLogo);
-// window.addEventListener('resize', updateLogo);
-
-// // Run after DOM is fully ready with slight delay
-// setTimeout(updateLogo, 100);
-// setTimeout(updateLogo, 500);
-// setTimeout(updateLogo, 1000);
-// setTimeout(updateLogo, 3000);
-// });
 }); // closes $(function(){
 
-// GLOBAL - outside jQuery
+
+// ── GLOBAL: Logo switcher (outside jQuery) ─────────────────
 function updateLogo() {
-        if (!document.body.classList.contains('mil-preloader-done')) return;//to make logo visible on preloader
+    if (!document.body.classList.contains('mil-preloader-done')) return;
     const logos = document.querySelectorAll('.mil-logo');
     const darkSections = document.querySelectorAll('.mil-dark-bg');
     let darkBackground = false;
