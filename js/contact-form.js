@@ -1,14 +1,16 @@
 // Contact Form Submission Handler
-// Place this script at the bottom of contact.html before </body>
-// OR include it as: <script src="js/contact-form.js"></script>
 
-document.addEventListener("DOMContentLoaded", function () {
-
+function initContactForm() {
   const form = document.getElementById("contactForm");
   if (!form) return;
 
-  form.addEventListener("submit", function (e) {
+  // Remove any existing listener to avoid duplicates on Swup transitions
+  const newForm = form.cloneNode(true);
+  form.parentNode.replaceChild(newForm, form);
+
+  newForm.addEventListener("submit", function (e) {
     e.preventDefault();
+    e.stopPropagation();
 
     const name    = document.getElementById("name").value.trim();
     const email   = document.getElementById("email").value.trim();
@@ -16,31 +18,31 @@ document.addEventListener("DOMContentLoaded", function () {
     const subject = document.getElementById("subject").value.trim();
     const message = document.getElementById("message").value.trim();
 
-    // ── Basic Validation ──────────────────────────────────────────────────────
+    // ── Basic Validation ────────────────────────────────────────────────────
     if (!name || !email || !phone || !subject || !message) {
       showToast("Please fill in all fields.", "error");
-      return;
+      return false;
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       showToast("Please enter a valid email address.", "error");
-      return;
+      return false;
     }
 
     const phoneRegex = /^[0-9]{7,15}$/;
     if (!phoneRegex.test(phone)) {
       showToast("Please enter a valid phone number.", "error");
-      return;
+      return false;
     }
 
-    // ── Submit Button State ───────────────────────────────────────────────────
-    const submitBtn = form.querySelector("button[type='submit']");
+    // ── Submit Button State ─────────────────────────────────────────────────
+    const submitBtn = newForm.querySelector("button[type='submit']");
     const originalText = submitBtn.innerHTML;
     submitBtn.disabled = true;
     submitBtn.innerHTML = "<span>Sending...</span>";
 
-    // ── Send to PHP ───────────────────────────────────────────────────────────
+    // ── Send to PHP ─────────────────────────────────────────────────────────
     const formData = new FormData();
     formData.append("name",    name);
     formData.append("email",   email);
@@ -55,8 +57,8 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          showToast("Form successfully submitted! Check your inbox for a confirmation email.", "success");
-          form.reset();
+          showToast("Hey! We got your message. We'll get back to you soon! 🎉", "success");
+          newForm.reset();
         } else {
           showToast(data.message || "Something went wrong. Please try again.", "error");
         }
@@ -68,29 +70,35 @@ document.addEventListener("DOMContentLoaded", function () {
         submitBtn.disabled = false;
         submitBtn.innerHTML = originalText;
       });
+
+    return false;
+  });
+}
+
+// ── Toast Helper ──────────────────────────────────────────────────────────────
+function showToast(msg, type) {
+  const container = document.getElementById("toast-container");
+  if (!container) return;
+
+  const toast = document.createElement("div");
+  toast.className = "toast " + type;
+  toast.textContent = msg;
+  container.appendChild(toast);
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      toast.classList.add("show");
+    });
   });
 
-  // ── Toast Helper ─────────────────────────────────────────────────────────────
-  function showToast(msg, type) {
-    const container = document.getElementById("toast-container");
-    if (!container) return;
+  setTimeout(() => {
+    toast.classList.remove("show");
+    setTimeout(() => toast.remove(), 600);
+  }, 5000);
+}
 
-    const toast = document.createElement("div");
-    toast.className = "toast " + type;
-    toast.textContent = msg;
-    container.appendChild(toast);
+// ── Init on first load ────────────────────────────────────────────────────────
+document.addEventListener("DOMContentLoaded", initContactForm);
 
-    // Trigger show
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        toast.classList.add("show");
-      });
-    });
-
-    // Auto-remove after 5 seconds
-    setTimeout(() => {
-      toast.classList.remove("show");
-      setTimeout(() => toast.remove(), 600);
-    }, 5000);
-  }
-});
+// ── Re-init after every Swup page transition ──────────────────────────────────
+document.addEventListener("swup:contentReplaced", initContactForm);
