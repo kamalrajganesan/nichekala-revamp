@@ -10,15 +10,12 @@ p.s. I am available for Freelance hire (UI design, web development). email: mill
 ------------------------------------------- */
 
 
-
 $(function () {
 
     "use strict";
 
     /***************************
-
     swup
-
     ***************************/
     const options = {
         containers: ['#swupMain', '#swupMenu'],
@@ -31,21 +28,15 @@ window.swup = swup;
 
 swup.on('contentReplaced', function() {
     console.log('swup contentReplaced fired');
-    if (typeof initContactForm === 'function') {
-        initContactForm();
-        console.log('initContactForm called');
-    }
 });
+
     /***************************
-
     register gsap plugins
-
     ***************************/
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
     /***************************
-
     color variables
-
     ***************************/
 
     var accent = '#c8157b';
@@ -53,15 +44,12 @@ swup.on('contentReplaced', function() {
     var light = '#fff';
 
     /***************************
-
     preloader — extracted as reusable function so it runs on
     initial load AND on every Swup page transition
-
     ***************************/
 
     function runPreloader() {
         document.body.classList.add('mil-preloader-active');
-        // Reset preloader state so animation plays cleanly each time
         $('.mil-preloader').removeClass("mil-hidden");
         gsap.set(".mil-preloader", { opacity: 1, visibility: "visible" });
         gsap.set(".mil-preloader-animation", { opacity: 0 });
@@ -121,7 +109,7 @@ swup.on('contentReplaced', function() {
             opacity: 0,
             ease: 'sine',
         }, "+=.2");
-// REPLACE the old .mil-up line with these two:
+
         timeline.fromTo(".mil-up", 0.8, {
             opacity: 0,
             y: 40,
@@ -147,49 +135,16 @@ swup.on('contentReplaced', function() {
     document.body.classList.remove('mil-preloader-active');
     document.body.classList.add('mil-preloader-done');
 
-    // DEBUG - remove after testing
-    let invisible = [];
-    document.querySelectorAll('.mil-up').forEach((el, i) => {
-        const style = window.getComputedStyle(el);
-        const rect = el.getBoundingClientRect();
-        if (style.opacity === '0' || style.visibility === 'hidden') {
-            invisible.push({ 
-                index: i, 
-                opacity: style.opacity, 
-                inViewport: rect.top < window.innerHeight && rect.bottom > 0,
-                rectTop: Math.round(rect.top)
-            });
-        }
-    });
-    console.log('=== AFTER PRELOADER DONE ===');
-    console.log('Total invisible:', invisible.length);
-    console.log('In viewport but hidden:', invisible.filter(e => e.inViewport));
-    // END DEBUG
-
-    // Delay to let page paint before checking dark sections
     setTimeout(updateLogo, 100);
     setTimeout(updateLogo, 300);
     setTimeout(updateLogo, 600);
-
-    // Fix stuck mil-up elements after preloader finishes
-//     setTimeout(() => {
-//         document.querySelectorAll('.mil-up').forEach(el => {
-//             if (window.getComputedStyle(el).opacity === '0') {
-//                 gsap.to(el, { opacity: 1, y: 0, scale: 1, duration: 0.4 });
-//             }
-//         });
-//         ScrollTrigger.refresh();
-//     }, 500);
  },
         }, "-=1");
     }
-    // Run on initial page load
     runPreloader();
-    
+
     /***************************
-
     anchor scroll
-
     ***************************/
     $(document).on('click', 'a[href^="#"]', function (event) {
         event.preventDefault();
@@ -205,10 +160,9 @@ swup.on('contentReplaced', function() {
             scrollTop: target.offset().top - offset
         }, 400);
     });
+
     /***************************
-
     append
-
     ***************************/
     $(document).ready(function () {
         $(".mil-arrow").clone().appendTo(".mil-arrow-place");
@@ -216,10 +170,9 @@ swup.on('contentReplaced', function() {
         $(".mil-lines").clone().appendTo(".mil-lines-place");
         $(".mil-main-menu ul li.mil-active > a").clone().appendTo(".mil-current-page");
     });
+
     /***************************
-
     accordion
-
     ***************************/
 
     let groups = gsap.utils.toArray(".mil-accordion-group");
@@ -276,10 +229,9 @@ swup.on('contentReplaced', function() {
             }
         };
     }
+
     /***************************
-
     back to top
-
     ***************************/
     const btt = document.querySelector(".mil-back-to-top .mil-link");
 
@@ -299,10 +251,9 @@ swup.on('contentReplaced', function() {
             toggleActions: "play none reverse none"
         }
     });
+
     /***************************
-
     cursor
-
     ***************************/
     const cursor = document.querySelector('.mil-ball');
 
@@ -431,20 +382,18 @@ swup.on('contentReplaced', function() {
             ease: 'sine',
         });
     });
+
     /***************************
-
      menu
-
     ***************************/
     $('.mil-menu-btn').on("click", function () {
         $('.mil-menu-btn').toggleClass('mil-active');
         $('.mil-menu').toggleClass('mil-active');
         $('.mil-menu-frame').toggleClass('mil-active');
     });
+
     /***************************
-
     main menu
-
     ***************************/
     $('.mil-has-children a').on('click', function () {
         $('.mil-has-children ul').removeClass('mil-active');
@@ -452,10 +401,9 @@ swup.on('contentReplaced', function() {
         $(this).toggleClass('mil-active');
         $(this).next().toggleClass('mil-active');
     });
+
     /***************************
-
     progressbar
-
     ***************************/
     gsap.to('.mil-progress', {
         height: '100%',
@@ -464,10 +412,9 @@ swup.on('contentReplaced', function() {
             scrub: 0.3
         }
     });
+
     /***************************
-
     scroll animations
-
     ***************************/
 
     const appearance = document.querySelectorAll(".mil-up");
@@ -512,7 +459,6 @@ swup.on('contentReplaced', function() {
 
     const parallaxImage = document.querySelectorAll(".mil-parallax");
 
-
     if ($(window).width() > 960) {
         parallaxImage.forEach((section) => {
             var value1 = $(section).data("value-1");
@@ -536,13 +482,11 @@ swup.on('contentReplaced', function() {
 
     rotate.forEach((section) => {
         var value = $(section).data("value");
-        // this line newly added now
-        var value = $(section).data("value");
 
-    if ($(section).hasClass('mil-ct-svg')) {
-        return;
-    }
-    // to here
+        if ($(section).hasClass('mil-ct-svg')) {
+            return;
+        }
+
         gsap.fromTo(section, {
             ease: 'sine',
             rotate: 0,
@@ -556,10 +500,9 @@ swup.on('contentReplaced', function() {
             }
         });
     });
+
     /***************************
-
     fancybox
-
     ***************************/
     $('[data-fancybox="gallery"]').fancybox({
         buttons: [
@@ -572,15 +515,13 @@ swup.on('contentReplaced', function() {
         protect: true
     });
     $.fancybox.defaults.hash = false;
+
     /***************************
-
     reviews slider
-
     ***************************/
 
     var menu = ['<div class="mil-custom-dot mil-slide-1"></div>', '<div class="mil-custom-dot mil-slide-2"></div>', '<div class="mil-custom-dot mil-slide-3"></div>', '<div class="mil-custom-dot mil-slide-4"></div>', '<div class="mil-custom-dot mil-slide-5"></div>', '<div class="mil-custom-dot mil-slide-6"></div>', '<div class="mil-custom-dot mil-slide-7"></div>']
     var mySwiper = new Swiper('.mil-reviews-slider', {
-        // If we need pagination
         pagination: {
             el: '.mil-revi-pagination',
             clickable: true,
@@ -598,9 +539,7 @@ swup.on('contentReplaced', function() {
     })
 
     /***************************
-
     infinite slider
-
     ***************************/
     var swiper = new Swiper('.mil-infinite-show', {
         slidesPerView: 2,
@@ -620,9 +559,7 @@ swup.on('contentReplaced', function() {
     });
 
     /***************************
-
     portfolio slider
-
     ***************************/
     var swiper = new Swiper('.mil-portfolio-slider', {
         slidesPerView: 1,
@@ -641,10 +578,9 @@ swup.on('contentReplaced', function() {
             type: 'fraction',
         },
     });
+
     /***************************
-
     1 item slider
-
     ***************************/
     var swiper = new Swiper('.mil-1-slider', {
         slidesPerView: 1,
@@ -660,10 +596,9 @@ swup.on('contentReplaced', function() {
             type: 'fraction',
         },
     });
+
     /***************************
-
     2 item slider
-
     ***************************/
     var swiper = new Swiper('.mil-2-slider', {
         slidesPerView: 1,
@@ -687,44 +622,41 @@ swup.on('contentReplaced', function() {
 
     document.addEventListener("swup:contentReplaced", function () {
 
-    window.scrollTo(0, 0);
-document.documentElement.scrollTop = 0;
-document.body.scrollTop = 0;
-    updateLogo();
-   gsap.to('.mil-progress', {
-    height: 0,
-    ease: 'sine',
-    onComplete: () => {
-        ScrollTrigger.refresh();
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+        updateLogo();
+        gsap.to('.mil-progress', {
+            height: 0,
+            ease: 'sine',
+            onComplete: () => {
+                ScrollTrigger.refresh();
+                setTimeout(() => {
+                    ScrollTrigger.refresh();
+                }, 500);
+            },
+        });
+
+        document.body.classList.remove('mil-preloader-done');
+        runPreloader();
+
         setTimeout(() => {
-            ScrollTrigger.refresh();
-        }, 500);
-    },
-});                                          // ← gsap.to() closes HERE
+            document.querySelectorAll('.mil-up').forEach(el => {
+                if (window.getComputedStyle(el).opacity === '0') {
+                    gsap.to(el, { opacity: 1, y: 0, scale: 1, duration: 0.4 });
+                }
+            });
+        }, 2000);
 
-    document.body.classList.remove('mil-preloader-done');  // ← THEN this
-    runPreloader();                                        // ← THEN this
-
-    // Safety net for stuck mil-up elements
-setTimeout(() => {
-    document.querySelectorAll('.mil-up').forEach(el => {
-        if (window.getComputedStyle(el).opacity === '0') {
-            gsap.to(el, { opacity: 1, y: 0, scale: 1, duration: 0.4 });
-        }
-    });
-}, 2000);
-    /***************************
-
-     menu
-
-    ***************************/
-    $('.mil-menu-btn').removeClass('mil-active');
-    $('.mil-menu').removeClass('mil-active');
-    $('.mil-menu-frame').removeClass('mil-active');
         /***************************
+         menu
+        ***************************/
+        $('.mil-menu-btn').removeClass('mil-active');
+        $('.mil-menu').removeClass('mil-active');
+        $('.mil-menu-frame').removeClass('mil-active');
 
+        /***************************
         append
-
         ***************************/
         $(document).ready(function () {
             $(".mil-arrow-place .mil-arrow, .mil-animation .mil-dodecahedron, .mil-current-page a").remove();
@@ -735,16 +667,7 @@ setTimeout(() => {
         });
 
         /***************************
-
-        preloader — re-run on every Swup page transition
-
-        ***************************/
-        // runPreloader();
-
-        /***************************
-
         accordion
-
         ***************************/
 
         let groups = gsap.utils.toArray(".mil-accordion-group");
@@ -803,9 +726,7 @@ setTimeout(() => {
         }
 
         /***************************
-
         cursor
-
         ***************************/
 
         $('.mil-drag, .mil-more, .mil-choose').mouseover(function () {
@@ -917,10 +838,9 @@ setTimeout(() => {
                 ease: 'sine',
             });
         });
+
         /***************************
-
         main menu
-
         ***************************/
         $('.mil-has-children a').on('click', function () {
             $('.mil-has-children ul').removeClass('mil-active');
@@ -928,10 +848,9 @@ setTimeout(() => {
             $(this).toggleClass('mil-active');
             $(this).next().toggleClass('mil-active');
         });
+
         /***************************
-
         scroll animations
-
         ***************************/
 
         const appearance = document.querySelectorAll(".mil-up");
@@ -976,7 +895,6 @@ setTimeout(() => {
 
         const parallaxImage = document.querySelectorAll(".mil-parallax");
 
-
         if ($(window).width() > 960) {
             parallaxImage.forEach((section) => {
                 var value1 = $(section).data("value-1");
@@ -1013,10 +931,9 @@ setTimeout(() => {
                 }
             });
         });
+
         /***************************
-
         fancybox
-
         ***************************/
         $('[data-fancybox="gallery"]').fancybox({
             buttons: [
@@ -1029,15 +946,13 @@ setTimeout(() => {
             protect: true
         });
         $.fancybox.defaults.hash = false;
+
         /***************************
-
         reviews slider
-
         ***************************/
 
         var menu = ['<div class="mil-custom-dot mil-slide-1"></div>', '<div class="mil-custom-dot mil-slide-2"></div>', '<div class="mil-custom-dot mil-slide-3"></div>', '<div class="mil-custom-dot mil-slide-4"></div>', '<div class="mil-custom-dot mil-slide-5"></div>', '<div class="mil-custom-dot mil-slide-6"></div>', '<div class="mil-custom-dot mil-slide-7"></div>']
         var mySwiper = new Swiper('.mil-reviews-slider', {
-            // If we need pagination
             pagination: {
                 el: '.mil-revi-pagination',
                 clickable: true,
@@ -1055,9 +970,7 @@ setTimeout(() => {
         })
 
         /***************************
-
         infinite slider
-
         ***************************/
         var swiper = new Swiper('.mil-infinite-show', {
             slidesPerView: 2,
@@ -1077,9 +990,7 @@ setTimeout(() => {
         });
 
         /***************************
-
         portfolio slider
-
         ***************************/
         var swiper = new Swiper('.mil-portfolio-slider', {
             slidesPerView: 1,
@@ -1098,10 +1009,9 @@ setTimeout(() => {
                 type: 'fraction',
             },
         });
+
         /***************************
-
         1 item slider
-
         ***************************/
         var swiper = new Swiper('.mil-1-slider', {
             slidesPerView: 1,
@@ -1117,10 +1027,9 @@ setTimeout(() => {
                 type: 'fraction',
             },
         });
+
        /***************************
-
         2 item slider
-
         ***************************/
         var swiper = new Swiper('.mil-2-slider', {
             slidesPerView: 1,
@@ -1143,9 +1052,7 @@ setTimeout(() => {
         });
 
         /***************************
-
         portfolio filter
-
         ***************************/
         (function() {
             function applyFilter(filter) {
@@ -1173,44 +1080,12 @@ setTimeout(() => {
             if (filter) setTimeout(function() { applyFilter(filter); }, 300);
         })();
 
-    });  // <-- this closes swup:contentReplaced
-//     const logos = document.querySelectorAll('.mil-logo');
-// const darkSections = document.querySelectorAll('.mil-dark-bg');
-
-// function updateLogo() {
-//     let darkBackground = false;
-
-//     darkSections.forEach(section => {
-//         const rect = section.getBoundingClientRect();
-//         if (rect.top <= 80 && rect.bottom >= 80) {
-//             darkBackground = true;
-//         }
-//     });
-
-//     logos.forEach(logo => {
-//         if (darkBackground) {
-//             logo.classList.add('dark-logo');
-//         } else {
-//             logo.classList.remove('dark-logo');
-//         }
-//     });
-// }
-
-// window.addEventListener('scroll', updateLogo);
-// window.addEventListener('load', updateLogo);
-// window.addEventListener('resize', updateLogo);
-
-// // Run after DOM is fully ready with slight delay
-// setTimeout(updateLogo, 100);
-// setTimeout(updateLogo, 500);
-// setTimeout(updateLogo, 1000);
-// setTimeout(updateLogo, 3000);
-// });
-}); // closes $(function(){
+    });
+});
 
 // GLOBAL - outside jQuery
 function updateLogo() {
-        if (!document.body.classList.contains('mil-preloader-done')) return;//to make logo visible on preloader
+    if (!document.body.classList.contains('mil-preloader-done')) return;
     const logos = document.querySelectorAll('.mil-logo');
     const darkSections = document.querySelectorAll('.mil-dark-bg');
     let darkBackground = false;
