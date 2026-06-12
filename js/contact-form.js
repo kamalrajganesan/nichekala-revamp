@@ -1,55 +1,60 @@
-document.addEventListener("submit", function(e) {
-  if (e.target.id !== "contactForm") return;
+function initContactForm() {
+  const form = document.getElementById("contactForm");
+  if (!form) return;
 
-  e.preventDefault();
+  form.removeEventListener("submit", form._submitHandler);
 
-  const form = e.target;
-  const name    = document.getElementById("name").value.trim();
-  const email   = document.getElementById("email").value.trim();
-  const phone   = document.getElementById("phone").value.trim();
-  const subject = document.getElementById("subject").value.trim();
-  const message = document.getElementById("message").value.trim();
+  form._submitHandler = function(e) {
+    e.preventDefault();
+    e.stopPropagation();
 
-  if (!name || !email || !phone || !subject || !message) {
-    showToast("Please fill in all fields.", "error");
-    return false;
-  }
+    const name    = document.getElementById("name").value.trim();
+    const email   = document.getElementById("email").value.trim();
+    const phone   = document.getElementById("phone").value.trim();
+    const subject = document.getElementById("subject").value.trim();
+    const message = document.getElementById("message").value.trim();
 
-  const submitBtn = form.querySelector("button[type='submit']");
-  const originalText = submitBtn.innerHTML;
-  submitBtn.disabled = true;
-  submitBtn.innerHTML = "<span>Sending...</span>";
-
-  const formData = new FormData();
-  formData.append("name", name);
-  formData.append("email", email);
-  formData.append("phone", phone);
-  formData.append("subject", subject);
-  formData.append("message", message);
-
-  fetch("php/vendor/send-mail.php", {
-    method: "POST",
-    body: formData
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.success) {
-      showToast("Hey! We got your message. We'll get back to you soon! 🎉", "success");
-      form.reset();
-    } else {
-      showToast(data.message || "Something went wrong.", "error");
+    if (!name || !email || !phone || !subject || !message) {
+      showToast("Please fill in all fields.", "error");
+      return;
     }
-  })
-  .catch(() => {
-    showToast("Network error. Please try again.", "error");
-  })
-  .finally(() => {
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = originalText;
-  });
 
-  return false;
-});
+    const submitBtn = form.querySelector("button[type='submit']");
+    const originalText = submitBtn.innerHTML;
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = "<span>Sending...</span>";
+
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("phone", phone);
+    formData.append("subject", subject);
+    formData.append("message", message);
+
+    fetch("php/vendor/send-mail.php", {
+      method: "POST",
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        showToast("Hey! We got your message. We'll get back to you soon! 🎉", "success");
+        form.reset();
+      } else {
+        showToast(data.message || "Something went wrong.", "error");
+      }
+    })
+    .catch(() => {
+      showToast("Network error. Please try again.", "error");
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+    });
+  };
+
+  form.addEventListener("submit", form._submitHandler);
+}
 
 function showToast(msg, type) {
   const container = document.getElementById("toast-container");
@@ -64,3 +69,9 @@ function showToast(msg, type) {
     setTimeout(() => toast.remove(), 600);
   }, 5000);
 }
+
+// Initial load
+document.addEventListener("DOMContentLoaded", initContactForm);
+
+// Re-init after every Swup page transition
+document.addEventListener("swup:contentReplaced", initContactForm);
