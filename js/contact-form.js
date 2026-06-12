@@ -28,7 +28,7 @@ function initContactForm() {
     formData.append("subject", subject);
     formData.append("message", message);
 
-    fetch("/php/vendor/send-mail.php", {
+    fetch("php/vendor/send-mail.php", {
       method: "POST",
       body: formData
     })
