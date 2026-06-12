@@ -70,8 +70,20 @@ function showToast(msg, type) {
   }, 5000);
 }
 
-// Initial load
-document.addEventListener("DOMContentLoaded", initContactForm);
-
 // Re-init after every Swup page transition
 document.addEventListener("swup:contentReplaced", initContactForm);
+
+// Initial load — waits for Swup to be ready before binding
+document.addEventListener("DOMContentLoaded", function () {
+  var interval = setInterval(function () {
+    if (window.swup) {
+      clearInterval(interval);
+      initContactForm();
+    }
+  }, 20);
+  // Fallback: if swup never appears within 5s, init anyway
+  setTimeout(function () {
+    clearInterval(interval);
+    initContactForm();
+  }, 5000);
+});
