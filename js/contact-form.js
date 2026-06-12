@@ -1,21 +1,15 @@
-function initContactForm() {
-  const form = document.getElementById("contactForm");
-  if (!form) return;
+document.addEventListener("submit", async function (e) {
+  const form = e.target;
 
-  // prevent duplicate binding
-  if (form._submitHandler) {
-    form.removeEventListener("submit", form._submitHandler);
-  }
-
-  form._submitHandler = async function (e) {
+  if (form && form.id === "contactForm") {
     e.preventDefault();
     e.stopImmediatePropagation();
 
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const subject = document.getElementById("subject").value.trim();
-    const message = document.getElementById("message").value.trim();
+    const name = form.querySelector("#name").value.trim();
+    const email = form.querySelector("#email").value.trim();
+    const phone = form.querySelector("#phone").value.trim();
+    const subject = form.querySelector("#subject").value.trim();
+    const message = form.querySelector("#message").value.trim();
 
     if (!name || !email || !phone || !subject || !message) {
       showToast("Please fill in all fields.", "error");
@@ -56,11 +50,5 @@ function initContactForm() {
 
     submitBtn.disabled = false;
     submitBtn.innerHTML = originalText;
-  };
-
-  form.addEventListener("submit", form._submitHandler);
-}
-
-/* IMPORTANT: do NOT double-bind */
-// document.addEventListener("DOMContentLoaded", initContactForm);
-window.initContactForm = initContactForm;
+  }
+});
