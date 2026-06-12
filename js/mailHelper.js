@@ -229,7 +229,11 @@ function initRecaptcha() {
 /* ------------------------------------------
    FIRST PAGE LOAD
 ------------------------------------------- */
-initContactForm();
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initContactForm);
+} else {
+    initContactForm();
+}
 
 /* ------------------------------------------
    SWUP TRANSITIONS
@@ -239,4 +243,28 @@ document.addEventListener('swup:contentReplaced', function () {
     setTimeout(function () {
         initRecaptcha();
     }, 1000);
+});
+
+// Replace the bottom of mailHelper.js with:
+function tryInit() {
+    if (document.getElementById('contactForm')) {
+        initContactForm();
+    }
+}
+
+/* ------------------------------------------
+   FIRST PAGE LOAD
+------------------------------------------- */
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initContactForm);
+} else {
+    initContactForm();
+}
+
+/* ------------------------------------------
+   SWUP TRANSITIONS
+------------------------------------------- */
+document.addEventListener('swup:contentReplaced', function () {
+    setTimeout(initContactForm, 100);
+    setTimeout(initRecaptcha, 1000);
 });
