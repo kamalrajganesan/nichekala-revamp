@@ -29,16 +29,16 @@
 
 ## Featured projects
 
-- [Arjavam](https://nichekala.in/portfolio/Arjavam) — Residential architecture in Goa, designed with Vastu Shastra principles and vernacular sensibilities
-- [20X60](https://nichekala.in/portfolio/20X60) — Residential design project in Chennai on a 20×60 plot
-- [Inside-out](https://nichekala.in/portfolio/Inside-out) — Residential architecture in Chennai
-- [Coffee and Conversation](https://nichekala.in/portfolio/Coffee-and-conversation) — Café interior design in Chennai
-- [Mugappair Mail](https://nichekala.in/portfolio/Mugappair-mail) — Commercial interior design in Chennai
-- [Skewed](https://nichekala.in/portfolio/Skewed) — Commercial building design in Chennai
-- [Weekend Homes](https://nichekala.in/portfolio/weekend-homes) — Recreational architecture
-- [Panaroma Box](https://nichekala.in/portfolio/panaroma-Box) — Residential architecture in Chennai
-- [A-14](https://nichekala.in/portfolio/A-14) — Recreational project in Chennai
-- [Fuel One](https://nichekala.in/portfolio/fuel-one) — Recreational interior design in Chennai
+- [Arjavam](https://nichekala.in/projects/Arjavam) — Residential architecture in Goa, designed with Vastu Shastra principles and vernacular sensibilities
+- [20X60](https://nichekala.in/projects/20X60) — Residential design project in Chennai on a 20×60 plot
+- [Inside-out](https://nichekala.in/projects/Inside-out) — Residential architecture in Chennai
+- [Coffee and Conversation](https://nichekala.in/projects/Coffee-and-conversation) — Café interior design in Chennai
+- [Mugappair Mail](https://nichekala.in/projects/Mugappair-mail) — Commercial interior design in Chennai
+- [Skewed](https://nichekala.in/projects/Skewed) — Commercial building design in Chennai
+- [Weekend Homes](https://nichekala.in/projects/weekend-homes) — Recreational architecture
+- [Panaroma Box](https://nichekala.in/projects/panaroma-Box) — Residential architecture in Chennai
+- [A-14](https://nichekala.in/projects/A-14) — Recreational project in Chennai
+- [Fuel One](https://nichekala.in/projects/fuel-one) — Recreational interior design in Chennai
 
 ## Editorial / Insights
 

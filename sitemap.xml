@@ -15,16 +15,16 @@
   <url><loc>https://nichekala.in/terms-conditions</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 
   <!-- Portfolio projects -->
-  <url><loc>https://nichekala.in/portfolio/20X60</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nichekala.in/portfolio/A-14</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nichekala.in/portfolio/Arjavam</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nichekala.in/portfolio/Coffee-and-conversation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nichekala.in/portfolio/fuel-one</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nichekala.in/portfolio/Inside-out</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nichekala.in/portfolio/Mugappair-mail</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nichekala.in/portfolio/panaroma-Box</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nichekala.in/portfolio/Skewed</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://nichekala.in/portfolio/weekend-homes</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nichekala.in/projects/20X60</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nichekala.in/projects/A-14</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nichekala.in/projects/Arjavam</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nichekala.in/projects/Coffee-and-conversation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nichekala.in/projects/fuel-one</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nichekala.in/projects/Inside-out</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nichekala.in/projects/Mugappair-mail</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nichekala.in/projects/panaroma-Box</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nichekala.in/projects/Skewed</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://nichekala.in/projects/weekend-homes</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Blog articles -->
   <url><loc>https://nichekala.in/blogs/10-hacks-on-how-to-manifest-home</loc><changefreq>yearly</changefreq><priority>0.6</priority></url>

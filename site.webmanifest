@@ -1,0 +1,19 @@
+{
+  "name": "Nichekala Architecture and Design Studio",
+  "short_name": "Nichekala",
+  "description": "Chennai-based architecture and interior design studio creating purposeful homes, pocket homes, commercial spaces, and heritage conservation projects.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "display": "standalone",
+  "start_url": "/",
+  "scope": "/",
+  "lang": "en-IN"
+}
