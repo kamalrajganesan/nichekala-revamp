@@ -1272,7 +1272,7 @@ function initContactForm() {
         var submitBtn = form.querySelector("button[type='submit']");
         var originalHTML = submitBtn.innerHTML;
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>Sending…</span>';
+        submitBtn.innerHTML = '<span>Sending…</span><div class="mil-arrow-place"></div>';
 
         fetch('./php/vendor/send-mail.php', {
             method: 'POST',
