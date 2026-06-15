@@ -1270,30 +1270,30 @@ function initContactForm() {
         }
 
         var submitBtn = form.querySelector("button[type='submit']");
-        var originalHTML = submitBtn.innerHTML;
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>Sending…</span><div class="mil-arrow-place"></div>';
+var spanEl = submitBtn.querySelector('span');
+submitBtn.disabled = true;
+spanEl.textContent = 'Sending…';
 
-        fetch('./php/vendor/send-mail.php', {
-            method: 'POST',
-            body: new FormData(form)
-        })
-        .then(function(res) { return res.json(); })
-        .then(function(data) {
-            if (data.success) {
-                showToast('Message sent successfully!', 'success');
-                form.reset();
-            } else {
-                showToast(data.message || 'Something went wrong.', 'error');
-            }
-        })
-        .catch(function() {
-            showToast('Network error. Please try again.', 'error');
-        })
-        .finally(function() {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalHTML;
-        });
+fetch('./php/vendor/send-mail.php', {
+    method: 'POST',
+    body: new FormData(form)
+})
+.then(function(res) { return res.json(); })
+.then(function(data) {
+    if (data.success) {
+        showToast('Message sent successfully!', 'success');
+        form.reset();
+    } else {
+        showToast(data.message || 'Something went wrong.', 'error');
+    }
+})
+.catch(function() {
+    showToast('Network error. Please try again.', 'error');
+})
+.finally(function() {
+    submitBtn.disabled = false;
+    spanEl.textContent = 'Send message';
+});
     });
 }
 
