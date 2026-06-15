@@ -1274,7 +1274,7 @@ function initContactForm() {
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<span>Sending…</span>';
 
-        fetch('./php/mailController.php', {
+        fetch('./php/vendor/send-mail.php', {
             method: 'POST',
             body: new FormData(form)
         })
