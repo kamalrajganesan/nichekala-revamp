@@ -1274,8 +1274,11 @@ var spanEl = submitBtn.querySelector('span');
 submitBtn.disabled = true;
 spanEl.textContent = 'Sending…';
 
-fetch('./php/vendor/send-mail.php', {
-    method: 'POST',
+var isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+var protocol = isLocal ? 'http:' : window.location.protocol;
+var phpUrl = protocol + '//' + window.location.host + '/' + window.location.pathname.split('/')[1] + '/php/vendor/send-mail.php';
+console.log('PHP URL:', phpUrl);
+fetch(phpUrl, {    method: 'POST',
     body: new FormData(form)
 })
 .then(function(res) { return res.json(); })
