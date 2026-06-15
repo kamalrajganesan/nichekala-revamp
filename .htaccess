@@ -58,7 +58,7 @@ ErrorDocument 404 /404.html
     Header set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
 
     # Content Security Policy — allows Google reCAPTCHA, GTM, GA, CDN fonts/icons
-    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' http://localhost https://localhost https://www.google-analytics.com https://www.googletagmanager.com frame-src https://www.google.com;"
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.google.com https://www.gstatic.com https://www.googletagmanager.com https://www.google-analytics.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; img-src 'self' data: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com; frame-src https://www.google.com;"
 </IfModule>
 
 # ============================================================
@@ -129,7 +129,7 @@ RewriteRule (^\.|/\.) - [F]
 </FilesMatch>
 
 # Block access to composer/node files
-RewriteRule ^(node_modules|scss) - [F,L]
+RewriteRule ^(node_modules|php/vendor|scss) - [F,L]
 
 # ============================================================
 # Trailing Slash Handling
