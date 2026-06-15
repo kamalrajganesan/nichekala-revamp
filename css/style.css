@@ -86,8 +86,12 @@ body {
 }
 
 *::selection {
-  color: inherit;
-  background-color: transparent;
+  color: #ffffff;
+  background-color: #c8157b;
+}
+*::-moz-selection {
+  color: #ffffff;
+  background-color: #c8157b;
 }
 
 .mil-wrapper {
