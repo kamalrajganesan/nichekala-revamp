@@ -8,6 +8,16 @@ Portfolio:  https://themeforest.net/user/millerdigitaldesign/portfolio?ref=Mille
 p.s. I am available for Freelance hire (UI design, web development). email: miller.themes@gmail.com
 
 ------------------------------------------- */
+
+/* Text selection color — brand accent */
+::selection {
+  background-color: #c8157b;
+  color: #ffffff;
+}
+::-moz-selection {
+  background-color: #c8157b;
+  color: #ffffff;
+}
 /*--------------------------------------------
 
 1. common
@@ -86,8 +96,12 @@ body {
 }
 
 *::selection {
-  color: inherit;
-  background-color: transparent;
+  color: #ffffff;
+  background-color: #c8157b;
+}
+*::-moz-selection {
+  color: #ffffff;
+  background-color: #c8157b;
 }
 
 .mil-wrapper {
@@ -1191,6 +1205,42 @@ menu button
   align-items: center;
   transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
 }
+
+/* WhatsApp button in navbar (sits to the left of the hamburger).
+   Color rules mirror the hamburger's exactly (same selectors, !important parity). */
+.mil-frame-top .mil-wa-btn {
+  pointer-events: all;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: 22px;
+  font-size: 22px;
+  line-height: 0;
+  color: rgb(255, 255, 255) !important;
+  transition: opacity 0.3s, color 0.3s;
+}
+.mil-frame-top .mil-wa-btn:hover {
+  opacity: 0.65;
+}
+
+/* Sibling-of-non-dark-logo: turn dark (matches the hamburger's same rule) */
+.mil-frame-top .mil-logo:not(.dark-logo) ~ .mil-wa-btn {
+  color: rgb(0, 0, 0) !important;
+}
+
+/* Menu open: outer navbar's WA goes white (matches hamburger) */
+.mil-menu-frame.mil-active ~ .mil-frame .mil-wa-btn {
+  color: rgb(255, 255, 255) !important;
+}
+
+/* Mobile (<1200px): always white, even with sibling logo */
+@media screen and (max-width: 1200px) {
+  .mil-frame .mil-frame-top .mil-wa-btn,
+  .mil-frame-top .mil-logo:not(.dark-logo) ~ .mil-wa-btn {
+    color: rgb(255, 255, 255) !important;
+  }
+}
 @media screen and (max-width: 992px) {
   .mil-menu-btn {
     transform: scale(0.85);
@@ -2263,6 +2313,20 @@ team
 
   .mil-team-card img {
     height: 350px;
+  }
+}
+
+/* Portrait card — show full image without cropping */
+/* .mil-team-card.mil-portrait-card img,
+.mil-team-card.mil-portrait-card:hover img {
+  height: auto;
+  object-fit: contain;
+  transform: none;
+} */
+
+@media screen and (max-width: 992px) {
+  .mil-team-card.mil-portrait-card img {
+    height: auto;
   }
 }
 
@@ -3928,7 +3992,6 @@ body.mil-preloader-active .mil-frame-top .mil-logo:not(.dark-logo) {
     }
 }
 /* about page four column section */
-/* 4-column process section fix */
 .mil-dark-bg .mi-invert-fix .col-lg-3 h6,
 .mil-dark-bg .mi-invert-fix .col-lg-3 p,
 .mil-dark-bg .mi-invert-fix .col-lg-3 span,
