@@ -780,6 +780,41 @@
 [data-category].mil-hidden {
     display: none !important;
 }
+
+/* ============================================ */
+/* SHOW ALL PORTFOLIO IMAGES AT NATURAL ASPECT  */
+/* RATIO - no fixed-frame crop, no stretch      */
+/* ============================================ */
+#portfolio-grid .mil-portfolio-item .mil-cover-frame,
+#portfolio-grid .mil-portfolio-item .mil-cover-frame.mil-vert,
+#portfolio-grid .mil-portfolio-item .mil-cover-frame.mil-hori {
+    position: relative !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding-bottom: 0 !important;   /* remove fixed aspect-ratio crop */
+    aspect-ratio: auto !important;
+}
+
+#portfolio-grid .mil-portfolio-item .mil-cover {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: auto !important;
+}
+
+/* Image keeps its real proportions: scales to column width, height follows */
+#portfolio-grid .mil-portfolio-item .mil-cover-frame .mil-cover img {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: unset !important;
+    object-position: unset !important;
+    display: block !important;
+    top: auto !important;
+    left: auto !important;
+}
+
 /* ============================= */
 /* POCKET HOME - FIX FULL DISPLAY + NO GAP */
 /* ============================= */
