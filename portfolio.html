@@ -323,7 +323,7 @@
                         <div class="mil-label mil-upper mil-accent">Commercial</div>
                         <div class="mil-label mil-upper"></div>
                       </div>
-                      <h4 class="mil-up">MOGAPPAIR Mail</h4>
+                      <h4 class="mil-up">MOGGAPPAIR MAIL</h4>
                     </div>
                   </a>
                 </div>
@@ -340,7 +340,7 @@
                         <div class="mil-label mil-upper mil-accent">Residential</div>
                         <div class="mil-label mil-upper"></div>
                       </div>
-                      <h4 class="mil-up">SKEWED</h4>
+                      <h4 class="mil-up">SKEWED COMMERCIAL</h4>
                     </div>
                   </a>
                 </div>
@@ -368,7 +368,7 @@
                   <a href="./projects/Inside-out.html" class="mil-portfolio-item mil-more mil-mb-60">
                     <div class="mil-cover-frame mil-vert mil-up">
                       <div class="mil-cover">
-                        <img src="img/Projects/INSIDE- OUT RESIDENCE/Presentation- Elijah 20220407_page-0014.webp" alt="cover" />
+                        <img src="img/Projects/INSIDE- OUT RESIDENCE/inside-outside.png" alt="cover" />
                       </div>
                     </div>
                     <div class="mil-descr">
@@ -566,7 +566,7 @@
                     </div>
                     <div class="mil-descr">
                       <div class="mil-labels mil-up mil-mb-15">
-                        <div class="mil-label mil-upper mil-accent">CMDA, Puzhal</div>
+                        <div class="mil-label mil-upper mil-accent">Pocket Home</div>
                         <div class="mil-label mil-upper"></div>
                       </div>
                       <h4 class="mil-up">Koodam</h4>
@@ -783,164 +783,177 @@
 }
 
 /* ============================================ */
-/* SHOW ALL PORTFOLIO IMAGES AT NATURAL ASPECT  */
-/* RATIO - no fixed-frame crop, no stretch      */
+/* PORTFOLIO — 3-COLUMN GRID WITH HOVER OVERLAY  */
+/* Uniform tiles; label + title reveal over the  */
+/* image on hover, with a very light overlay.    */
 /* ============================================ */
+
+/* Grid container: override Bootstrap row → CSS grid, 3 columns */
+#portfolio-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px !important;
+    margin: 0 !important;
+}
+
+/* Each Bootstrap column becomes a plain grid cell */
+#portfolio-grid > [data-category] {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* The portfolio item = image tile that clips the overlay */
+#portfolio-grid .mil-portfolio-item {
+    position: relative !important;
+    display: block !important;
+    overflow: hidden !important;
+    border-radius: 8px !important;
+    margin: 0 !important;
+    line-height: 0 !important;
+    transform: none !important;   /* kill parallax offset */
+}
+
+/* Cover frame fills the tile with a fixed aspect ratio for uniform rows */
 #portfolio-grid .mil-portfolio-item .mil-cover-frame,
 #portfolio-grid .mil-portfolio-item .mil-cover-frame.mil-vert,
 #portfolio-grid .mil-portfolio-item .mil-cover-frame.mil-hori {
     position: relative !important;
+    width: 100% !important;
     height: auto !important;
-    min-height: 0 !important;
-    padding-bottom: 0 !important;   /* remove fixed aspect-ratio crop */
-    aspect-ratio: auto !important;
+    aspect-ratio: 4 / 3 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    border-radius: 8px !important;
+    transform: none !important;
+    opacity: 1 !important;        /* never let mil-up reveal hide the tile */
+    visibility: visible !important;
 }
 
 #portfolio-grid .mil-portfolio-item .mil-cover {
-    position: relative !important;
-    top: auto !important;
-    left: auto !important;
+    position: absolute !important;
+    inset: 0 !important;
+    top: 0 !important;
+    left: 0 !important;
     width: 100% !important;
-    height: auto !important;
-}
-
-/* Image keeps its real proportions: scales to column width, height follows */
-#portfolio-grid .mil-portfolio-item .mil-cover-frame .mil-cover img {
-    position: relative !important;
-    width: 100% !important;
-    height: auto !important;
-    object-fit: unset !important;
-    object-position: unset !important;
-    display: block !important;
-    top: auto !important;
-    left: auto !important;
-}
-
-/* ============================= */
-/* POCKET HOME - FIX FULL DISPLAY + NO GAP */
-/* ============================= */
-
-/* Reset the cover frame - remove fixed height crop */
-[data-category="pocket-home"] .mil-cover-frame,
-[data-category="pocket-home"] .mil-cover-frame.mil-vert {
-    height: auto !important;
-    min-height: unset !important;
-    max-height: unset !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
     overflow: hidden !important;
-    aspect-ratio: unset !important;
-    padding: 0 !important;
+    border-radius: 8px !important;
 }
 
-[data-category="pocket-home"] .mil-cover {
-    position: relative !important;
-    height: auto !important;
-    min-height: unset !important;
-    overflow: hidden !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-/* Image fills naturally - no crop, no absolute positioning */
-[data-category="pocket-home"] .mil-cover img,
-[data-category="pocket-home"] .mil-cover-frame img {
+#portfolio-grid .mil-portfolio-item .mil-cover img {
+    position: absolute !important;
+    inset: 0 !important;
+    top: 0 !important;
+    left: 0 !important;
     width: 100% !important;
-    height: auto !important;
-    max-height: none !important;
-    object-fit: unset !important;
-    object-position: unset !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
     display: block !important;
-    position: relative !important;
     transform: none !important;
-    top: unset !important;
-    left: unset !important;
+    transition: transform 0.6s ease !important;
+    border-radius: 8px !important;
+}
+
+/* Subtle zoom on hover */
+#portfolio-grid .mil-portfolio-item:hover .mil-cover img {
+    transform: scale(1.05) !important;
+}
+
+/* Very light overlay — hidden by default, fades in on hover */
+#portfolio-grid .mil-portfolio-item .mil-cover-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.42);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+#portfolio-grid .mil-portfolio-item:hover .mil-cover-frame::after {
+    opacity: 1;
+}
+
+/* Description overlays the image bottom, hidden until hover */
+#portfolio-grid .mil-portfolio-item .mil-descr {
+    position: absolute !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 3 !important;
+    padding: 24px !important;
     margin: 0 !important;
-    padding: 0 !important;
+    opacity: 0 !important;
+    visibility: visible !important;
+    transform: translateY(12px) !important;
+    transition: opacity 0.4s ease, transform 0.4s ease !important;
+    line-height: 1.4 !important;
+    pointer-events: none;
+    /* soft scrim so text stays legible over bright images */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0) 90%);
+}
+#portfolio-grid .mil-portfolio-item:hover .mil-descr {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
 }
 
-/* THE KEY FIX: Kill the mil-up ghost gap
-   GSAP sets translateY + opacity on .mil-up before scroll triggers.
-   This leaves a tall invisible reserved space below the image. */
-[data-category="pocket-home"] .mil-up,
-[data-category="pocket-home"] .mil-up * {
-    opacity: 1 !important;
+/* Label + title readable (white) over the image */
+#portfolio-grid .mil-descr .mil-labels {
+    margin-bottom: 6px !important;
     transform: none !important;
-    will-change: auto !important;
+    opacity: 1 !important;
+}
+#portfolio-grid .mil-descr .mil-label,
+#portfolio-grid .mil-descr .mil-label.mil-accent {
+    color: #fff !important;
+    opacity: 0.85 !important;
+    transform: none !important;
     visibility: visible !important;
 }
-
-/* Also kill any inline GSAP styles injected on these elements */
-[data-category="pocket-home"] .mil-cover-frame[style],
-[data-category="pocket-home"] .mil-cover[style],
-[data-category="pocket-home"] img[style] {
-    transform: none !important;
-    opacity: 1 !important;
-    height: auto !important;
-    min-height: unset !important;
-}
-
-/* Description text fully visible below image */
-[data-category="pocket-home"] .mil-descr {
-    padding-top: 16px !important;
-    padding-bottom: 8px !important;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    position: relative !important;
-    z-index: 2 !important;
+#portfolio-grid .mil-descr h4 {
+    color: #fff !important;
     margin: 0 !important;
-}
-
-[data-category="pocket-home"] .mil-descr h4,
-[data-category="pocket-home"] .mil-descr .mil-labels,
-[data-category="pocket-home"] .mil-descr .mil-label {
-    display: block !important;
-    visibility: visible !important;
     opacity: 1 !important;
-    overflow: visible !important;
     transform: none !important;
-}
-
-/* Collapse any empty space inside the portfolio item wrapper */
-[data-category="pocket-home"] .mil-portfolio-item {
-    display: block !important;
-    overflow: visible !important;
-    line-height: 0 !important; /* collapses inline-block gaps */
-}
-
-[data-category="pocket-home"] .mil-portfolio-item .mil-descr {
-    line-height: 1.5 !important; /* restore normal line-height for text */
+    visibility: visible !important;
 }
 
 /* ============================= */
-/* TABLET */
+/* TABLET — 2 columns */
 /* ============================= */
 @media (max-width: 991px) {
-    [data-category="pocket-home"] {
-        width: 100% !important;
-    }
-    [data-category="pocket-home"] .mil-portfolio-item {
-        margin-bottom: 40px !important;
+    #portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px !important;
     }
 }
 
 /* ============================= */
-/* MOBILE */
+/* MOBILE — 1 column, labels always visible (no hover on touch) */
 /* ============================= */
 @media (max-width: 767px) {
-    [data-category="pocket-home"] {
-        width: 100% !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
+    #portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 16px !important;
     }
-    [data-category="pocket-home"] .mil-cover-frame {
-        border-radius: 0 !important;
+    #portfolio-grid .mil-portfolio-item .mil-descr {
+        opacity: 1 !important;
+        transform: none !important;
     }
-    [data-category="pocket-home"] h4 {
+    #portfolio-grid .mil-portfolio-item .mil-cover-frame::after {
+        opacity: 1;
+    }
+    #portfolio-grid .mil-descr h4 {
         font-size: 20px !important;
     }
-}
-[data-category="pocket-home"].col-lg-5 {
-    margin-bottom: -20px !important;
 }
 </style> 
 

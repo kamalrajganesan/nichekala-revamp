@@ -2765,7 +2765,7 @@ portfolio
 .mil-portfolio-item .mil-cover-frame {
   position: relative;
   overflow: hidden;
-  margin-bottom: 30px;
+  margin-bottom: 12px;
 }
 .mil-portfolio-item .mil-cover-frame .mil-cover {
   position: absolute;
