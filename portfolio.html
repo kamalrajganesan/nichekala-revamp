@@ -305,7 +305,14 @@
                 <span class="mil-filter-label">Filter by:</span>
                 <button class="mil-filter-btn active" data-filter="all">All</button>
                 <button class="mil-filter-btn" data-filter="pocket-home">Pocket Homes</button>
+                <div class="mil-portfolio-search">
+                  <svg class="mil-search-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
+                    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/>
+                  </svg>
+                  <input type="text" id="portfolio-search" class="mil-search-input" placeholder="Search" aria-label="Search" autocomplete="off">
+                </div>
               </div>
+              <p id="portfolio-no-results" class="mil-up" style="display:none;color:#777;margin:-40px 0 40px;">No projects match your search.</p>
 
               <div class="row justify-content-between align-items-center" id="portfolio-grid">
 
@@ -323,7 +330,7 @@
                         <div class="mil-label mil-upper mil-accent">Commercial</div>
                         <div class="mil-label mil-upper"></div>
                       </div>
-                      <h4 class="mil-up">MOGGAPPAIR MAIL</h4>
+                      <h4 class="mil-up">Moggappair Mail</h4>
                     </div>
                   </a>
                 </div>
@@ -340,7 +347,7 @@
                         <div class="mil-label mil-upper mil-accent">Residential</div>
                         <div class="mil-label mil-upper"></div>
                       </div>
-                      <h4 class="mil-up">SKEWED COMMERCIAL</h4>
+                      <h4 class="mil-up">Skewed Commercial</h4>
                     </div>
                   </a>
                 </div>
@@ -359,7 +366,7 @@
         <div class="mil-label mil-upper mil-accent">Commercial</div>
         <div class="mil-label mil-upper"></div>
       </div>
-      <h4 class="mil-up">FUEL ONE</h4>
+      <h4 class="mil-up">Fuel One</h4>
     </div>
   </a>
 </div>
@@ -376,11 +383,11 @@
                         <div class="mil-label mil-upper mil-accent">Residential</div>
                         <div class="mil-label mil-upper"></div>
                       </div>
-                      <h4 class="mil-up">INSIDE- OUT RESIDENCE</h4>
+                      <h4 class="mil-up">Inside-Out Residence</h4>
                     </div>
                   </a>
                 </div>
-<!-- 
+<!--
 <div class="col-lg-6" data-category="other">
   <a href="./projects/Inside-out.html" class="mil-portfolio-item mil-more mil-parallax mil-mb-60" data-value-1="60" data-value-2="-60">
     <div class="mil-cover-frame mil-vert mil-up">
@@ -409,7 +416,7 @@
                         <div class="mil-label mil-upper mil-accent">Residential</div>
                         <div class="mil-label mil-upper"></div>
                       </div>
-                      <h4 class="mil-up">ARJAVAM</h4>
+                      <h4 class="mil-up">Arjavam</h4>
                     </div>
                   </a>
                 </div>
@@ -443,7 +450,7 @@
                         <div class="mil-label mil-upper mil-accent">Recreational</div>
                         <div class="mil-label mil-upper"></div>
                       </div>
-                      <h4 class="mil-up">COFFEE AND CONVERSATIONS</h4>
+                      <h4 class="mil-up">Coffee and Conversations</h4>
                     </div>
                   </a>
                 </div>
@@ -460,7 +467,7 @@
                         <div class="mil-label mil-upper mil-accent">Residential</div>
                         <div class="mil-label mil-upper"></div>
                       </div>
-                      <h4 class="mil-up">PANORAMA BOX</h4>
+                      <h4 class="mil-up">Panorama Box</h4>
                     </div>
                   </a>
                 </div>
@@ -780,6 +787,57 @@
 
 [data-category].mil-hidden {
     display: none !important;
+}
+
+/* ── Search bar (right corner of filter row) ── */
+.mil-portfolio-search {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 32px;
+    padding: 0 14px;
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    background: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mil-portfolio-search:focus-within {
+    border-color: #222;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+}
+
+.mil-portfolio-search .mil-search-icon {
+    color: #999;
+    flex: none;
+}
+
+.mil-search-input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 12px;
+    line-height: 1;
+    letter-spacing: 0.5px;
+    color: #222;
+    width: 160px;
+    padding: 0;
+    margin: 0;
+}
+
+.mil-search-input::placeholder {
+    color: #999;
+}
+
+@media (max-width: 767px) {
+    .mil-portfolio-search {
+        margin-left: 0;
+        width: 100%;
+    }
+    .mil-search-input {
+        width: 100%;
+    }
 }
 
 /* ============================================ */
@@ -1128,20 +1186,34 @@
     <script src="js/main.js"></script>
 
    <script>
-  function applyFilter(filter) {
+  var currentFilter = 'all';
+  var currentSearch = '';
+
+  function applyView() {
     document.querySelectorAll('.mil-filter-btn').forEach(function(btn) {
-      btn.classList.remove('active');
-      if (btn.getAttribute('data-filter') === filter) {
-        btn.classList.add('active');
-      }
+      btn.classList.toggle('active', btn.getAttribute('data-filter') === currentFilter);
     });
+    var query = currentSearch.trim().toLowerCase();
+    var visibleCount = 0;
     document.querySelectorAll('[data-category]').forEach(function(item) {
-      if (filter === 'all' || item.getAttribute('data-category') === filter) {
+      var matchesFilter = currentFilter === 'all' || item.getAttribute('data-category') === currentFilter;
+      var titleEl = item.querySelector('h4');
+      var name = titleEl ? titleEl.textContent.toLowerCase() : '';
+      var matchesSearch = query === '' || name.indexOf(query) !== -1;
+      if (matchesFilter && matchesSearch) {
         item.classList.remove('mil-hidden');
+        visibleCount++;
       } else {
         item.classList.add('mil-hidden');
       }
     });
+    var noResults = document.getElementById('portfolio-no-results');
+    if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+  }
+
+  function applyFilter(filter) {
+    currentFilter = filter;
+    applyView();
   }
 
   function bindAndInit() {
@@ -1152,9 +1224,20 @@
       };
       btn.addEventListener('click', btn._handler);
     });
+    var search = document.getElementById('portfolio-search');
+    if (search) {
+      search.removeEventListener('input', search._handler);
+      search._handler = function() {
+        currentSearch = this.value;
+        applyView();
+      };
+      search.addEventListener('input', search._handler);
+      search.value = currentSearch;
+    }
     var params = new URLSearchParams(window.location.search);
     var filter = params.get('filter');
-    if (filter) applyFilter(filter);
+    if (filter) currentFilter = filter;
+    applyView();
   }
 
   bindAndInit();
