@@ -679,12 +679,18 @@ window.swup = swup;
     });
 
     document.addEventListener("swup:contentReplaced", function () {
-    // reCAPTCHA reload
+    // Contact form: swup never runs contact.html's own scripts, so bind it here.
+    ensureContactForm();
+    // reCAPTCHA reload — the ONLY one. mailer.js used to do this too and the
+    // two raced, clearing the widget from under each other.
     if (document.querySelector('.g-recaptcha')) {
         setTimeout(function() {
             var oldScript = document.querySelector('script[src*="recaptcha/api.js"]');
             if (oldScript) oldScript.remove();
             document.querySelector('.g-recaptcha').innerHTML = '';
+            // api.js only auto-renders on a fresh load; without clearing this it
+            // can no-op when grecaptcha survives from an earlier visit.
+            if (window.grecaptcha) window.grecaptcha = undefined;
             var script = document.createElement('script');
             script.src = 'https://www.google.com/recaptcha/api.js';
             script.async = true;
@@ -1191,6 +1197,31 @@ setTimeout(() => {
 }); // closes $(function(){
 
 // GLOBAL - outside jQuery
+
+/* Contact form.
+   js/mailer.js is loaded from the foot of contact.html, which is outside the
+   swup container, so it never runs when you arrive by an in-site link — the
+   form would be left with no submit handler and would post natively. main.js
+   loads on every page and survives navigation, so it loads the mailer on
+   demand and (re)binds the form. No-ops on pages without the form. */
+var __mailerLoading = false;
+function ensureContactForm() {
+    if (!document.getElementById('contactForm')) return;
+    if (typeof window.initContactForm === 'function') {
+        window.initContactForm();
+        return;
+    }
+    if (__mailerLoading) return;
+    __mailerLoading = true;
+    var s = document.createElement('script');
+    s.src = 'js/mailer.js';
+    s.onload = function () {
+        __mailerLoading = false;
+        if (typeof window.initContactForm === 'function') window.initContactForm();
+    };
+    s.onerror = function () { __mailerLoading = false; };
+    document.head.appendChild(s);
+}
 
 /* Portfolio filter + search.
    Lives here rather than in portfolio.html because swup only swaps the

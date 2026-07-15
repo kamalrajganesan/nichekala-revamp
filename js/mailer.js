@@ -16,12 +16,6 @@ function showToast(message, type) {
     }, 3000);
 }
 
-function capturePrevent(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-}
-
 function handleFormSubmit(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -35,8 +29,12 @@ function handleFormSubmit(e) {
     var captchaResponse = typeof grecaptcha !== 'undefined' ? grecaptcha.getResponse() : '';
     var isValid         = true;
 
-    document.querySelectorAll('.text-danger').forEach(function(el) { el.remove(); });
-    document.getElementById('captcha-error').textContent = '';
+    // Only the <p> errors are ours to remove. #captcha-error is a permanent
+    // <span class="text-danger"> in the markup — a bare '.text-danger' sweep
+    // deletes it, and the next line then throws on a null element.
+    document.querySelectorAll('p.text-danger').forEach(function(el) { el.remove(); });
+    var captchaError = document.getElementById('captcha-error');
+    if (captchaError) captchaError.textContent = '';
 
     if (name === '') {
         var err = document.createElement('p');
@@ -70,7 +68,7 @@ function handleFormSubmit(e) {
     }
 
     if (captchaResponse.length === 0) {
-        document.getElementById('captcha-error').textContent = 'Please verify the captcha before submitting.';
+        if (captchaError) captchaError.textContent = 'Please verify the captcha before submitting.';
         isValid = false;
     }
 
@@ -112,41 +110,20 @@ function handleFormSubmit(e) {
 function initContactForm() {
     var form = document.getElementById('contactForm');
     if (!form) return;
-    form.removeEventListener('submit', capturePrevent, true);
+    // Exactly one submit listener. handleFormSubmit calls preventDefault itself;
+    // a second capture-phase listener here would run first and, via
+    // stopImmediatePropagation, stop handleFormSubmit from ever running.
     form.removeEventListener('submit', handleFormSubmit, false);
-    form.addEventListener('submit', capturePrevent, true);
     form.addEventListener('submit', handleFormSubmit, false);
-}
-
-function initRecaptcha() {
-    var widget = document.querySelector('.g-recaptcha');
-    if (!widget) return;
-    var oldScript = document.querySelector('script[src*="recaptcha/api.js"]');
-    if (oldScript) oldScript.remove();
-    widget.innerHTML = '';
-    if (window.grecaptcha) window.grecaptcha = undefined;
-    var script = document.createElement('script');
-    script.src = 'https://www.google.com/recaptcha/api.js';
-    script.async = true;
-    script.defer = true;
-    script.onload = function () {
-        console.log('✅ reCAPTCHA loaded and rendered');
-    };
-    document.head.appendChild(script);
 }
 
 /* ------------------------------------------
    FIRST PAGE LOAD — single direct call
    (script is at bottom of body so DOM is ready)
+
+   Swup navigations are NOT handled here: this file sits outside the swup
+   container, so it never re-runs on a page transition. main.js owns that —
+   it loads this file on demand and calls initContactForm(). main.js also
+   owns reloading reCAPTCHA; doing it here too made the two race.
 ------------------------------------------- */
 initContactForm();
-
-/* ------------------------------------------
-   SWUP TRANSITIONS
-------------------------------------------- */
-document.addEventListener('swup:contentReplaced', function () {
-    initContactForm();
-    setTimeout(function () {
-        initRecaptcha();
-    }, 1000);
-});
