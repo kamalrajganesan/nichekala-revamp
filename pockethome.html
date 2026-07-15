@@ -156,6 +156,24 @@
     filter: grayscale(0);
     opacity: 1;
   }
+  /* Quote icon stands alone here: no quote-mark badge, no circular crop */
+  .mil-about-quote .mil-avatar:after {
+    display: none;
+  }
+  .mil-about-quote .mil-avatar,
+  .mil-about-quote .mil-avatar img {
+    border-radius: 0;
+    object-fit: contain;
+  }
+  /* ECG overlay sits on the blueprint in the same 512x512 space */
+  .mil-quote-icon .mil-quote-pulse {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
 </style>
 </head>
 
@@ -442,8 +460,15 @@
                   </p>
 
                   <div class="mil-about-quote">
-                    <div class="mil-avatar mil-up">
-                      <img src="img/projects/CURVE/icon.png" alt="A home is a life, not just a design" />
+                    <div class="mil-avatar mil-up mil-quote-icon" style="width: 60px; height: 60px;">
+                      <img src="img/projects/CURVE/blueprint.png" alt="A home is a life, not just a design" />
+                      <!-- ECG pulse overlay — parked pending a decision on whether it stays
+                      <svg class="mil-quote-pulse" viewBox="0 0 512 512" aria-hidden="true" focusable="false">
+                        <path d="M6 302 h176 l26 -62 l30 132 l30 -84 l24 14 h214"
+                              fill="none" stroke="#c8157b" stroke-width="14"
+                              stroke-linejoin="round" stroke-linecap="round"/>
+                      </svg>
+                      -->
                     </div>
                     <h6 class="mil-quote mil-up">
                       Not a design problem —  

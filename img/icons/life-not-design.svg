@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="A compass and scale drafting a half-drawn house, with a heartbeat line running through it">
+  <!-- drafting compass: pivot and two legs -->
+  <circle cx="32" cy="6" r="1.6" fill="#000000"/>
+  <path d="M32 6 L22.5 21"
+        fill="none" stroke="#000000" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M32 6 L41.5 21"
+        fill="none" stroke="#000000" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- house, drawn: roof left half and left wall -->
+  <path d="M13 35 L32 30.8"
+        fill="none" stroke="#000000" stroke-width="2.2"
+        stroke-linejoin="round" stroke-linecap="round"/>
+  <path d="M17 34.1 V54"
+        fill="none" stroke="#000000" stroke-width="2.2" stroke-linecap="round"/>
+
+  <!-- house, not yet drawn: roof right half and right wall -->
+  <path d="M32 30.8 L51 26.6"
+        fill="none" stroke="#000000" stroke-width="1.6"
+        stroke-dasharray="3 2.5" stroke-linecap="round"/>
+  <path d="M47 27.5 V54"
+        fill="none" stroke="#000000" stroke-width="1.6"
+        stroke-dasharray="3 2.5" stroke-linecap="round"/>
+
+  <!-- pulse through the house: the life -->
+  <path d="M21 44 h4 l3 -6 l3.5 11 l3.5 -8 l2.5 3 h6.5"
+        fill="none" stroke="#c8157b" stroke-width="2.4"
+        stroke-linejoin="round" stroke-linecap="round"/>
+
+  <!-- the scale the house stands on -->
+  <path d="M4 54 H60 M4 59 H60 M4 54 V59 M60 54 V59"
+        fill="none" stroke="#000000" stroke-width="1.4" stroke-linecap="square"/>
+  <path d="M12 54 V57 M20 54 V57 M28 54 V57 M36 54 V57 M44 54 V57 M52 54 V57"
+        fill="none" stroke="#000000" stroke-width="1.2" stroke-linecap="square"/>
+</svg>
