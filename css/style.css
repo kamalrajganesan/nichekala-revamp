@@ -1993,7 +1993,7 @@ about
   object-position: center;
 }
 .mil-about-quote .mil-quote {
-  padding-left: 30px;
+  padding-left: 15px;
   width: calc(100% - 90px);
 }
 @media screen and (max-width: 992px) {
