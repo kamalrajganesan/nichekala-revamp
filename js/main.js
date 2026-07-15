@@ -1150,34 +1150,10 @@ setTimeout(() => {
 
         /***************************
 
-        portfolio filter
+        portfolio filter + search
 
         ***************************/
-        (function() {
-            function applyFilter(filter) {
-                document.querySelectorAll('.mil-filter-btn').forEach(function(btn) {
-                    btn.classList.remove('active');
-                    if (btn.getAttribute('data-filter') === filter) btn.classList.add('active');
-                });
-                document.querySelectorAll('[data-category]').forEach(function(item) {
-                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                        item.classList.remove('mil-hidden');
-                    } else {
-                        item.classList.add('mil-hidden');
-                    }
-                });
-            }
-
-            document.querySelectorAll('.mil-filter-btn').forEach(function(btn) {
-                btn.removeEventListener('click', btn._handler);
-                btn._handler = function() { applyFilter(this.getAttribute('data-filter')); };
-                btn.addEventListener('click', btn._handler);
-            });
-
-            var params = new URLSearchParams(window.location.search);
-            var filter = params.get('filter');
-            if (filter) setTimeout(function() { applyFilter(filter); }, 300);
-        })();
+        initPortfolioFilter();
 
     });  // <-- this closes swup:contentReplaced
 //     const logos = document.querySelectorAll('.mil-logo');
@@ -1215,6 +1191,71 @@ setTimeout(() => {
 }); // closes $(function(){
 
 // GLOBAL - outside jQuery
+
+/* Portfolio filter + search.
+   Lives here rather than in portfolio.html because swup only swaps the
+   containers, so a script at the foot of that page never runs when you
+   arrive by an in-site link. Called on first load and after every swup
+   navigation; no-ops on pages without the grid. */
+function initPortfolioFilter() {
+    var buttons = document.querySelectorAll('.mil-filter-btn');
+    var searchInput = document.getElementById('portfolio-search');
+    var items = document.querySelectorAll('[data-category]');
+    if (!buttons.length && !searchInput) return;
+
+    var currentFilter = 'all';
+    var currentSearch = searchInput ? searchInput.value : '';
+
+    var urlFilter = new URLSearchParams(window.location.search).get('filter');
+    if (urlFilter) currentFilter = urlFilter;
+
+    function applyView() {
+        buttons.forEach(function (btn) {
+            btn.classList.toggle('active', btn.getAttribute('data-filter') === currentFilter);
+        });
+
+        var query = currentSearch.trim().toLowerCase();
+        var visibleCount = 0;
+
+        items.forEach(function (item) {
+            var matchesFilter = currentFilter === 'all' || item.getAttribute('data-category') === currentFilter;
+            var titleEl = item.querySelector('h4');
+            var name = titleEl ? titleEl.textContent.toLowerCase() : '';
+            var matchesSearch = query === '' || name.indexOf(query) !== -1;
+
+            if (matchesFilter && matchesSearch) {
+                item.classList.remove('mil-hidden');
+                visibleCount++;
+            } else {
+                item.classList.add('mil-hidden');
+            }
+        });
+
+        var noResults = document.getElementById('portfolio-no-results');
+        if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    buttons.forEach(function (btn) {
+        btn.removeEventListener('click', btn._filterHandler);
+        btn._filterHandler = function () {
+            currentFilter = this.getAttribute('data-filter');
+            applyView();
+        };
+        btn.addEventListener('click', btn._filterHandler);
+    });
+
+    if (searchInput) {
+        searchInput.removeEventListener('input', searchInput._searchHandler);
+        searchInput._searchHandler = function () {
+            currentSearch = this.value;
+            applyView();
+        };
+        searchInput.addEventListener('input', searchInput._searchHandler);
+    }
+
+    applyView();
+}
+
 function updateLogo() {
         if (!document.body.classList.contains('mil-preloader-done')) return;//to make logo visible on preloader
     const logos = document.querySelectorAll('.mil-logo');
@@ -1238,6 +1279,10 @@ function updateLogo() {
 window.addEventListener('scroll', updateLogo);
 window.addEventListener('load', updateLogo);
 window.addEventListener('resize', updateLogo);
+
+// swup:contentReplaced covers in-site navigation; this covers a direct load.
+initPortfolioFilter();
+
 setTimeout(updateLogo, 100);
 setTimeout(updateLogo, 500);
 setTimeout(updateLogo, 1000);

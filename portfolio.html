@@ -824,6 +824,10 @@
     width: 160px;
     padding: 0;
     margin: 0;
+    /* the global "input" rule forces uppercase and a 70px form-field
+       height; a search box should echo what the user actually typed */
+    text-transform: none;
+    height: auto;
 }
 
 .mil-search-input::placeholder {
@@ -1185,66 +1189,5 @@
     <!-- ashley js -->
     <script src="js/main.js"></script>
 
-   <script>
-  var currentFilter = 'all';
-  var currentSearch = '';
-
-  function applyView() {
-    document.querySelectorAll('.mil-filter-btn').forEach(function(btn) {
-      btn.classList.toggle('active', btn.getAttribute('data-filter') === currentFilter);
-    });
-    var query = currentSearch.trim().toLowerCase();
-    var visibleCount = 0;
-    document.querySelectorAll('[data-category]').forEach(function(item) {
-      var matchesFilter = currentFilter === 'all' || item.getAttribute('data-category') === currentFilter;
-      var titleEl = item.querySelector('h4');
-      var name = titleEl ? titleEl.textContent.toLowerCase() : '';
-      var matchesSearch = query === '' || name.indexOf(query) !== -1;
-      if (matchesFilter && matchesSearch) {
-        item.classList.remove('mil-hidden');
-        visibleCount++;
-      } else {
-        item.classList.add('mil-hidden');
-      }
-    });
-    var noResults = document.getElementById('portfolio-no-results');
-    if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-  }
-
-  function applyFilter(filter) {
-    currentFilter = filter;
-    applyView();
-  }
-
-  function bindAndInit() {
-    document.querySelectorAll('.mil-filter-btn').forEach(function(btn) {
-      btn.removeEventListener('click', btn._handler);
-      btn._handler = function() {
-        applyFilter(this.getAttribute('data-filter'));
-      };
-      btn.addEventListener('click', btn._handler);
-    });
-    var search = document.getElementById('portfolio-search');
-    if (search) {
-      search.removeEventListener('input', search._handler);
-      search._handler = function() {
-        currentSearch = this.value;
-        applyView();
-      };
-      search.addEventListener('input', search._handler);
-      search.value = currentSearch;
-    }
-    var params = new URLSearchParams(window.location.search);
-    var filter = params.get('filter');
-    if (filter) currentFilter = filter;
-    applyView();
-  }
-
-  bindAndInit();
-  document.addEventListener('DOMContentLoaded', bindAndInit);
-  ['swup:contentReplaced','swup:pageView','swup:animationInDone','swup:enable'].forEach(function(evt) {
-    document.addEventListener(evt, function() { setTimeout(bindAndInit, 300); });
-  });
-</script>
   </body>
 </html>
