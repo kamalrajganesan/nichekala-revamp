@@ -3569,6 +3569,11 @@ vendor overrides
 .pb-line{
   border-top:2px solid #c2adad91;
   padding-top:15px;
+  /* Matches the 20px the <600px block already sets. Without it the
+     copyright line sat flush against the bottom edge of the dark
+     footer, because neither .container-foot nor the footer itself
+     carries any bottom padding at this breakpoint. */
+  padding-bottom:20px;
 }
 }
 
@@ -3674,7 +3679,12 @@ vendor overrides
     text-align: center !important;
   }
 
-  .mil-preloader .mil-preloader-animation .mil-pos-abs p {
+  /* :not(.mil-reveal-box) is load-bearing - the pink sweep bar is also a
+     <p> in here. width:100% !important beats GSAP's inline width, which
+     pinned the bar open at 100% and left it covering the "Nichekala"
+     text (it sits at z-index 4 above it), so the reveal never played on
+     mobile and the word appeared for a fraction of its desktop time. */
+  .mil-preloader .mil-preloader-animation .mil-pos-abs p:not(.mil-reveal-box) {
     margin-right: 0 !important;
     margin-bottom: 5px !important;
     font-size: 24px !important;
@@ -3789,6 +3799,19 @@ vendor overrides
 
   .mil-footer-menu ul li a {
     font-size: 18px !important;
+  }
+}
+
+/* Tablet only: line up the social icons with the copyright column that
+   sits below them. .foot-align is centred from min-width:600px and only
+   reset to flex-start at max-width:768px, which left 769-992px as the
+   one range where the icons floated to the middle of their 50% column
+   while the full-width copyright row below started at the container
+   edge. Scoped to .pb-line so the four link columns above the rule keep
+   their existing alignment. */
+@media screen and (min-width: 769px) and (max-width: 992px) {
+  .container-foot .pb-line .foot-align {
+    justify-content: flex-start;
   }
 }
 /*=== footer for mobile view fix ===*/

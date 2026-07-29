@@ -101,16 +101,15 @@ window.swup = swup;
         timeline.to(".mil-reveal-box", 0.3, {
             width: "0%"
         });
-        timeline.fromTo(".mil-animation-2 .mil-h3", {
-            opacity: 0,
-        }, {
-            opacity: 1,
-        }, "-=.5");
-        timeline.to(".mil-animation-2 .mil-h3", 0.6, {
-            opacity: 0,
-            y: '-30'
-        }, "+=.5");
-        timeline.to(".mil-preloader", 0.8, {
+       timeline.fromTo(".mil-animation-2 .mil-h3", {
+    opacity: 0,
+}, {
+    opacity: 1,
+}, "-=.5");
+timeline.to(".mil-animation-2 .mil-h3", 0.6, {
+    opacity: 0,
+    y: '-30'
+}, "+=.5");        timeline.to(".mil-preloader", 0.8, {
             opacity: 0,
             ease: 'sine',
         }, "+=.2");
@@ -1161,6 +1160,13 @@ setTimeout(() => {
         ***************************/
         initPortfolioFilter();
 
+        /***************************
+
+        masonry gallery (project pages)
+
+        ***************************/
+        initMasonryGallery();
+
     });  // <-- this closes swup:contentReplaced
 //     const logos = document.querySelectorAll('.mil-logo');
 // const darkSections = document.querySelectorAll('.mil-dark-bg');
@@ -1311,8 +1317,67 @@ window.addEventListener('scroll', updateLogo);
 window.addEventListener('load', updateLogo);
 window.addEventListener('resize', updateLogo);
 
+/* ------------------------------------------------------------------
+   Masonry gallery on the project pages.
+
+   The collage sizes images by their natural aspect ratio (height:auto),
+   so at init time the browser does not yet know how tall anything is.
+   ScrollTrigger would cache those zero heights and the .mil-up reveals
+   would fire at the wrong scroll positions. Refresh once per image as
+   it decodes, and once more when the whole set is done.
+------------------------------------------------------------------ */
+function initMasonryGallery() {
+    const gallery = document.querySelector('.nk-gallery');
+    if (!gallery) return;
+
+    const items = Array.from(gallery.querySelectorAll('.nk-gallery-item'));
+    if (!items.length) return;
+
+    // Deliberately NOT using .mil-up here. That path sets opacity:0 and
+    // relies on ScrollTrigger firing to bring it back, which it often
+    // does not once column heights shift as images decode - leaving the
+    // whole gallery blank. IntersectionObserver has no such dependency,
+    // and if it is unavailable we simply never hide anything.
+    if (!('IntersectionObserver' in window)) return;
+
+    gallery.classList.add('nk-reveal');
+
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-in');
+                io.unobserve(entry.target);
+            }
+        });
+    }, { rootMargin: '0px 0px -40px 0px' });
+
+    items.forEach((el) => io.observe(el));
+
+    // Failsafe: whatever happens with observers or image decoding, nothing
+    // in this gallery stays invisible.
+    setTimeout(() => items.forEach((el) => el.classList.add('is-in')), 2500);
+
+    // Column heights change as images decode; keep the site's other
+    // ScrollTrigger-driven animations measuring against the real layout.
+    const imgs = Array.from(gallery.querySelectorAll('.nk-gallery-item > img'));
+    let pending = imgs.length;
+    const settle = () => {
+        if (typeof ScrollTrigger === 'undefined') return;
+        ScrollTrigger.refresh();
+        if (--pending === 0) setTimeout(() => ScrollTrigger.refresh(), 100);
+    };
+    imgs.forEach((img) => {
+        if (img.complete && img.naturalHeight !== 0) settle();
+        else {
+            img.addEventListener('load', settle, { once: true });
+            img.addEventListener('error', settle, { once: true });
+        }
+    });
+}
+
 // swup:contentReplaced covers in-site navigation; this covers a direct load.
 initPortfolioFilter();
+initMasonryGallery();
 
 setTimeout(updateLogo, 100);
 setTimeout(updateLogo, 500);

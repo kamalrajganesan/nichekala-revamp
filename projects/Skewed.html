@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="../css/plugins/fancybox.min.css">
     <!-- ashley scss -->
     <link rel="stylesheet" href="../css/style.css">
+
+    <!-- masonry gallery -->
+    <link rel="stylesheet" href="../css/gallery-masonry.css">
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/site.webmanifest" />
@@ -30,7 +33,7 @@
 
 <meta name="title" content="Skewed Commercial Building Design in Chennai | Nichekala">
 <meta name="description" content="Explore Skewed, a completed commercial architecture project by Nichekala in Chennai. A contemporary commercial space showcasing innovative design, functionality, and modern aesthetics.">
-<meta name="keywords" content="Skewed, commercial building design Chennai, commercial architecture Chennai, Nichekala projects, modern commercial architecture, completed commercial project Chennai, architectural design Chennai">
+<meta name="keywords" content="commercial building design chennai, commercial architect chennai, office building design, modern commercial building elevation, retail building design chennai">
 <meta name="author" content="Nichekala">
 <meta name="robots" content="index, follow">
 <meta name="language" content="English">
@@ -38,15 +41,22 @@
 <!-- Canonical URL -->
 <link rel="canonical" href="https://nichekala.in/projects/skewed">
 
-<!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Skewed Commercial Building Design in Chennai | Nichekala">
 <meta property="og:description" content="Discover Skewed, a completed commercial architecture project in Chennai designed by Nichekala, blending modern aesthetics with functional commercial spaces.">
 <meta property="og:url" content="https://nichekala.in/projects/skewed">
 <meta property="og:site_name" content="Nichekala">
+<!-- social share image (logo) - PNG so WhatsApp/Facebook/Instagram/X can render it -->
+<meta property="og:image" content="https://nichekala.in/img/icons/favicon.png" />
+<meta property="og:image:secure_url" content="https://nichekala.in/img/icons/favicon.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="272" />
+<meta property="og:image:height" content="281" />
+<meta property="og:image:alt" content="Nichekala Architecture and Interior Design Studio" />
+<meta name="twitter:image" content="https://nichekala.in/img/icons/favicon.png" />
 
 <!-- Twitter Card -->
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Skewed Commercial Building Design in Chennai | Nichekala">
 <meta name="twitter:description" content="Explore Skewed, a completed commercial architecture project by Nichekala in Chennai featuring contemporary design and efficient space planning.">
 
@@ -154,11 +164,6 @@
   "inLanguage": "en"
 }
 </script>
-<meta property="og:image" content="https://nichekala.in/img/portfolio-images/skewedmain.jpg" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="800" />
-<meta property="og:image:alt" content="Nichekala Architecture and Design Studio" />
-<meta name="twitter:image" content="https://nichekala.in/img/portfolio-images/skewedmain.jpg" />
 </head>
 
 <body>
@@ -377,81 +382,62 @@
                     </p> -->
                   </div>
                 </div>
-                <div class="row mil-p-0-90">
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img
-                        src="../img/portfolio-images/skewed1.jpg"
-                        alt="image"
-                      />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/skewed1.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img
-                        src="../img/portfolio-images/skewed2.jpg"
-                        alt="image"
-                      />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/skewed2.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img
-                        src="../img/portfolio-images/skewed3.jpg"
-                        alt="image"
-                      />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/skewed3.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img src="../img/portfolio-images/skewed4.jpg" alt="image" />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/skewed4.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img src="../img/Projects/20 x 60/4 (1).jpg" alt="image" />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/Projects/20 x 60/4 (1).jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
+                <div class="nk-gallery">
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/skewed1.jpg"
+                  >
+                    <img src="../img/portfolio-images/skewed1.jpg" alt="Skewed — project image 1" width="600" height="1000" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/skewed2.jpg"
+                  >
+                    <img src="../img/portfolio-images/skewed2.jpg" alt="Skewed — project image 2" width="1024" height="576" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/skewed3.jpg"
+                  >
+                    <img src="../img/portfolio-images/skewed3.jpg" alt="Skewed — project image 3" width="1024" height="576" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/skewed4.jpg"
+                  >
+                    <img src="../img/portfolio-images/skewed4.jpg" alt="Skewed — project image 4" width="1024" height="1024" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/Projects/20 x 60/4 (1).jpg"
+                  >
+                    <img src="../img/Projects/20 x 60/4 (1).jpg" alt="Skewed — project image 5" width="3840" height="2160" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
                 </div>
               </div>
 

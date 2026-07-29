@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="../css/plugins/fancybox.min.css">
     <!-- ashley scss -->
     <link rel="stylesheet" href="../css/style.css">
+
+    <!-- masonry gallery -->
+    <link rel="stylesheet" href="../css/gallery-masonry.css">
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/site.webmanifest" />
@@ -30,18 +33,25 @@
 
 <meta name="description" content="Explore A-14, a recreational architecture project by Nichekala in Chennai. Completed in 2021, this project showcases thoughtful design, functionality, and aesthetic excellence.">
 
-<meta name="keywords" content="A-14 project, recreational architecture Chennai, Nichekala projects, architectural design Chennai, recreational space design, completed architecture project">
+<meta name="keywords" content="recreational space design chennai, clubhouse design chennai, leisure space interior chennai, architect designed recreation space, a-14 nichekala">
 
 <meta name="robots" content="index, follow">
 
 <link rel="canonical" href="https://nichekala.in/projects/A-14">
 
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="A-14 Recreational Project in Chennai | Nichekala">
 <meta property="og:description" content="Discover A-14, a recreational project completed in 2021 by Nichekala in Chennai.">
 <meta property="og:url" content="https://nichekala.in/projects/A-14">
 <meta property="og:site_name" content="Nichekala">
+<!-- social share image (logo) - PNG so WhatsApp/Facebook/Instagram/X can render it -->
+<meta property="og:image" content="https://nichekala.in/img/icons/favicon.png" />
+<meta property="og:image:secure_url" content="https://nichekala.in/img/icons/favicon.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="272" />
+<meta property="og:image:height" content="281" />
+<meta property="og:image:alt" content="Nichekala Architecture and Interior Design Studio" />
+<meta name="twitter:image" content="https://nichekala.in/img/icons/favicon.png" />
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
@@ -151,11 +161,6 @@
   "inLanguage": "en"
 }
 </script>
-<meta property="og:image" content="https://nichekala.in/img/portfolio-images/A14main.jpg" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="800" />
-<meta property="og:image:alt" content="Nichekala Architecture and Design Studio" />
-<meta name="twitter:image" content="https://nichekala.in/img/portfolio-images/A14main.jpg" />
 </head>
 
 <body>
@@ -403,81 +408,62 @@
                     </p> -->
                   </div>
                 </div>
-                <div class="row mil-p-0-90">
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img
-                        src="../img/portfolio-images/A141.jpg"
-                        alt="image"
-                      />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/A141.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img
-                        src="../img/portfolio-images/A142.jpg"
-                        alt="image"
-                      />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/A142.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img
-                        src="../img/portfolio-images/A143.jpg"
-                        alt="image"
-                      />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/A143.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img src="../img/portfolio-images/A144.jpg" alt="image" />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/A144.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img src="../img/portfolio-images/A145.jpg" alt="image" />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/A145.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
+                <div class="nk-gallery">
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/A141.jpg"
+                  >
+                    <img src="../img/portfolio-images/A141.jpg" alt="A-14 — project image 1" width="952" height="704" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/A142.jpg"
+                  >
+                    <img src="../img/portfolio-images/A142.jpg" alt="A-14 — project image 2" width="451" height="706" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/A143.jpg"
+                  >
+                    <img src="../img/portfolio-images/A143.jpg" alt="A-14 — project image 3" width="540" height="950" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/A144.jpg"
+                  >
+                    <img src="../img/portfolio-images/A144.jpg" alt="A-14 — project image 4" width="453" height="702" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/A145.jpg"
+                  >
+                    <img src="../img/portfolio-images/A145.jpg" alt="A-14 — project image 5" width="452" height="704" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
                 </div>
               </div>
 

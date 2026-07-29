@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="../css/plugins/fancybox.min.css">
     <!-- ashley scss -->
     <link rel="stylesheet" href="../css/style.css">
+
+    <!-- masonry gallery -->
+    <link rel="stylesheet" href="../css/gallery-masonry.css">
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/site.webmanifest" />
@@ -30,7 +33,7 @@
 
 <meta name="title" content="Coffee And Conversation | Cafe Interior Design Project in Chennai | Nichekala">
 <meta name="description" content="Coffee And Conversation is a recreational cafe interior design project in Chennai by Nichekala. Designed with minimal interiors, clean lines, and thoughtfully curated spaces that encourage both solitude and meaningful conversations.">
-<meta name="keywords" content="Coffee And Conversation, cafe interior design Chennai, recreational space design, cafe architecture, minimalist interiors, commercial interior design, hospitality design, Nichekala projects, Chennai cafe design">
+<meta name="keywords" content="cafe interior design chennai, coffee shop interior design, cafe design ideas india, restaurant interior designers chennai, small cafe design, cafe interior cost chennai, minimalist cafe interior">
 <meta name="author" content="Nichekala">
 <meta name="robots" content="index, follow">
 <meta name="language" content="English">
@@ -38,16 +41,23 @@
 <!-- Canonical URL -->
 <link rel="canonical" href="https://nichekala.in/projects/coffee-and-conversation">
 
-<!-- Open Graph Meta Tags -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Coffee And Conversation | Cafe Interior Design Project in Chennai">
 <meta property="og:description" content="A minimalist cafe interior project in Chennai by Nichekala, designed to create a balance between personal reflection and engaging conversations through clean lines and visual simplicity.">
 <meta property="og:url" content="https://nichekala.in/projects/coffee-and-conversation">
 <meta property="og:site_name" content="Nichekala">
 <meta property="og:locale" content="en_IN">
+<!-- social share image (logo) - PNG so WhatsApp/Facebook/Instagram/X can render it -->
+<meta property="og:image" content="https://nichekala.in/img/icons/favicon.png" />
+<meta property="og:image:secure_url" content="https://nichekala.in/img/icons/favicon.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="272" />
+<meta property="og:image:height" content="281" />
+<meta property="og:image:alt" content="Nichekala Architecture and Interior Design Studio" />
+<meta name="twitter:image" content="https://nichekala.in/img/icons/favicon.png" />
 
 <!-- Twitter Card Meta Tags -->
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Coffee And Conversation | Cafe Interior Design Project in Chennai">
 <meta name="twitter:description" content="Explore Coffee And Conversation, a minimalist cafe interior design project in Chennai by Nichekala, crafted to enhance both solitude and social interaction.">
 <meta name="twitter:site" content="@nichekala">
@@ -156,11 +166,6 @@
   "inLanguage": "en"
 }
 </script>
-<meta property="og:image" content="https://nichekala.in/img/portfolio-images/coffeemain.jpg" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="800" />
-<meta property="og:image:alt" content="Nichekala Architecture and Design Studio" />
-<meta name="twitter:image" content="https://nichekala.in/img/portfolio-images/coffeemain.jpg" />
 </head>
 
 <body>
@@ -392,81 +397,62 @@
                     </p>
                   </div>
                 </div>
-                <div class="row mil-p-0-90">
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img
-                        src="../img/portfolio-images/coffee1.jpg"
-                        alt="image"
-                      />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/coffee1.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img
-                        src="../img/portfolio-images/coffee2.jpg"
-                        alt="image"
-                      />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/coffee2.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img
-                        src="../img/portfolio-images/coffee3.jpg"
-                        alt="image"
-                      />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/coffee3.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img src="../img/portfolio-images/coffee4.jpg" alt="image" />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/coffee4.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img src="../img/portfolio-images/coffee5.jpg" alt="image" />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/coffee5.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
+                <div class="nk-gallery">
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/coffee1.jpg"
+                  >
+                    <img src="../img/portfolio-images/coffee1.jpg" alt="Coffee and Conversation — project image 1" width="1024" height="683" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/coffee2.jpg"
+                  >
+                    <img src="../img/portfolio-images/coffee2.jpg" alt="Coffee and Conversation — project image 2" width="683" height="1024" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/coffee3.jpg"
+                  >
+                    <img src="../img/portfolio-images/coffee3.jpg" alt="Coffee and Conversation — project image 3" width="683" height="1024" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/coffee4.jpg"
+                  >
+                    <img src="../img/portfolio-images/coffee4.jpg" alt="Coffee and Conversation — project image 4" width="683" height="1024" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/coffee5.jpg"
+                  >
+                    <img src="../img/portfolio-images/coffee5.jpg" alt="Coffee and Conversation — project image 5" width="598" height="1024" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
                 </div>
               </div>
 

@@ -1,0 +1,170 @@
+/***************************
+
+masonry collage gallery (project pages)
+
+Scoped to .nk-gallery so the global .mil-image-frame
+rules used on index/portfolio/blog stay untouched.
+
+***************************/
+
+.nk-gallery {
+  column-count: 3;
+  column-gap: 30px;
+  /* bottom padding sits on the container, not the items: a multicol
+     column break truncates the last item's margin, so relying on
+     .nk-gallery-item margin here would collapse against the
+     .mil-works-nav border-top below.
+
+     32px matches the gap under the .mil-info rule: Bootstrap's
+     .pt-3 (1rem !important) beats .mil-p-120-0 / .mil-p-90-120 on
+     both the wrapper and the row, so that gap is 16px + 16px.
+     .pt-3 is not breakpoint-scoped, so this holds at every width. */
+  padding: 0 90px 32px;
+}
+
+/* Reveal is opt-in: items are visible by default and only start hidden
+   once JS has added .nk-reveal. If GSAP/ScrollTrigger/JS fails, the
+   gallery degrades to plain visible images instead of a blank column.
+   The site's shared .mil-up path is deliberately not used here - it has
+   a standing "stuck at opacity 0" bug (see the disabled safety net in
+   js/main.js) that this layout would trigger, because column heights
+   are not known until the images decode. */
+.nk-gallery.nk-reveal .nk-gallery-item {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.nk-gallery.nk-reveal .nk-gallery-item.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.nk-gallery-item {
+  display: block;
+  position: relative;
+  width: 100%;
+  margin: 0 0 30px;
+  overflow: hidden;
+  /* keep an item from being split across two columns */
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* the container's padding-bottom supplies the gap above .mil-works-nav;
+   without this the single-column layout would stack both */
+.nk-gallery-item:last-child {
+  margin-bottom: 0;
+}
+
+/* natural aspect ratio - no cropping */
+.nk-gallery-item > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.6s cubic-bezier(0, 0, 0.3642, 1);
+}
+
+.nk-gallery-item:hover > img {
+  transform: scale(1.04);
+}
+
+/* dim veil on hover so the zoom cue stays readable over light images */
+.nk-gallery-item:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
+  pointer-events: none;
+}
+
+.nk-gallery-item:hover:after {
+  opacity: 1;
+}
+
+/* reuse the existing round zoom button look */
+.nk-gallery-item .mil-zoom-btn {
+  opacity: 0;
+  transform: translateY(15px);
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: 0.4s cubic-bezier(0, 0, 0.3642, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.nk-gallery-item .mil-zoom-btn img {
+  height: 17px;
+  width: 17px;
+}
+
+.nk-gallery-item:hover .mil-zoom-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* keyboard users get the same affordance */
+.nk-gallery-item:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 4px;
+}
+
+.nk-gallery-item:focus-visible .mil-zoom-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* the 32px bottom stays fixed across breakpoints because the .pt-3 it
+   mirrors is not breakpoint-scoped - only the side padding changes */
+@media (max-width: 1200px) {
+  .nk-gallery {
+    padding: 0 60px 32px;
+  }
+}
+
+@media (max-width: 992px) {
+  .nk-gallery {
+    column-count: 2;
+    padding: 0 30px 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nk-gallery {
+    column-count: 1;
+    column-gap: 0;
+    padding: 0 15px 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nk-gallery.nk-reveal .nk-gallery-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .nk-gallery-item > img,
+  .nk-gallery-item:after,
+  .nk-gallery-item .mil-zoom-btn {
+    transition: none;
+  }
+
+  .nk-gallery-item:hover > img {
+    transform: none;
+  }
+}

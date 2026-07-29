@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="../css/plugins/fancybox.min.css">
     <!-- ashley scss -->
     <link rel="stylesheet" href="../css/style.css">
+
+    <!-- masonry gallery -->
+    <link rel="stylesheet" href="../css/gallery-masonry.css">
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/site.webmanifest" />
@@ -29,7 +32,7 @@
 
 <meta name="description" content="Explore Fuel One, a recreational interior design project by Nichekala in Chennai. Completed in 2021, this project reflects thoughtful spatial planning, modern aesthetics, and functional design.">
 
-<meta name="keywords" content="Fuel One, Nichekala, recreational interior design, Chennai interior designers, commercial interiors, cafe interiors, hospitality design, modern interiors, architectural design Chennai">
+<meta name="keywords" content="cafe interior chennai, commercial interior designers chennai, restaurant interior design chennai, food outlet interior design, quick service restaurant design, fuel one nichekala">
 
 <meta name="author" content="Nichekala">
 <meta name="robots" content="index, follow">
@@ -37,16 +40,23 @@
 
 <link rel="canonical" href="https://nichekala.in/projects/Fuel-One">
 
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Fuel One | Recreational Interior Design Project in Chennai">
 <meta property="og:description" content="Discover Fuel One, a completed recreational interior project by Nichekala in Chennai, showcasing contemporary design and functional spaces.">
 <meta property="og:url" content="https://nichekala.in/projects/Fuel-One">
 <meta property="og:site_name" content="Nichekala">
 <meta property="og:locale" content="en_IN">
+<!-- social share image (logo) - PNG so WhatsApp/Facebook/Instagram/X can render it -->
+<meta property="og:image" content="https://nichekala.in/img/icons/favicon.png" />
+<meta property="og:image:secure_url" content="https://nichekala.in/img/icons/favicon.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="272" />
+<meta property="og:image:height" content="281" />
+<meta property="og:image:alt" content="Nichekala Architecture and Interior Design Studio" />
+<meta name="twitter:image" content="https://nichekala.in/img/icons/favicon.png" />
 
 <!-- Twitter Card -->
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Fuel One | Recreational Interior Design Project in Chennai">
 <meta name="twitter:description" content="Explore Fuel One, a recreational interior design project by Nichekala in Chennai, completed in 2021 with a focus on modern aesthetics and functionality.">
 <meta name="twitter:site" content="@nichekala_official">
@@ -155,11 +165,6 @@
   "inLanguage": "en"
 }
 </script>
-<meta property="og:image" content="https://nichekala.in/img/portfolio-images/fuelmain.jpg" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="800" />
-<meta property="og:image:alt" content="Nichekala Architecture and Design Studio" />
-<meta name="twitter:image" content="https://nichekala.in/img/portfolio-images/fuelmain.jpg" />
 </head>
 
 <body>
@@ -400,81 +405,62 @@
                     </p> -->
                   </div>
                 </div>
-                <div class="row mil-p-0-90">
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img
-                        src="../img/portfolio-images/fuel1.jpg"
-                        alt="image"
-                      />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/fuel1.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img
-                        src="../img/portfolio-images/fuel2.jpg"
-                        alt="image"
-                      />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/fuel2.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img
-                        src="../img/portfolio-images/fuel3.jpg"
-                        alt="image"
-                      />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/fuel3.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img src="../img/portfolio-images/fuel4.jpg" alt="image" />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/fuel4.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img src="../img/portfolio-images/fuel5.jpg" alt="image" />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/fuel5.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
+                <div class="nk-gallery">
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/fuel1.jpg"
+                  >
+                    <img src="../img/portfolio-images/fuel1.jpg" alt="Fuel One — project image 1" width="1024" height="576" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/fuel2.jpg"
+                  >
+                    <img src="../img/portfolio-images/fuel2.jpg" alt="Fuel One — project image 2" width="1024" height="576" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/fuel3.jpg"
+                  >
+                    <img src="../img/portfolio-images/fuel3.jpg" alt="Fuel One — project image 3" width="1024" height="576" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/fuel4.jpg"
+                  >
+                    <img src="../img/portfolio-images/fuel4.jpg" alt="Fuel One — project image 4" width="1024" height="577" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/fuel5.jpg"
+                  >
+                    <img src="../img/portfolio-images/fuel5.jpg" alt="Fuel One — project image 5" width="1024" height="577" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
                 </div>
               </div>
 

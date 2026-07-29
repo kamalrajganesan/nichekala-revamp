@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="../css/plugins/fancybox.min.css">
     <!-- ashley scss -->
     <link rel="stylesheet" href="../css/style.css">
+
+    <!-- masonry gallery -->
+    <link rel="stylesheet" href="../css/gallery-masonry.css">
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/site.webmanifest" />
@@ -30,7 +33,7 @@
 
 <meta name="title" content="Weekend Homes | Recreational Architecture Project in Chennai | Nichekala">
 <meta name="description" content="Explore Weekend Homes, a recreational architecture project by Nichekala in Chennai. Designed to create relaxing and functional living spaces with contemporary architectural excellence.">
-<meta name="keywords" content="Weekend Homes Chennai, Recreational Architecture, Luxury Weekend House, Modern Home Design Chennai, Residential Architecture, Nichekala Projects, Architecture Portfolio Chennai">
+<meta name="keywords" content="weekend home design chennai, farmhouse design chennai, holiday home architect, second home design india, weekend villa design, farm house plan chennai">
 <meta name="author" content="Nichekala">
 <meta name="robots" content="index, follow">
 <meta name="language" content="English">
@@ -39,16 +42,24 @@
 <!-- Canonical URL -->
 <link rel="canonical" href="YOUR_PAGE_URL">
 
-<!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="YOUR_PAGE_URL">
 <meta property="og:title" content="Weekend Homes | Recreational Architecture Project in Chennai | Nichekala">
 <meta property="og:description" content="Discover Weekend Homes, a thoughtfully designed recreational architecture project by Nichekala in Chennai, blending comfort, functionality, and modern aesthetics.">
 <meta property="og:site_name" content="Nichekala">
 <meta property="og:locale" content="en_IN">
+<!-- social share image (logo) - PNG so WhatsApp/Facebook/Instagram/X can render it -->
+<meta property="og:image" content="https://nichekala.in/img/icons/favicon.png" />
+<meta property="og:image:secure_url" content="https://nichekala.in/img/icons/favicon.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="272" />
+<meta property="og:image:height" content="281" />
+<meta property="og:image:alt" content="Nichekala Architecture and Interior Design Studio" />
+<meta name="twitter:image" content="https://nichekala.in/img/icons/favicon.png" />
+
 
 <!-- Twitter Card -->
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Weekend Homes | Recreational Architecture Project in Chennai | Nichekala">
 <meta name="twitter:description" content="Explore Weekend Homes, a recreational architecture project by Nichekala in Chennai, showcasing modern design and comfortable living spaces.">
 
@@ -156,11 +167,6 @@
   "inLanguage": "en"
 }
 </script>
-<meta property="og:image" content="https://nichekala.in/img/portfolio-images/weekendmain.jpg" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="800" />
-<meta property="og:image:alt" content="Nichekala Architecture and Design Studio" />
-<meta name="twitter:image" content="https://nichekala.in/img/portfolio-images/weekendmain.jpg" />
 </head>
 
 <body>
@@ -403,81 +409,29 @@
                     
                   </div>
                 </div>
-                <div class="row mil-p-0-90">
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img
-                        src="../img/portfolio-images/weekend1.jpg"
-                        alt="image"
-                      />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/weekend1.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img
-                        src="../img/portfolio-images/weekend2.jpg"
-                        alt="image"
-                      />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="../img/portfolio-images/weekend2.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="../img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <!-- <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img
-                        src="img/Projects/20 x 60/Second Floor Plan.jpg"
-                        alt="image"
-                      />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="img/Projects/20 x 60/Second Floor Plan.jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img src="img/Projects/20 x 60/2 (1).jpg" alt="image" />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="img/Projects/20 x 60/2 (1).jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="mil-image-frame mil-vertical mil-up mil-mb-30">
-                      <img src="img/Projects/20 x 60/4 (1).jpg" alt="image" />
-                      <a
-                        data-fancybox="gallery"
-                        data-no-swup
-                        href="img/Projects/20 x 60/4 (1).jpg"
-                        class="mil-zoom-btn"
-                      >
-                        <img src="img/icons/zoom.svg" alt="zoom" />
-                      </a>
-                    </div>
-                  </div> -->
+                <div class="nk-gallery">
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/weekend1.jpg"
+                  >
+                    <img src="../img/portfolio-images/weekend1.jpg" alt="Weekend Homes — project image 1" width="944" height="945" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
+                  <a
+                    class="nk-gallery-item"
+                    data-fancybox="gallery"
+                    data-no-swup
+                    href="../img/portfolio-images/weekend2.jpg"
+                  >
+                    <img src="../img/portfolio-images/weekend2.jpg" alt="Weekend Homes — project image 2" width="1024" height="785" loading="lazy" />
+                    <span class="mil-zoom-btn">
+                      <img src="../img/icons/zoom.svg" alt="" />
+                    </span>
+                  </a>
                 </div>
               </div>
 
